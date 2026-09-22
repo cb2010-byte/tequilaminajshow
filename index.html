@@ -1,430 +1,1160 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Tequila Minaj Show - Cyber Y2K Audio Hub</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome & Google Fonts -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Permanent+Marker&family=Outfit:wght@300;400;600;800&family=VT323&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        y2kHotPink: '#ff007f',
-                        y2kNeonPink: '#ff66cc',
-                        y2kCyan: '#00f3ff',
-                        y2kPurple: '#7b2cbf',
-                        y2kDarkBg: '#0b0014',
-                        y2kGlass: 'rgba(255, 0, 127, 0.15)',
-                    },
-                    fontFamily: {
-                        orbitron: ['Orbitron', 'sans-serif'],
-                        y2kHand: ['Permanent Marker', 'cursive'],
-                        retro: ['VT323', 'monospace'],
-                        outfit: ['Outfit', 'sans-serif'],
-                    },
-                    boxShadow: {
-                        y2kGlow: '0 0 15px #ff007f, 0 0 30px #00f3ff',
-                        y2kCyanGlow: '0 0 15px #00f3ff',
-                        y2kPinkGlow: '0 0 15px #ff007f',
-                    }
-                }
-            }
-        }
-    </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Tequila Minaj Show | Cyber Y2K Hub</title>
+  
+  <!-- FontAwesome & Google Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Press+Start+2P&family=VT323&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
 
-    <style>
-        body {
-            background-color: #08000f;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(255, 0, 127, 0.2) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(0, 243, 255, 0.2) 0%, transparent 40%),
-                linear-gradient(to bottom, #08000f, #140026);
-            background-attachment: fixed;
-            color: #ffffff;
-            font-family: 'Outfit', sans-serif;
-        }
+  <style>
+    /* ==========================================================================
+       CYBER Y2K & BABY PHAT AESTHETIC STYLESHEET
+       ========================================================================== */
+    :root {
+      --pink: #ff007f;
+      --pink-glow: #ff00ab;
+      --hot-pink: #ff1493;
+      --cyan: #00f3ff;
+      --cyan-glow: #00d8ff;
+      --deep-bg: #0d0118;
+      --card-bg: rgba(25并发, 10, 40, 0.7);
+      --glass-border: rgba(255, 0, 127, 0.4);
+      --text: #ffffff;
+      --cheetah-pattern: radial-gradient(circle, #3a001a 20%, transparent 20%), radial-gradient(circle, #1a0033 20%, transparent 20%);
+    }
 
-        /* Y2K Cheetah / Leopard Trim Pattern */
-        .cheetah-pattern {
-            background-color: #1a0022;
-            background-image: radial-gradient(#ff007f 15%, transparent 16%), radial-gradient(#00f3ff 15%, transparent 16%);
-            background-size: 30px 30px;
-            background-position: 0 0, 15px 15px;
-            border: 2px solid #ff007f;
-        }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+    }
 
-        /* Bedazzled Border Effect */
-        .bedazzled-border {
-            border: 3px dashed #00f3ff;
-            box-shadow: 0 0 10px #ff007f, inset 0 0 10px #00f3ff;
-        }
+    body {
+      background-color: var(--deep-bg);
+      color: var(--text);
+      font-family: 'Outfit', sans-serif;
+      overflow-x: hidden;
+      min-height: 100vh;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(255, 0, 127, 0.15) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(0, 243, 255, 0.15) 0%, transparent 40%),
+        repeating-linear-gradient(0deg, rgba(0,0,0,0.15) 0px, rgba(0,0,0,0.15) 1px, transparent 1px, transparent 2px);
+      background-attachment: fixed;
+    }
 
-        /* Glassmorphism Panel */
-        .glass-y2k {
-            background: rgba(22, 5, 37, 0.75);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 0, 127, 0.4);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
-        }
+    /* Cheetah Print Side Trim Elements */
+    .cheetah-border-left, .cheetah-border-right {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      width: 14px;
+      z-index: 999;
+      background-color: #220015;
+      background-image: 
+        radial-gradient(#ff007f 15%, transparent 16%),
+        radial-gradient(#00f3ff 15%, transparent 16%),
+        radial-gradient(rgba(255,255,255,0.4) 15%, transparent 20%);
+      background-position: 0 0, 10px 10px, 5px 15px;
+      background-size: 20px 20px;
+      box-shadow: 0 0 15px var(--pink);
+    }
+    .cheetah-border-left { left: 0; border-right: 2px solid var(--cyan); }
+    .cheetah-border-right { right: 0; border-left: 2px solid var(--pink); }
 
-        .text-glow-pink {
-            text-shadow: 0 0 8px #ff007f, 0 0 15px #ff007f;
-        }
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: var(--deep-bg); }
+    ::-webkit-scrollbar-thumb { background: linear-gradient(var(--pink), var(--cyan)); border-radius: 4px; }
 
-        .text-glow-cyan {
-            text-shadow: 0 0 8px #00f3ff, 0 0 15px #00f3ff;
-        }
+    /* Glowing Text & Neon Utilities */
+    .neon-text-pink {
+      color: #fff;
+      text-shadow: 0 0 5px #fff, 0 0 10px var(--pink), 0 0 20px var(--pink), 0 0 40px var(--pink-glow);
+    }
+    .neon-text-cyan {
+      color: #fff;
+      text-shadow: 0 0 5px #fff, 0 0 10px var(--cyan), 0 0 20px var(--cyan), 0 0 40px var(--cyan-glow);
+    }
+    .y2k-font { font-family: 'Orbitron', sans-serif; }
+    .retro-font { font-family: 'VT323', monospace; }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #08000f;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(#ff007f, #00f3ff);
-            border-radius: 4px;
-        }
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px 30px;
+    }
 
-        /* Glitter shimmer effect */
-        @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-        }
-        .glitter-btn {
-            background: linear-gradient(90deg, #ff007f 0%, #00f3ff 50%, #ff007f 100%);
-            background-size: 200% auto;
-            animation: shimmer 3s infinite linear;
-        }
-    </style>
+    /* Top Ambient Music Control Bar */
+    .bg-music-bar {
+      background: rgba(13, 1, 24, 0.85);
+      border: 1px solid var(--pink);
+      box-shadow: 0 0 15px rgba(255, 0, 127, 0.4);
+      border-radius: 50px;
+      padding: 8px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 25px;
+      backdrop-filter: blur(10px);
+    }
+    .bg-music-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.9rem;
+    }
+    .bg-music-info i { color: var(--cyan); animation: spin 4s linear infinite; }
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+
+    .music-controls {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .music-btn {
+      background: linear-gradient(135deg, var(--pink), #b30059);
+      border: none;
+      color: white;
+      padding: 6px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.75rem;
+      box-shadow: 0 0 10px var(--pink);
+      transition: all 0.2s ease;
+    }
+    .music-btn:hover { transform: scale(1.05); box-shadow: 0 0 18px var(--pink); }
+    .vol-slider {
+      accent-color: var(--cyan);
+      cursor: pointer;
+      width: 80px;
+    }
+
+    /* Header & Branding */
+    header {
+      text-align: center;
+      padding: 30px 10px;
+      position: relative;
+      background: radial-gradient(ellipse at center, rgba(255, 0, 127, 0.2) 0%, transparent 70%);
+      border-bottom: 2px dashed var(--pink);
+      margin-bottom: 30px;
+    }
+    .rhinestone-badge {
+      display: inline-block;
+      background: linear-gradient(45deg, #2a0033, #001a33);
+      border: 2px solid var(--cyan);
+      padding: 5px 18px;
+      border-radius: 20px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      color: var(--cyan);
+      box-shadow: 0 0 10px var(--cyan), inset 0 0 8px var(--pink);
+      margin-bottom: 15px;
+      text-transform: uppercase;
+    }
+    .brand-title {
+      font-size: 3.2rem;
+      font-weight: 900;
+      letter-spacing: 3px;
+      line-height: 1.1;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+    .brand-sub {
+      font-size: 1.1rem;
+      color: #e0e0e0;
+      font-weight: 300;
+      letter-spacing: 1px;
+    }
+
+    /* Navigation Bar */
+    .nav-bar {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 25px;
+    }
+    .nav-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--cyan);
+      color: white;
+      padding: 10px 22px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-btn:hover, .nav-btn.active {
+      background: linear-gradient(135deg, rgba(255, 0, 127, 0.6), rgba(0, 243, 255, 0.6));
+      border-color: #fff;
+      box-shadow: 0 0 15px var(--pink);
+      transform: translateY(-2px);
+    }
+
+    /* Main Grid Layout */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 30px;
+    }
+    @media (max-width: 900px) {
+      .main-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Glassmorphism Card Style */
+    .glass-card {
+      background: rgba(20, 5, 35, 0.75);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 25px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+      margin-bottom: 25px;
+      position: relative;
+      overflow: hidden;
+    }
+    .glass-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--pink), var(--cyan), var(--pink));
+    }
+    .card-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.25rem;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #fff;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 10px;
+    }
+
+    /* Episode Player Card */
+    .active-player-card {
+      background: linear-gradient(135deg, rgba(40, 5, 60, 0.85), rgba(5, 30, 60, 0.85));
+      border: 2px solid var(--pink);
+      box-shadow: 0 0 25px rgba(255, 0, 127, 0.3);
+    }
+    .now-playing-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+    .album-art {
+      width: 100px;
+      height: 100px;
+      border-radius: 15px;
+      background: #111;
+      border: 2px solid var(--cyan);
+      box-shadow: 0 0 15px var(--cyan);
+      object-fit: cover;
+    }
+    .now-playing-details h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.3rem;
+      margin-bottom: 6px;
+    }
+    .now-playing-details p {
+      color: #ccc;
+      font-size: 0.9rem;
+    }
+
+    /* Custom Audio Player Controls */
+    .player-controls-wrap {
+      margin-top: 15px;
+    }
+    .progress-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 15px;
+    }
+    .time-stamp {
+      font-family: 'VT323', monospace;
+      font-size: 1.1rem;
+      color: var(--cyan);
+      width: 45px;
+    }
+    .audio-progress {
+      flex: 1;
+      accent-color: var(--pink);
+      cursor: pointer;
+    }
+    .player-buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+    }
+    .play-btn-main {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--pink), var(--cyan));
+      border: none;
+      color: white;
+      font-size: 1.4rem;
+      cursor: pointer;
+      box-shadow: 0 0 20px var(--pink);
+      transition: transform 0.2s;
+    }
+    .play-btn-main:hover { transform: scale(1.1); }
+
+    /* Episode List */
+    .episodes-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .episode-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      transition: all 0.2s ease;
+    }
+    .episode-item:hover {
+      background: rgba(255, 0, 127, 0.1);
+      border-color: var(--pink);
+    }
+    .ep-meta {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .ep-num {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--cyan);
+      background: rgba(0, 243, 255, 0.1);
+      padding: 8px 12px;
+      border-radius: 8px;
+    }
+    .ep-title-text {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .ep-subtext {
+      font-size: 0.8rem;
+      color: #aaa;
+    }
+    .ep-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .action-icon-btn {
+      background: transparent;
+      border: none;
+      color: #aaa;
+      font-size: 1.1rem;
+      cursor: pointer;
+      padding: 6px;
+      transition: color 0.2s;
+    }
+    .action-icon-btn:hover { color: var(--pink); }
+    .action-icon-btn.delete-btn:hover { color: #ff3333; }
+
+    .status-tag {
+      font-size: 0.7rem;
+      padding: 3px 8px;
+      border-radius: 10px;
+      font-family: 'Orbitron', sans-serif;
+      text-transform: uppercase;
+      margin-left: 8px;
+    }
+    .tag-scheduled { background: rgba(255, 165, 0, 0.2); color: orange; border: 1px solid orange; }
+    .tag-live { background: rgba(0, 255, 127, 0.2); color: #00ff7f; border: 1px solid #00ff7f; }
+
+    /* Song of the Day Card */
+    .sotd-box {
+      background: linear-gradient(135deg, rgba(255, 0, 127, 0.15), rgba(0, 0, 0, 0.4));
+      border: 1px dashed var(--pink);
+      border-radius: 15px;
+      padding: 18px;
+      text-align: center;
+    }
+    .sotd-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1rem;
+      color: var(--pink);
+      margin-bottom: 6px;
+    }
+    .sotd-artist {
+      font-size: 0.85rem;
+      color: #ddd;
+      margin-bottom: 15px;
+    }
+    .stream-links {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .stream-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: white;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .stream-btn:hover { background: var(--pink); border-color: var(--pink); }
+
+    /* Twitter / X Embed Simulation Container */
+    .twitter-box {
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 12px;
+      padding: 15px;
+      max-height: 420px;
+      overflow-y: auto;
+    }
+    .tweet-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 12px;
+      margin-bottom: 12px;
+      font-size: 0.88rem;
+    }
+    .tweet-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .tweet-user {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+    }
+    .tweet-handle { color: #888; font-size: 0.8rem; font-weight: normal; }
+    .tweet-time { font-size: 0.75rem; color: #666; }
+
+    /* Form Styles (Work Signup & Admin) */
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      display: block;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.75rem;
+      color: var(--cyan);
+      margin-bottom: 6px;
+      letter-spacing: 1px;
+    }
+    .form-control {
+      width: 100%;
+      padding: 10px 14px;
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 0, 127, 0.4);
+      border-radius: 8px;
+      color: white;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-control:focus {
+      border-color: var(--cyan);
+      box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+    }
+    .btn-submit {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, var(--pink), var(--cyan));
+      border: none;
+      color: white;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 15px var(--pink);
+      transition: transform 0.2s;
+    }
+    .btn-submit:hover { transform: translateY(-2px); }
+
+    /* Modal Overlay */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .modal-card {
+      background: var(--deep-bg);
+      border: 2px solid var(--pink);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 500px;
+      padding: 30px;
+      box-shadow: 0 0 30px var(--pink);
+      position: relative;
+    }
+    .close-modal {
+      position: absolute;
+      top: 15px; right: 20px;
+      background: none;
+      border: none;
+      color: #aaa;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    .close-modal:hover { color: #fff; }
+
+    /* Footer & Visitor Counter */
+    footer {
+      text-align: center;
+      padding: 30px;
+      margin-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      background: rgba(13, 1, 24, 0.9);
+    }
+    .visitor-counter-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid var(--cyan);
+      padding: 8px 18px;
+      border-radius: 30px;
+      box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+      margin-bottom: 15px;
+    }
+    .counter-digits {
+      font-family: 'VT323', monospace;
+      font-size: 1.6rem;
+      color: var(--pink);
+      letter-spacing: 3px;
+    }
+
+    /* Admin Badge Header Indicator */
+    .admin-logged-badge {
+      display: none;
+      background: rgba(0, 255, 127, 0.15);
+      border: 1px solid #00ff7f;
+      color: #00ff7f;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-family: 'Orbitron', sans-serif;
+      margin-top: 10px;
+    }
+  </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between overflow-x-hidden selection:bg-y2kHotPink selection:text-white">
+<body>
 
-    <!-- TOP Y2K TICKER BAR -->
-    <div class="bg-gradient-to-r from-y2kHotPink via-purple-600 to-y2kCyan text-black font-retro text-lg py-1 px-4 font-bold flex justify-between items-center shadow-lg">
-        <div class="overflow-hidden whitespace-nowrap w-full">
-            <span class="inline-block animate-marquee uppercase tracking-widest">
-                👑 WELCOME TO THE TEQUILA MINAJ SHOW HUB • SPARKLE, TEQUILA & TEA • LIVE 24/7 • TIP THE QUEEN & JOIN VIP LOUNGE 💅✨
-            </span>
-        </div>
-        <div id="liveTime" class="hidden md:block pl-4 text-sm font-orbitron text-black font-extrabold whitespace-nowrap"></div>
+  <!-- Side Cheetah Decor Accent Lines -->
+  <div class="cheetah-border-left"></div>
+  <div class="cheetah-border-right"></div>
+
+  <div class="container">
+
+    <!-- Ambient Background Music Control Bar -->
+    <div class="bg-music-bar">
+      <div class="bg-music-info">
+        <i class="fa-solid fa-compact-disc"></i>
+        <span><strong>Theme Track:</strong> M.I.A. ft. Nicki Minaj - Teqkilla (Ambient Theme)</span>
+      </div>
+      <div class="music-controls">
+        <button id="bgMusicToggleBtn" class="music-btn"><i class="fa-solid fa-pause"></i> PAUSE</button>
+        <i class="fa-solid fa-volume-high" style="font-size: 0.8rem; color: var(--cyan);"></i>
+        <input type="range" id="bgVolume" class="vol-slider" min="0" max="1" step="0.05" value="0.25">
+      </div>
     </div>
 
-    <!-- MAIN NAVBAR -->
-    <header class="sticky top-0 z-40 glass-y2k border-b border-y2kHotPink/40 py-3 px-4 sm:px-8 flex justify-between items-center">
-        <div class="flex items-center space-x-3">
-            <div class="w-10 h-10 rounded-full cheetah-pattern flex items-center justify-center text-y2kCyan font-orbitron font-black text-xl shadow-y2kGlow">
-                👑
-            </div>
-            <div>
-                <h1 class="font-orbitron font-black text-xl sm:text-2xl text-transparent bg-clip-text bg-gradient-to-r from-y2kHotPink via-y2kNeonPink to-y2kCyan tracking-wider text-glow-pink">
-                    TEQUILA MINAJ
-                </h1>
-                <p class="text-xs font-y2kHand text-y2kCyan tracking-widest">The Official VIP Experience</p>
-            </div>
-        </div>
+    <!-- Main Header -->
+    <header>
+      <div class="rhinestone-badge"><i class="fa-solid fa-crown"></i> Official Podcast Station</div>
+      <h1 class="brand-title neon-text-pink">The Tequila Minaj Show</h1>
+      <p class="brand-sub">Cyber Y2K • Pop Culture • Hot Takes & VIP Exclusive Tea</p>
+      <div id="adminIndicator" class="admin-logged-badge"><i class="fa-solid fa-user-shield"></i> QUEEN ADMIN LOGGED IN</div>
 
-        <!-- NAV LINKS / BUTTONS -->
-        <div class="flex items-center space-x-2 sm:space-x-4">
-            <button onclick="openTippingModal()" class="px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-bold font-orbitron rounded-full glitter-btn text-black shadow-y2kPinkGlow hover:scale-105 transition-transform flex items-center gap-1.5">
-                <i class="fa-solid font-bold fa-heart"></i>
-                <span>TIP JAR</span>
-            </button>
-
-            <!-- ADMIN AUTH CONTROLS -->
-            <div id="adminAuthNav">
-                <button onclick="openAdminLoginModal()" id="loginBtnNav" class="px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-bold font-orbitron rounded-full bg-black/60 border border-y2kCyan text-y2kCyan hover:bg-y2kCyan hover:text-black transition-all flex items-center gap-1.5 shadow-y2kCyanGlow">
-                    <i class="fa-solid fa-crown"></i>
-                    <span>QUEEN LOGIN</span>
-                </button>
-                <div id="loggedInNav" class="hidden flex items-center gap-2">
-                    <button onclick="toggleAdminDashboard()" class="px-3 py-1.5 sm:px-4 sm:py-2 text-xs sm:text-sm font-bold font-orbitron rounded-full bg-y2kHotPink text-white hover:bg-pink-600 transition-all flex items-center gap-1.5 shadow-y2kPinkGlow">
-                        <i class="fa-solid fa-chart-line"></i>
-                        <span>EARNINGS & TAXES</span>
-                    </button>
-                    <button onclick="logoutAdmin()" class="px-2 py-1.5 text-xs text-red-400 hover:text-red-300 font-retro uppercase">
-                        [Exit Queen]
-                    </button>
-                </div>
-            </div>
-        </div>
+      <!-- Navigation Tabs -->
+      <div class="nav-bar">
+        <button class="nav-btn active" onclick="switchView('episodesView')"><i class="fa-solid fa-podcast"></i> Episodes</button>
+        <button class="nav-btn" onclick="switchView('workSignupView')"><i class="fa-solid fa-star"></i> Fan Club / Work Sign-Up</button>
+        <button id="adminNavBtn" class="nav-btn" onclick="openAdminModal()"><i class="fa-solid fa-lock"></i> Admin Portal</button>
+      </div>
     </header>
 
-    <!-- MAIN CONTAINER -->
-    <main class="max-w-7xl mx-auto w-full px-4 sm:px-6 py-6 flex-grow space-y-8">
+    <!-- Content Layout Grid -->
+    <div class="main-grid">
 
-        <!-- HERO BANNER PANEL -->
-        <section class="glass-y2k rounded-3xl p-6 sm:p-8 cheetah-pattern relative overflow-hidden text-center sm:text-left flex flex-col md:flex-row items-center justify-between gap-6">
-            <div class="space-y-3 z-10 max-w-2xl">
-                <div class="inline-block px-3 py-1 bg-black/70 border border-y2kCyan rounded-full text-xs font-orbitron text-y2kCyan tracking-widest uppercase">
-                    ✨ Unfiltered Podcasting • Y2K Couture • Spill The Tea
-                </div>
-                <h2 class="font-orbitron font-black text-3xl sm:text-5xl tracking-tight text-white leading-tight">
-                    WELCOME TO <span class="text-y2kHotPink text-glow-pink">THE SHOW</span>
-                </h2>
-                <p class="text-sm sm:text-base text-gray-200 font-outfit">
-                    Listen to the hottest episodes, send love directly to the queen's Tip Jar, check scheduled episode drops, and join the exclusive fan lounge.
-                </p>
-                <div class="flex flex-wrap gap-3 pt-2 justify-center sm:justify-start">
-                    <button onclick="scrollToEpisodes()" class="px-5 py-2.5 rounded-full bg-y2kHotPink font-orbitron font-bold text-sm text-white shadow-y2kPinkGlow hover:bg-pink-600 transition-all flex items-center gap-2">
-                        <i class="fa-solid fa-headphones"></i> LISTEN NOW
-                    </button>
-                    <button onclick="openSubscribeModal()" class="px-5 py-2.5 rounded-full bg-black/60 border border-y2kCyan font-orbitron font-bold text-sm text-y2kCyan hover:bg-y2kCyan hover:text-black transition-all flex items-center gap-2 shadow-y2kCyanGlow">
-                        <i class="fa-solid fa-envelope"></i> VIP CLUB
-                    </button>
-                </div>
-            </div>
-            
-            <div class="relative z-10 flex-shrink-0">
-                <div class="w-44 h-44 sm:w-52 sm:h-52 rounded-full border-4 border-y2kHotPink p-2 bg-black/80 shadow-y2kGlow flex flex-col items-center justify-center text-center">
-                    <span class="text-5xl mb-1">👑</span>
-                    <span class="font-orbitron font-bold text-xs text-y2kCyan">TEQUILA MINAJ</span>
-                    <span class="font-y2kHand text-y2kHotPink text-xs">Host & Creator</span>
-                    <div class="mt-2 text-[10px] font-retro bg-y2kHotPink/30 text-y2kCyan px-2 py-0.5 rounded-full border border-y2kHotPink">
-                        MISSOURI VIP PODCAST
-                    </div>
-                </div>
-            </div>
-        </section>
+      <!-- Left / Primary Column -->
+      <main>
+        
+        <!-- EPISODES VIEW -->
+        <div id="episodesView">
 
-        <!-- AUDIO PLAYER BAR -->
-        <section id="audioPlayerSection" class="glass-y2k rounded-2xl p-4 border-2 border-y2kCyan shadow-y2kCyanGlow">
-            <div class="flex flex-col md:flex-row items-center gap-4 justify-between">
-                <!-- Track info -->
-                <div class="flex items-center gap-4 w-full md:w-1/3">
-                    <div class="w-14 h-14 rounded-xl cheetah-pattern flex items-center justify-center text-2xl flex-shrink-0 shadow-y2kPinkGlow" id="playerThumb">
-                        🎙️
-                    </div>
-                    <div class="overflow-hidden">
-                        <h4 id="playerTitle" class="font-orbitron font-bold text-sm text-y2kCyan truncate">Select An Episode To Play</h4>
-                        <p id="playerSubtitle" class="text-xs text-gray-400 font-retro">The Tequila Minaj Show</p>
-                    </div>
-                </div>
-
-                <!-- Controls & Scrub bar -->
-                <div class="w-full md:w-2/3 flex flex-col items-center gap-2">
-                    <audio id="audioElement" preload="metadata"></audio>
-                    <div class="flex items-center gap-6">
-                        <button onclick="skipTime(-10)" class="text-y2kCyan hover:text-white transition-colors text-lg" title="Back 10s">
-                            <i class="fa-solid fa-rotate-left"></i>
-                        </button>
-                        <button id="playPauseBtn" onclick="togglePlayPause()" class="w-12 h-12 rounded-full bg-gradient-to-tr from-y2kHotPink to-y2kCyan flex items-center justify-center text-black font-bold text-xl shadow-y2kGlow hover:scale-105 transition-transform">
-                            <i class="fa-solid fa-play ml-1" id="playIcon"></i>
-                        </button>
-                        <button onclick="skipTime(10)" class="text-y2kCyan hover:text-white transition-colors text-lg" title="Forward 10s">
-                            <i class="fa-solid fa-rotate-right"></i>
-                        </button>
-                    </div>
-
-                    <div class="w-full flex items-center gap-3 text-xs font-retro text-y2kCyan">
-                        <span id="currentTime">00:00</span>
-                        <input type="range" id="seekSlider" min="0" max="100" value="0" step="0.1" oninput="onSeekInput()" class="w-full h-1.5 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-y2kHotPink">
-                        <span id="durationTime">00:00</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ADMIN DASHBOARD PANEL (Earnings, Missouri Taxes, Bank Payout & Schedule Manager) -->
-        <section id="adminDashboardSection" class="hidden glass-y2k rounded-3xl p-6 sm:p-8 border-2 border-y2kHotPink shadow-y2kGlow space-y-6">
-            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center border-b border-y2kHotPink/40 pb-4 gap-4">
-                <div>
-                    <div class="flex items-center gap-2">
-                        <span class="text-2xl">👑</span>
-                        <h2 class="font-orbitron font-black text-2xl text-y2kHotPink text-glow-pink">QUEEN ADMIN FINANCIAL DASHBOARD</h2>
-                    </div>
-                    <p class="text-xs text-y2kCyan font-retro">Missouri Tax Estimates, Bank Deposits & Episode Controls</p>
-                </div>
-                <div class="flex gap-2">
-                    <button onclick="openCreateEpisodeModal()" class="px-4 py-2 bg-gradient-to-r from-y2kHotPink to-purple-600 rounded-full font-orbitron text-xs font-bold text-white shadow-y2kPinkGlow hover:scale-105 transition-transform flex items-center gap-2">
-                        <i class="fa-solid fa-plus"></i> NEW EPISODE / SCHEDULE
-                    </button>
-                    <button onclick="toggleAdminDashboard()" class="px-3 py-2 bg-gray-800 text-gray-300 rounded-full text-xs font-retro hover:bg-gray-700">
-                        Close Dashboard
-                    </button>
-                </div>
+          <!-- Active Episode Player Panel -->
+          <div class="glass-card active-player-card">
+            <div class="now-playing-header">
+              <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=200&q=80" alt="Podcast Cover" class="album-art" id="nowArt">
+              <div class="now-playing-details">
+                <span style="font-size: 0.75rem; color: var(--cyan); font-weight: bold; text-transform: uppercase;">NOW PLAYING</span>
+                <h3 id="nowTitle" class="neon-text-cyan">Episode 1: Cyber Y2K Takeover</h3>
+                <p id="nowDesc">Welcome to the premiere episode! Unfiltered tea & classic vibes.</p>
+              </div>
             </div>
 
-            <!-- FINANCIAL OVERVIEW CARDS -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div class="bg-black/60 border border-y2kHotPink/50 rounded-2xl p-4 shadow-md">
-                    <p class="text-xs text-gray-400 font-retro uppercase">Gross Tipping Revenue</p>
-                    <h3 id="dashGrossEarnings" class="font-orbitron font-bold text-2xl text-y2kHotPink mt-1">$0.00</h3>
-                    <span class="text-[10px] text-green-400">Live Tip Jar Ledger</span>
+            <!-- Custom Audio Scrub Control -->
+            <div class="player-controls-wrap">
+              <div class="progress-area">
+                <span id="currentTime" class="time-stamp">0:00</span>
+                <input type="range" id="podcastSeek" class="audio-progress" value="0" min="0" max="100">
+                <span id="durationTime" class="time-stamp">0:00</span>
+              </div>
+              <div class="player-buttons">
+                <button class="play-btn-main" id="podcastPlayBtn" onclick="togglePodcastPlay()"><i class="fa-solid fa-play"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Episode Schedule & Post Management (Admin Action Bar) -->
+          <div id="adminControlsBar" style="display: none; margin-bottom: 20px;">
+            <button class="btn-submit" onclick="openScheduleModal()" style="background: linear-gradient(135deg, #00f3ff, #ff007f);"><i class="fa-solid fa-plus-circle"></i> + Post / Schedule New Episode</button>
+          </div>
+
+          <!-- All Episodes List Container -->
+          <div class="glass-card">
+            <div class="card-title">
+              <span><i class="fa-solid fa-list-ul" style="color: var(--pink);"></i> Episode Catalog</span>
+              <span style="font-size: 0.8rem; color: #888;" id="episodeCountText">3 Episodes</span>
+            </div>
+            <div class="episodes-list" id="episodesContainer">
+              <!-- Dynamically Populated via JS -->
+            </div>
+          </div>
+
+        </div>
+
+        <!-- FAN CLUB / WORK SIGN-UP VIEW -->
+        <div id="workSignupView" style="display: none;">
+          <div class="glass-card">
+            <div class="card-title">
+              <span class="neon-text-pink"><i class="fa-solid fa-users"></i> VIP Fan Club & Crew Sign-Up</span>
+            </div>
+            <p style="margin-bottom: 20px; font-size: 0.95rem; color: #ccc;">
+              Want to join the official <strong>Tequila Minaj Crew</strong>? Sign up below to join the Fan Club, apply for crew roles (mods, graphic design, audio assistants), or receive exclusive early episode alerts!
+            </p>
+
+            <form id="workForm" onsubmit="handleWorkSignup(event)">
+              <div class="form-group">
+                <label>FULL NAME / BARB ALIAS</label>
+                <input type="text" class="form-control" required placeholder="e.g. Chun-Li Luxe">
+              </div>
+              <div class="form-group">
+                <label>EMAIL ADDRESS</label>
+                <input type="email" class="form-control" required placeholder="name@domain.com">
+              </div>
+              <div class="form-group">
+                <label>TWITTER / INSTAGRAM HANDLE</label>
+                <input type="text" class="form-control" placeholder="@officialtequila">
+              </div>
+              <div class="form-group">
+                <label>I WANT TO JOIN AS:</label>
+                <select class="form-control" style="background: #111;">
+                  <option>VIP Fan Club Member (Exclusive Alerts)</option>
+                  <option>Podcast Guest / Interviewee</option>
+                  <option>Social Media & Promo Team</option>
+                  <option>Audio & Video Editor Assistant</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>WHY DO YOU WANT TO JOIN THE CREW?</label>
+                <textarea class="form-control" rows="3" placeholder="Tell us why you love The Tequila Minaj Show!"></textarea>
+              </div>
+              <button type="submit" class="btn-submit">SUBMIT APPLICATION 💖</button>
+            </form>
+          </div>
+        </div>
+
+      </main>
+
+      <!-- Right Sidebar Column -->
+      <aside>
+
+        <!-- Nicki Minaj Song of the Day Card -->
+        <div class="glass-card">
+          <div class="card-title">
+            <span style="color: var(--pink);"><i class="fa-solid fa-music"></i> Nicki Song of the Day</span>
+          </div>
+          <div class="sotd-box">
+            <div class="sotd-title" id="sotdTitle">Super Bass</div>
+            <div class="sotd-artist">Nicki Minaj • Pink Friday</div>
+            <div class="stream-links">
+              <a href="https://open.spotify.com/artist/0hCN2StS33W25233vOD8A8" target="_blank" class="stream-btn"><i class="fa-brands fa-spotify"></i> Spotify</a>
+              <a href="https://music.apple.com/us/artist/nicki-minaj/300000000" target="_blank" class="stream-btn"><i class="fa-brands fa-apple"></i> Apple</a>
+              <a href="https://music.youtube.com/search?q=Nicki+Minaj" target="_blank" class="stream-btn"><i class="fa-brands fa-youtube"></i> YouTube</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Twitter / X Synced Feed Module -->
+        <div class="glass-card">
+          <div class="card-title">
+            <span><i class="fa-brands fa-x-twitter" style="color: var(--cyan);"></i> Live X Feed</span>
+            <a href="https://x.com/officialtequila?s=11" target="_blank" style="font-size: 0.75rem; color: var(--cyan); text-decoration: none;">@officialtequila</a>
+          </div>
+          <div class="twitter-box" id="twitterFeedContainer">
+            <!-- Simulated Live Synced Tweets -->
+            <div class="tweet-card">
+              <div class="tweet-header">
+                <div class="tweet-user">
+                  <span>Tequila Minaj</span>
+                  <span class="tweet-handle">@officialtequila</span>
                 </div>
-                <div class="bg-black/60 border border-yellow-500/50 rounded-2xl p-4 shadow-md">
-                    <p class="text-xs text-gray-400 font-retro uppercase">Est. Tax Reserve (30%)</p>
-                    <h3 id="dashTotalTax" class="font-orbitron font-bold text-2xl text-yellow-400 mt-1">$0.00</h3>
-                    <span class="text-[10px] text-yellow-200">Fed SE + MO State Tax</span>
-                </div>
-                <div class="bg-black/60 border border-y2kCyan/50 rounded-2xl p-4 shadow-md">
-                    <p class="text-xs text-gray-400 font-retro uppercase">Net Take-Home Pay</p>
-                    <h3 id="dashNetPay" class="font-orbitron font-bold text-2xl text-y2kCyan mt-1">$0.00</h3>
-                    <span class="text-[10px] text-y2kCyan">Ready For Bank Deposit</span>
-                </div>
-                <div class="bg-black/60 border border-purple-500/50 rounded-2xl p-4 shadow-md">
-                    <p class="text-xs text-gray-400 font-retro uppercase">Total Bank Payouts</p>
-                    <h3 id="dashTotalPayouts" class="font-orbitron font-bold text-2xl text-purple-400 mt-1">$0.00</h3>
-                    <span class="text-[10px] text-purple-200">Transferred to Bank</span>
-                </div>
+                <span class="tweet-time">2h</span>
+              </div>
+              <p>New episode dropping tonight! Get your drinks ready 🍸✨ #TequilaMinajShow #Y2K</p>
             </div>
 
-            <!-- TAX BREAKDOWN & BANK DEPOSIT SECTION -->
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <!-- TAX WITHHOLDING BREAKDOWN (MISSOURI) -->
-                <div class="bg-black/80 rounded-2xl p-5 border border-y2kHotPink/30 space-y-3">
-                    <h4 class="font-orbitron font-bold text-sm text-y2kHotPink flex items-center gap-2">
-                        <i class="fa-solid fa-calculator"></i> Missouri State & Federal Tax Calculation
-                    </h4>
-                    <p class="text-xs text-gray-300">
-                        Based on U.S. Self-Employment guidelines in the State of Missouri:
-                    </p>
-                    <div class="space-y-2 text-xs font-retro">
-                        <div class="flex justify-between border-b border-gray-800 pb-1">
-                            <span class="text-gray-400">Federal Self-Employment Tax (15.3% Social Security & Medicare):</span>
-                            <span id="taxFedSE" class="text-y2kHotPink">$0.00</span>
-                        </div>
-                        <div class="flex justify-between border-b border-gray-800 pb-1">
-                            <span class="text-gray-400">Missouri State Income Tax (~4.7% Average):</span>
-                            <span id="taxMOState" class="text-y2kCyan">$0.00</span>
-                        </div>
-                        <div class="flex justify-between border-b border-gray-800 pb-1">
-                            <span class="text-gray-400">Estimated Federal Income Tax bracket (~10%):</span>
-                            <span id="taxFedIncome" class="text-yellow-400">$0.00</span>
-                        </div>
-                        <div class="flex justify-between font-bold text-sm pt-1">
-                            <span class="text-white">Total Recommended Tax Reserve (~30%):</span>
-                            <span id="taxTotalCalculated" class="text-red-400">$0.00</span>
-                        </div>
-                    </div>
+            <div class="tweet-card">
+              <div class="tweet-header">
+                <div class="tweet-user">
+                  <span>Tequila Minaj</span>
+                  <span class="tweet-handle">@officialtequila</span>
                 </div>
-
-                <!-- BANK ACCOUNT DEPOSIT PORTAL -->
-                <div class="bg-black/80 rounded-2xl p-5 border border-y2kCyan/30 space-y-4">
-                    <h4 class="font-orbitron font-bold text-sm text-y2kCyan flex items-center gap-2">
-                        <i class="fa-solid fa-building-columns"></i> Bank Account Transfer Portal
-                    </h4>
-                    <div class="space-y-3 text-xs">
-                        <div class="grid grid-cols-2 gap-2">
-                            <div>
-                                <label class="block text-gray-400 mb-1">Routing Number</label>
-                                <input type="text" id="bankRouting" placeholder="•••••••••" value="101000019" class="w-full bg-black border border-gray-700 rounded p-2 text-y2kCyan font-retro">
-                            </div>
-                            <div>
-                                <label class="block text-gray-400 mb-1">Account Number</label>
-                                <input type="password" id="bankAccount" placeholder="••••••••" value="987654321" class="w-full bg-black border border-gray-700 rounded p-2 text-y2kCyan font-retro">
-                            </div>
-                        </div>
-                        <div>
-                            <label class="block text-gray-400 mb-1">Amount to Deposit ($)</label>
-                            <input type="number" id="depositAmount" placeholder="Enter amount" class="w-full bg-black border border-y2kCyan rounded p-2 text-white font-orbitron font-bold">
-                        </div>
-                        <button onclick="processBankDeposit()" class="w-full py-2.5 rounded-xl bg-y2kCyan font-orbitron font-bold text-black text-xs shadow-y2kCyanGlow hover:bg-cyan-300 transition-all">
-                            DEPOSIT MONEY INTO BANK ACCOUNT NOW
-                        </button>
-                    </div>
-                </div>
+                <span class="tweet-time">1d</span>
+              </div>
+              <p>Pink & cyan lights forever 💖🩵 Which guest should I bring on next week?</p>
             </div>
+          </div>
+        </div>
 
-            <!-- ADMIN SCHEDULED EPISODES MANAGER -->
-            <div class="bg-black/80 rounded-2xl p-5 border border-purple-500/40 space-y-4">
-                <div class="flex justify-between items-center">
-                    <h4 class="font-orbitron font-bold text-sm text-purple-300 flex items-center gap-2">
-                        <i class="fa-solid fa-clock"></i> Scheduled Episodes Queue (Admin View Only)
-                    </h4>
-                    <span id="scheduledCountBadge" class="px-2 py-0.5 rounded bg-purple-900 text-purple-200 text-xs font-retro">0 Queued</span>
-                </div>
-                <div id="scheduledEpisodesQueue" class="space-y-3">
-                    <!-- Dynamic Scheduled Items populate here -->
-                </div>
-            </div>
-        </section>
+      </aside>
 
-        <!-- EPISODES FEED SECTION -->
-        <section id="episodesFeedSection" class="space-y-6">
-            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                <div>
-                    <h3 class="font-orbitron font-black text-2xl text-white flex items-center gap-2">
-                        <span class="text-y2kHotPink">🎙️</span> LATEST EPISODES
-                    </h3>
-                    <p class="text-xs text-y2kCyan font-retro">Listen to the latest episodes or preview scheduled releases!</p>
-                </div>
-                <div id="adminEpisodeControls" class="hidden">
-                    <button onclick="openCreateEpisodeModal()" class="px-4 py-2 bg-y2kHotPink hover:bg-pink-600 rounded-full text-xs font-orbitron font-bold text-white shadow-y2kPinkGlow flex items-center gap-1.5">
-                        <i class="fa-solid fa-plus"></i> ADD / SCHEDULE EPISODE
-                    </button>
-                </div>
-            </div>
+    </div>
 
-            <!-- EPISODES LIST GRID -->
-            <div id="episodesGrid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Dynamic Episodes render here -->
-            </div>
-        </section>
-
-        <!-- FAN LOUNGE / CHEER BOX -->
-        <section class="glass-y2k rounded-3xl p-6 sm:p-8 cheetah-pattern space-y-6">
-            <div class="border-b border-y2kHotPink/40 pb-3 flex justify-between items-center">
-                <div>
-                    <h3 class="font-orbitron font-black text-2xl text-y2kHotPink text-glow-pink flex items-center gap-2">
-                        <span>💖</span> VIP FAN LOUNGE & COMMENTS
-                    </h3>
-                    <p class="text-xs text-y2kCyan font-retro">Leave love for Tequila Minaj!</p>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Comment Form -->
-                <div class="bg-black/80 rounded-2xl p-4 border border-y2kHotPink/40 space-y-3">
-                    <h4 class="font-orbitron text-xs font-bold text-y2kCyan">POST A SHOUTOUT</h4>
-                    <input type="text" id="fanName" placeholder="Your VIP Name" class="w-full bg-black/60 border border-gray-700 rounded-lg p-2 text-xs text-white">
-                    <textarea id="fanComment" rows="3" placeholder="Spill the tea or give compliments..." class="w-full bg-black/60 border border-gray-700 rounded-lg p-2 text-xs text-white"></textarea>
-                    <button onclick="postFanComment()" class="w-full py-2 rounded-xl glitter-btn text-black font-orbitron font-bold text-xs shadow-y2kPinkGlow">
-                        SEND LOVE 💋
-                    </button>
-                </div>
-
-                <!-- Fan Comments Feed -->
-                <div class="md:col-span-2 bg-black/80 rounded-2xl p-4 border border-y2kCyan/30 max-h-64 overflow-y-auto space-y-3" id="fanCommentsList">
-                    <!-- Comments injected dynamically -->
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- FOOTER -->
-    <footer class="glass-y2k border-t border-y2kHotPink/40 py-6 px-4 text-center space-y-2 mt-12">
-        <p class="font-orbitron text-xs text-y2kCyan">
-            © 2026 THE TEQUILA MINAJ SHOW • ALL RIGHTS RESERVED 👑
-        </p>
-        <p class="font-retro text-xs text-gray-400">
-            Cyber Y2K Couture • Designed with Hot Pink Neon & Pure Glam
-        </p>
+    <!-- Footer Area -->
+    <footer>
+      <div class="visitor-counter-box">
+        <i class="fa-solid fa-eye" style="color: var(--cyan);"></i>
+        <span style="font-size: 0.85rem; font-family: 'Orbitron', sans-serif;">VISITORS:</span>
+        <span class="counter-digits" id="visitorCounterDisplay">008,492</span>
+      </div>
+      <p style="font-size: 0.8rem; color: #777;">© 2026 The Tequila Minaj Show. All Rights Reserved. Powered by Cyber Y2K Tech.</p>
     </footer>
 
-    <!-- MODAL 1: TIPPING JAR / VIP BAG -->
-    <div id="tippingModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-        <div class="glass-y2k rounded-3xl p-6 max-w-md w-full border-2 border-y2kHotPink shadow-y2kGlow space-y-4 cheetah-pattern relative">
-            <button onclick="closeTippingModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-lg">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            <div class="text-center">
-                <span class="text-4xl">💰</span>
-                <h3 class="font-orbitron font-black text-2xl text-y2kHotPink text-glow-pink mt-1">QUEEN'S TIP JAR</h3>
-                <p class="text-xs text-y2kCyan font-retro">Support the podcast directly!</p>
-            </div>
+  </div>
 
-            <div class="space-y-3">
-                <div>
-                    <label class="block text-xs font-orbitron text-gray-300 mb-1">Select Tip Amount</label>
-                    <div class="grid grid-cols-4 gap-2">
+  <!-- ADMIN LOGIN MODAL -->
+  <div class="modal-overlay" id="adminModal">
+    <div class="modal-card">
+      <button class="close-modal" onclick="closeAdminModal()">&times;</button>
+      <h2 class="neon-text-pink y2k-font" style="margin-bottom: 20px; font-size: 1.3rem;"><i class="fa-solid fa-user-lock"></i> Queen Admin Login</h2>
+      <form onsubmit="handleAdminAuth(event)">
+        <div class="form-group">
+          <label>ENTER MASTER ADMIN PASSCODE</label>
+          <input type="password" id="adminPassInput" class="form-control" required placeholder="••••••••">
+        </div>
+        <button type="submit" class="btn-submit">UNLOCK ADMIN ACCESS</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- SCHEDULE / POST EPISODE MODAL -->
+  <div class="modal-overlay" id="scheduleModal">
+    <div class="modal-card">
+      <button class="close-modal" onclick="closeScheduleModal()">&times;</button>
+      <h2 class="neon-text-cyan y2k-font" style="margin-bottom: 20px; font-size: 1.3rem;"><i class="fa-solid fa-calendar-plus"></i> Schedule / Post Episode</h2>
+      <form onsubmit="handleCreateEpisode(event)">
+        <div class="form-group">
+          <label>EPISODE TITLE</label>
+          <input type="text" id="epTitleInput" class="form-control" required placeholder="Episode Title">
+        </div>
+        <div class="form-group">
+          <label>AUDIO FILE URL (.MP3)</label>
+          <input type="url" id="epUrlInput" class="form-control" required placeholder="https://domain.com/audio.mp3">
+        </div>
+        <div class="form-group">
+          <label>DESCRIPTION / SHOW NOTES</label>
+          <textarea id="epDescInput" class="form-control" rows="3" placeholder="Episode description..."></textarea>
+        </div>
+        <div class="form-group">
+          <label>PUBLISH DATE & TIME (Leave empty to publish now)</label>
+          <input type="datetime-local" id="epDateInput" class="form-control">
+        </div>
+        <button type="submit" class="btn-submit">POST EPISODE ✨</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- BACKGROUND AMBIENT AUDIO FILE LINK -->
+  <audio id="bgAudio" loop preload="auto">
+    <!-- Clean, accessible ambient audio stream -->
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a7315b.mp3?filename=cyberpunk-2099-10701.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- PODCAST PLAYER AUDIO ELEMENT -->
+  <audio id="podcastAudio" preload="auto"></audio>
+
+  <!-- JAVASCRIPT APPLICATION LOGIC -->
+  <script>
+    /* ==========================================================================
+       1. INITIAL STATE & EPISODE DATABASE
+       ========================================================================== */
+    let isAdminLoggedIn = false;
+    let isBgMusicPlaying = false;
+    let isPodcastPlaying = false;
+
+    // Sample Podcast Episodes
+    let episodesList = [
+      {
+        id: 1,
+        title: "Episode 1: Cyber Y2K Takeover",
+        desc: "Welcome to the premiere! Unfiltered tea, pop culture breakdowns, and ultimate Y2K nostalgia.",
+        url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
+        duration: "04:12",
+        releaseDate: null // Already published
+      },
+      {
+        id: 2,
+        title: "Episode 2: The Cheetah Print Empire",
+        desc: "Talking fashion, Baby Phat eras, and how to build a bad b***h mindset in 2026.",
+        url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
+        duration: "07:05",
+        releaseDate: null
+      },
+      {
+        id: 3,
+        title: "Episode 3: Rumors & Rhinestones (Scheduled)",
+        desc: "Exclusive guest interview dropping soon!",
+        url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
+        duration: "05:30",
+        releaseDate: new Date(Date.now() + 86400000).toISOString() // Scheduled 1 day future
+      }
+    ];
+
+    // Daily Nicki Minaj Song Rotation
+    const nickiSongs = [
+      { title: "Super Bass", album: "Pink Friday" },
+      { title: "Starships", album: "Pink Friday: Roman Reloaded" },
+      { title: "Anakonda", album: "The Pinkprint" },
+      { title: "Chun-Li", album: "Queen" },
+      { title: "FTCU", album: "Pink Friday 2" },
+      { title: "Moment 4 Life", album: "Pink Friday" },
+      { title: "Roman's Revenge", album: "Pink Friday" }
+    ];
+
+    /* ==========================================================================
+       2. INITIALIZATION ON PAGE LOAD
+       ========================================================================== */
+    window.addEventListener('DOMContentLoaded', () => {
+      initVisitorCounter();
+      updateNickiSongOfDay();
+      renderEpisodes();
+      setupAudioListeners();
+    });
+
+    /* ==========================================================================
+       3. AUDIO MANAGEMENT & AUTOMATIC FADING
+       ========================================================================== */
+    const bgAudio = document.getElementById('bgAudio');
+    const podcastAudio = document.getElementById('podcastAudio');
+    const bgVolumeSlider = document.getElementById('bgVolume');
+    const bgMusicToggleBtn = document.getElementById('bgMusicToggleBtn');
+
+    // Set Initial Volume
+    bgAudio.volume = bgVolumeSlider.value;
+
+    bgVolumeSlider.addEventListener('input', (e) => {
+      bgAudio.volume = e.target.value;
+    });
+
+    bgMusicToggleBtn.addEventListener('click', () => {
+      if (isBgMusicPlaying) {
+        bgAudio.pause();
+        isBgMusicPlaying = false;
+        bgMusicToggleBtn.innerHTML = '<i class="fa-solid fa-play"></i> PLAY';
+      } else {
+        bgAudio.play().then(() => {
+          isBgMusicPlaying = true;
+          bgMusicToggleBtn.innerHTML = '<i class="fa-solid fa-pause"></i> PAUSE';
+        }).catch(() => {
+          alert("Click anywhere on the page first to allow background audio play!");
+        });
+      }
+    });
+
+    function setupAudioListeners() {
+      // Audio player progress tracking
+      podcastAudio.addEventListener('timeupdate', () => {
+        if (!podcastAudio.duration) return;
+        const seek = document.getElementById('podcastSeek');
+        const current = document.getElementById('currentTime');
+        const duration = document.getElementById('durationTime');
+
+        seek.value = (podcastAudio.currentTime / podcastAudio.duration) * 100;
+        current.textContent = formatTime(podcastAudio.currentTime);
+        duration.textContent = formatTime(podcastAudio.duration);
+      });
+
+      document.getElementById('podcastSeek').addEventListener('input', (e) => {
+        if (podcastAudio.duration) {
+          podcastAudio.currentTime = (e.target.value / 100) * podcastAudio.duration;
+        }
+      });
+
+      podcastAudio.addEventListener('ended', () => {
+        isPodcastPlaying = false;
+        document.getElementById('podcastPlayBtn').innerHTML = '<i class="fa-solid fa-play"></i>';
+        // Fade background music back in
+        fadeBgMusicIn();
+      });
+    }
+
+    function playPodcastTrack(index) {
+      const ep = episodesList[index];
+      document.getElementById('nowTitle').textContent = ep.title;
+      document.getElementById('nowDesc').textContent = ep.desc;
+      podcastAudio.src = ep.url;
+      
+      // Automatic Fade out background music when podcast starts
+      fadeBgMusicOut();
+
+      podcastAudio.play();
+      isPodcastPlaying = true;
+      document.getElementById('podcastPlayBtn').innerHTML = '<i class="fa-solid fa-pause"></i>';
+    }
+
+    function togglePodcastPlay() {
+      if (!podcastAudio.src) {
+        playPodcastTrack(0);
+        return;
+      }
+
+      if (isPodcastPlaying) {
+        podcastAudio.pause();
+        isPodcastPlaying = false;
+        document.getElementById('podcastPlayBtn').innerHTML = '<i class="fa-solid fa-play"></i>';
+        fadeBgMusicIn();
+      } else {
+        fadeBgMusicOut();
+        podcastAudio.play();
+        isPodcastPlaying = true;
+        document.getElementById('podcastPlayBtn').innerHTML = '<i class="fa-solid fa-pause"></i>';
+      }
+    }
+
+    function fadeBgMusicOut() {
+      if (!bgAudio.paused) {
+        let fadeOut = setInterval(() => {
+          if (bgAudio.volume > 0.05) {
+            bgAudio.volume -= 0.05;
+          } else {
+            bgAudio.pause();
+            clearInterval(fadeOut);
+          }
+        }, 50);
+      }
+    }
+
+    function fadeBgMusicIn() {
+      bgAudio.play().then(() => {
+        isBgMusicPlaying = true;
+        bgMusicToggleBtn.innerHTML = '<i class="fa-solid fa-pause"></i> PAUSE';
+        let targetVol = bgVolumeSlider.value;
+        bgAudio.volume = 0;
+        let fadeIn = setInterval(() => {
+          if (bgAudio.volume < targetVol - 0.05) {
+            bgAudio.volume += 0.05;
+          } else {
+            bgAudio.volume = targetVol;
+            clearInterval(fadeIn);
+          }
+        }, 50);
+      }).catch(() => {});
+    }
+
+    function formatTime(seconds) {
+      const min = Math.floor(seconds / 60);
+      const sec = Math.floor(seconds % 60);
+      return `${min}:${sec < 10 ? '0' : ''}${sec}`;
+    }
+
+    /* ==========================================================================
+       4. EPISODE RENDERING, SCHEDULING & DELETION
+       ========================================================================== */
+    function renderEpisodes() {
+      const container = document.getElementById('episodesContainer');
+      container.innerHTML = '';
+
+      const now = new Date();
+      let visibleCount = 0;
+
+      episodesList.forEach((ep, idx) => {
+        const isScheduledFuture = ep.releaseDate && new Date(ep.releaseDate) > now;
+
+        // Hide future scheduled posts from general public unless admin is logged in
+        if (isScheduledFuture && !isAdminLoggedIn) {
+          return;
+        }
+
+        visibleCount++;
+
+        const epItem = document.createElement('div');
+        epItem.className = 'episode-item';
+        epItem.innerHTML = `
+          <div class="ep-meta">
+            <span class="ep-num">EP ${ep.id}</span>
+            <div>
+              <div class="ep-title-text">
+                ${ep.title}
+                ${isScheduledFuture ? '<span class="status-tag tag-scheduled">Scheduled</span>' : '<span class="status-tag tag-live">Live</span>'}
+              </div>
+              <div class="ep-subtext">${ep.desc}</div>
+            </div>
+          </div>
+          <div class="ep-actions">
+            <button class="action-icon-btn" onclick="playPodcastTrack(${idx})" title="Play Episode"><i class="fa-solid fa-circle-play" style="font-size:1.4rem; color:var(--cyan);"></i></button>
+            ${isAdminLoggedIn ? `<button class="action-icon-btn delete-btn" onclick="deleteEpisode(${ep.id})" title="Delete Episode"><i class="fa-solid fa-trash-can"></i></button>` : ''}
+          </div>
+        `;
+        container.appendChild(epItem);
+      });
+
+      document.getElementById('episodeCountText').textContent = `${visibleCount} Episodes`;
+    }
+
+    function deleteEpisode(id) {
+      if (confirm("Are you sure you want to delete this episode?")) {
+        episodesList = episodesList.filter(ep => ep.id !== id);
+        renderEpisodes();
+      }
+    }
+
+    function handleCreateEpisode(e) {
+      e.preventDefault();
+      const title = document.getElementById('epTitleInput').value;
+      const url = document.getElementById('epUrlInput').value;
+      const desc = document.getElementById('epDescInput').value;
+      const dateVal = document.getElementById('epDateInput').value;
+
+      const newEp = {
+        id: episodesList.length + 1,
+        title: title,
+        desc: desc || "No description provided.",
+        url: url,
+        duration: "05:00",
+        releaseDate: dateVal ? new Date(dateVal).toISOString() : null
+      };
+
+      episodesList.unshift(newEp);
+      renderEpisodes();
+      closeScheduleModal();
+      alert("✨ Episode posted / scheduled successfully!");
+    }
+
+    /* ==========================================================================
+       5. ADMIN AUTHENTICATION
+       ========================================================================== */
+    function openAdminModal() {
+      document.getElementById('adminModal').classList.add('active');
+    }
+    function closeAdminModal() {
+      document.getElementById('adminModal').classList.remove('active');
+    }
+    function openScheduleModal() {
+      document.getElementById('scheduleModal').classList.add('active');
+    }
+    function closeScheduleModal() {
+      document.getElementById('scheduleModal').classList.remove('active');
+    }
+
+    function handleAdminAuth(e) {
+      e.preventDefault();
+      const pass = document.getElementById('adminPassInput').value;
+      // Hidden admin passcode evaluation
+      if (pass === "QUEEN" || pass === "TEQUILA2026") {
+        isAdminLoggedIn = true;
+        document.getElementById('adminIndicator').style.display = 'inline-block';
+        document.getElementById('adminControlsBar').style.display = 'block';
+        document.getElementById('adminNavBtn').style.display = 'none';
+        closeAdminModal();
+        renderEpisodes();
+        alert("👑 Welcome back Queen! Admin privileges granted.");
+      } else {
+        alert("Incorrect Admin Passcode.");
+      }
+    }
+
+    /* ==========================================================================
+       6. NICKI MINAJ SONG OF THE DAY & VISITOR COUNTER
+       ========================================================================== */
+    function updateNickiSongOfDay() {
+      const dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
+      const song = nickiSongs[dayOfYear % nickiSongs.length];
+      document.getElementById('sotdTitle').textContent = song.title;
+    }
+
+    function initVisitorCounter() {
+      let count = localStorage.getItem('tequila_visitor_count');
+      if (!count) {
+        count = 8492;
+      } else {
+        count = parseInt(count) + 1;
+      }
+      localStorage.setItem('tequila_visitor_count', count);
+      document.getElementById('visitorCounterDisplay').textContent = String(count).padStart(6, '0');
+    }
+
+    /* ==========================================================================
+       7. NAVIGATION VIEW SWITCHER & WORK FORM
+       ========================================================================== */
+    function switchView(viewId) {
+      document.getElementById('episodesView').style.display = viewId === 'episodesView' ? 'block' : 'none';
+      document.getElementById('workSignupView').style.display = viewId === 'workSignupView' ? 'block' : 'none';
+
+      const navBtns = document.querySelectorAll('.nav-btn');
+      navBtns.forEach(btn => btn.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+    }
+
+    function handleWorkSignup(e) {
+      e.preventDefault();
+      alert("💖 Thank you for signing up for the Tequila Minaj Crew! We'll review your application soon.");
+      document.getElementById('workForm').reset();
+    }
+  </script>
+</body>
+</html>
