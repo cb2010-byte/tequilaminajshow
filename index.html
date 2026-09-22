@@ -1,590 +1,1107 @@
 <!DOCTYPE html>
-<html lang="en" class="h-full bg-black text-white">
+<html lang="en" class="h-full bg-slate-950">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Tequila Minaj Show - Cyber Y2K Podcast</title>
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts: VT323 (Retro Digital) & Orbitron (Cyber) & Syne -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Syne:wght@700;800&family=VT323&family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        neonPink: '#ff007f',
-                        hotPink: '#ff1493',
-                        neonCyan: '#00f3ff',
-                        cyberPurple: '#1a0033',
-                        darkChrome: '#0d0d15',
-                        glamGold: '#ffd700'
-                    },
-                    fontFamily: {
-                        cyber: ['Orbitron', 'sans-serif'],
-                        glam: ['Syne', 'sans-serif'],
-                        digital: ['VT323', 'monospace'],
-                        sans: ['Montserrat', 'sans-serif']
-                    }
-                }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Tequila Minaj Show | Cyber Y2K Podcast Hub</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts & FontAwesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&family=Montserrat:wght@400;600;800&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            y2kPink: '#ff007f',
+            y2kHotPink: '#ff1493',
+            y2kCyan: '#00f3ff',
+            y2kNeonCyan: '#00ffff',
+            y2kPurple: '#8b00ff',
+            chromeDark: '#0a0514',
+            chromeCard: 'rgba(18, 10, 32, 0.88)',
+          },
+          fontFamily: {
+            orbitron: ['Orbitron', 'sans-serif'],
+            rajdhani: ['Rajdhani', 'sans-serif'],
+            pixel: ['"Press Start 2P"', 'cursive'],
+            sans: ['Montserrat', 'sans-serif'],
+          },
+          animation: {
+            'glow-pulse': 'glowPulse 2s infinite alternate',
+            'float-slow': 'float 4s ease-in-out infinite',
+            'spin-slow': 'spin 12s linear infinite',
+          },
+          keyframes: {
+            glowPulse: {
+              '0%': { filter: 'drop-shadow(0 0 5px #ff007f) drop-shadow(0 0 10px #ff007f)' },
+              '100%': { filter: 'drop-shadow(0 0 8px #00f3ff) drop-shadow(0 0 18px #00f3ff)' }
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-6px)' }
             }
+          }
         }
-    </script>
+      }
+    }
+  </script>
 
-    <style>
-        /* Custom Cheetah Print Pattern Overlay */
-        .cheetah-bg {
-            background-color: #0d0010;
-            background-image: 
-                radial-gradient(#ff007f 15%, transparent 16%),
-                radial-gradient(#00f3ff 15%, transparent 16%),
-                radial-gradient(rgba(255, 20, 147, 0.4) 15%, transparent 20%);
-            background-position: 0 0, 25px 25px, 12px 12px;
-            background-size: 50px 50px;
-        }
+  <style>
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #090212;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #ff007f, #00f3ff);
+      border-radius: 4px;
+    }
 
-        .cheetah-banner {
-            background: linear-gradient(135deg, rgba(255, 0, 127, 0.2), rgba(0, 243, 255, 0.2)),
-                        radial-gradient(black 40%, transparent 41%);
-            background-size: 100% 100%, 18px 18px;
-        }
+    /* Cheetah / Leopard Print Pattern */
+    .cheetah-pattern {
+      background-color: #0c0412;
+      background-image: 
+        radial-gradient(#ff007f 15%, transparent 16%),
+        radial-gradient(#00f3ff 15%, transparent 16%),
+        radial-gradient(rgba(255, 20, 147, 0.35) 15%, transparent 20%),
+        radial-gradient(rgba(0, 243, 255, 0.25) 15%, transparent 20%);
+      background-position: 0 0, 25px 25px, 12px 35px, 37px 10px;
+      background-size: 50px 50px;
+    }
 
-        /* Neon Glowing Borders & Text Effects */
-        .neon-border-pink {
-            border: 2px solid #ff007f;
-            box-shadow: 0 0 10px #ff007f, inset 0 0 8px #ff007f;
-        }
+    /* Metallic Chrome Gradient Buttons */
+    .chrome-button {
+      background: linear-gradient(180deg, #ff1493 0%, #a8005b 50%, #680037 100%);
+      box-shadow: 0 0 12px rgba(255, 0, 127, 0.7), inset 0 1px 1px rgba(255, 255, 255, 0.8);
+      border: 1px solid #ff69b4;
+    }
+    .chrome-button:hover {
+      background: linear-gradient(180deg, #00ffff 0%, #00a8b3 50%, #005f66 100%);
+      box-shadow: 0 0 15px rgba(0, 243, 255, 0.9), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+      border-color: #80ffff;
+    }
 
-        .neon-border-cyan {
-            border: 2px solid #00f3ff;
-            box-shadow: 0 0 10px #00f3ff, inset 0 0 8px #00f3ff;
-        }
+    /* Neon LED Text & Box Glows */
+    .text-glow-pink {
+      text-shadow: 0 0 8px #ff007f, 0 0 20px #ff1493;
+    }
+    .text-glow-cyan {
+      text-shadow: 0 0 8px #00f3ff, 0 0 20px #00ffff;
+    }
+    .glow-box-pink {
+      box-shadow: 0 0 15px rgba(255, 0, 127, 0.5), inset 0 0 10px rgba(255, 0, 127, 0.3);
+    }
+    .glow-box-cyan {
+      box-shadow: 0 0 15px rgba(0, 243, 255, 0.5), inset 0 0 10px rgba(0, 243, 255, 0.3);
+    }
 
-        .neon-glow-dual {
-            box-shadow: -4px 0 15px rgba(255, 0, 127, 0.7), 4px 0 15px rgba(0, 243, 255, 0.7);
-        }
+    /* Scanline overlay */
+    .scanlines {
+      background: linear-gradient(
+        rgba(18, 16, 16, 0) 50%, 
+        rgba(0, 0, 0, 0.25) 50%
+      ), linear-gradient(
+        90deg,
+        rgba(255, 0, 0, 0.03),
+        rgba(0, 255, 0, 0.01),
+        rgba(0, 0, 255, 0.03)
+      );
+      background-size: 100% 4px, 6px 100%;
+      pointer-events: none;
+    }
 
-        .text-glow-pink {
-            text-shadow: 0 0 8px #ff007f, 0 0 18px #ff1493;
-        }
-
-        .text-glow-cyan {
-            text-shadow: 0 0 8px #00f3ff, 0 0 18px #00f3ff;
-        }
-
-        /* Glassmorphism Y2K Panel */
-        .y2k-glass {
-            background: rgba(18, 10, 28, 0.75);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 0, 127, 0.3);
-        }
-
-        .y2k-glass-cyan {
-            background: rgba(10, 20, 30, 0.8);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(0, 243, 255, 0.3);
-        }
-
-        /* Chrome Shiny Button Effect */
-        .chrome-btn {
-            background: linear-gradient(180deg, #ffffff 0%, #a6a6a6 45%, #404040 50%, #222222 80%, #000000 100%);
-            border: 1px solid #00f3ff;
-            text-shadow: 0 1px 2px #000;
-            transition: all 0.2s ease-in-out;
-        }
-
-        .chrome-btn:hover {
-            box-shadow: 0 0 15px #00f3ff;
-            transform: translateY(-2px);
-        }
-
-        .pink-chrome-btn {
-            background: linear-gradient(180deg, #ffb6c1 0%, #ff007f 45%, #99004d 50%, #4d0026 80%, #1a000d 100%);
-            border: 1px solid #ff007f;
-            text-shadow: 0 1px 2px #000;
-        }
-
-        .pink-chrome-btn:hover {
-            box-shadow: 0 0 15px #ff007f;
-            transform: translateY(-2px);
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #000;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, #ff007f, #00f3ff);
-            border-radius: 4px;
-        }
-
-        /* Animated Audio Visualizer Bars */
-        .bar {
-            width: 4px;
-            background: linear-gradient(to top, #ff007f, #00f3ff);
-            animation: bounce 1s infinite alternate ease-in-out;
-        }
-        .paused .bar {
-            animation-play-state: paused !important;
-            height: 6px !important;
-        }
-        @keyframes bounce {
-            0% { height: 4px; }
-            100% { height: 32px; }
-        }
-
-        /* Scanline Overlay Effect */
-        .scanlines {
-            background: linear-gradient(
-                rgba(18, 16, 16, 0) 50%, 
-                rgba(0, 0, 0, 0.25) 50%
-            ), linear-gradient(
-                90deg,
-                rgba(255, 0, 0, 0.03),
-                rgba(0, 255, 0, 0.01),
-                rgba(0, 0, 255, 0.03)
-            );
-            background-size: 100% 3px, 6px 100%;
-            pointer-events: none;
-        }
-
-        /* Shimmer glitter effect */
-        .glitter-text {
-            background: linear-gradient(90deg, #ff007f, #ffffff, #00f3ff, #ff007f);
-            background-size: 200% auto;
-            color: #fff;
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shine 3s linear infinite;
-        }
-        @keyframes shine {
-            to { background-position: 200% center; }
-        }
-    </style>
+    /* Rhinestone accent */
+    .rhinestone {
+      background: radial-gradient(circle at 30% 30%, #ffffff, #e0e0e0 40%, #888888 80%);
+      border-radius: 50%;
+      box-shadow: 0 0 4px #fff, 0 0 8px #00f3ff;
+    }
+  </style>
 </head>
-<body class="cheetah-bg min-h-full font-sans flex flex-col justify-between relative overflow-x-hidden">
 
-    <!-- Scanline Vintage CRT Effect Overlay -->
-    <div class="fixed inset-0 scanlines z-40 pointer-events-none opacity-40"></div>
+<body class="cheetah-pattern text-slate-100 font-sans min-h-screen flex flex-col justify-between relative selection:bg-y2kPink selection:text-white">
 
-    <!-- Floating Y2K Background Sparkles & Aesthetics -->
-    <div class="fixed top-10 left-5 text-neonPink text-2xl animate-pulse pointer-events-none z-0"><i class="fa-solid fa-sparkles"></i> ✦</div>
-    <div class="fixed bottom-20 right-8 text-neonCyan text-3xl animate-bounce pointer-events-none z-0">✧</div>
-    <div class="fixed top-1/3 right-5 text-neonPink opacity-30 text-6xl pointer-events-none z-0 font-glam">Y2K</div>
+  <!-- Ambient CRT Scanline Overlay -->
+  <div class="fixed inset-0 scanlines z-40 pointer-events-none opacity-40"></div>
 
-    <!-- Top Cyber Header / Navigation -->
-    <header class="sticky top-0 z-30 y2k-glass border-b border-neonPink/50 shadow-lg px-4 py-3">
-        <div class="max-w-7xl mx-auto flex items-center justify-between">
-            <!-- Brand Logo -->
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-neonPink to-neonCyan flex items-center justify-center p-0.5 neon-border-pink">
-                    <div class="w-full h-full bg-black rounded-full flex items-center justify-center text-neonPink font-bold text-lg">
-                        <i class="fa-solid fa-martini-glass-citrus"></i>
-                    </div>
-                </div>
-                <div>
-                    <h1 class="font-glam text-xl md:text-2xl font-black tracking-wider glitter-text uppercase drop-shadow">
-                        TEQUILA MINAJ <span class="text-xs tracking-normal text-neonCyan font-cyber block md:inline">SHOW</span>
-                    </h1>
-                </div>
-            </div>
+  <header class="sticky top-0 z-30 bg-chromeDark/95 backdrop-blur-md border-b-2 border-y2kPink shadow-lg shadow-y2kPink/20">
+    <!-- Cheetah Print Accent Strip -->
+    <div class="h-2 w-full bg-gradient-to-r from-y2kPink via-y2kCyan to-y2kPink border-b border-white/20"></div>
 
-            <!-- Role Badge / User Quick Actions -->
-            <div class="flex items-center gap-3">
-                <!-- Status Badge -->
-                <div id="userRoleBadge" class="hidden md:flex items-center gap-2 px-3 py-1 rounded-full text-xs font-cyber border border-neonCyan/40 bg-black/60 text-neonCyan">
-                    <span class="w-2 h-2 rounded-full bg-neonCyan animate-ping"></span>
-                    <span id="roleText">GUEST MODE</span>
-                </div>
-
-                <!-- Admin Action Trigger (Shows only to Admin) -->
-                <button id="openAdminBtn" onclick="toggleModal('adminModal', true)" class="hidden pink-chrome-btn text-white text-xs px-3 py-2 rounded-lg font-cyber uppercase tracking-wider flex items-center gap-1.5 shadow-lg">
-                    <i class="fa-solid fa-crown text-glamGold"></i> <span class="hidden sm:inline">Post Episode</span>
-                </button>
-
-                <!-- Auth Action Button (Login/Logout) -->
-                <button id="authTriggerBtn" onclick="toggleModal('authModal', true)" class="chrome-btn text-neonCyan text-xs px-4 py-2 rounded-lg font-cyber uppercase tracking-wider flex items-center gap-2">
-                    <i class="fa-solid fa-right-to-bracket"></i>
-                    <span id="authBtnLabel">Sign In</span>
-                </button>
-            </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap items-center justify-between gap-4">
+      
+      <!-- Logo & Title -->
+      <div class="flex items-center gap-3 cursor-pointer" onclick="playY2KSound()">
+        <div class="relative w-12 h-12 rounded-full border-2 border-y2kCyan glow-box-cyan flex items-center justify-center bg-black overflow-hidden group">
+          <span class="text-2xl animate-spin-slow">🍸</span>
+          <div class="absolute inset-0 bg-y2kPink/20 group-hover:bg-y2kCyan/20 transition-colors"></div>
         </div>
-    </header>
-
-    <main class="max-w-7xl mx-auto px-4 py-6 w-full flex-grow relative z-10 space-y-8">
-
-        <!-- Y2K Hero Banner -->
-        <section class="relative rounded-3xl overflow-hidden neon-glow-dual border border-neonPink/60 p-6 md:p-10 bg-gradient-to-r from-black via-cyberPurple to-black">
-            <!-- Background Cheetah Pattern Accent -->
-            <div class="absolute inset-0 opacity-20 cheetah-banner pointer-events-none"></div>
-
-            <div class="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
-                <div class="md:col-span-2 space-y-4">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neonPink/20 border border-neonPink text-neonPink text-xs font-cyber tracking-widest uppercase">
-                        <i class="fa-solid fa-compact-disc animate-spin"></i> Cyber Y2K Audio Experience
-                    </div>
-                    <h2 class="text-3xl md:text-5xl font-glam font-extrabold uppercase text-white leading-tight">
-                        Spilling the <span class="text-neonPink text-glow-pink">Tea</span> & <span class="text-neonCyan text-glow-cyan">Tequila</span> Live 🍸✨
-                    </h2>
-                    <p class="text-gray-300 text-sm md:text-base leading-relaxed max-w-xl font-sans">
-                        Welcome to the official lounge for <strong class="text-neonPink">The Tequila Minaj Show</strong>. Cyber aesthetics, raw unfiltered discussions, pop culture breakdowns, and VIP guest features.
-                    </p>
-
-                    <!-- Guest Email Subscription Box -->
-                    <div id="heroSubscribeBox" class="pt-2">
-                        <div class="bg-black/80 p-3 rounded-2xl border border-neonCyan/50 max-w-md flex flex-col sm:flex-row gap-2 shadow-inner">
-                            <input type="email" id="guestEmailInput" placeholder="Enter email for episode alerts..." 
-                                class="bg-darkChrome text-white text-xs px-3 py-2.5 rounded-xl border border-gray-700 focus:outline-none focus:border-neonCyan flex-grow">
-                            <button onclick="handleSubscribeNewsletter()" class="pink-chrome-btn text-white text-xs font-cyber uppercase px-4 py-2.5 rounded-xl flex items-center justify-center gap-2 whitespace-nowrap">
-                                <i class="fa-solid fa-bell"></i> Notify Me
-                            </button>
-                        </div>
-                        <p id="subStatusMsg" class="text-xs text-neonCyan font-cyber mt-2 hidden"></p>
-                    </div>
-                </div>
-
-                <!-- Host Profile Card Y2K Style -->
-                <div class="flex justify-center">
-                    <div class="relative w-56 h-64 rounded-2xl neon-border-cyan bg-black/80 p-3 flex flex-col items-center justify-between text-center transform rotate-2 hover:rotate-0 transition duration-300">
-                        <div class="absolute -top-3 -right-3 text-neonPink text-xl"><i class="fa-solid fa-heart"></i></div>
-                        <div class="w-full h-36 rounded-xl overflow-hidden bg-cover bg-center border border-neonPink/40" style="background-image: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80')">
-                        </div>
-                        <div>
-                            <span class="text-xs font-cyber text-neonCyan block tracking-wider">HOST & PRODUCER</span>
-                            <h3 class="font-glam font-bold text-lg text-white">TEQUILA MINAJ</h3>
-                        </div>
-                        <div class="text-[10px] font-digital text-neonPink tracking-widest uppercase bg-neonPink/10 px-2 py-0.5 rounded-full w-full">
-                            ★ Y2K QUEEN ★
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Main Layout: Episodes List (Left) + Fan Lounge / Subscriptions (Right) -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            
-            <!-- Episodes Feed Section (2 Cols) -->
-            <div class="lg:col-span-2 space-y-6">
-                <div class="flex items-center justify-between border-b border-neonPink/30 pb-3">
-                    <h3 class="font-cyber text-xl font-bold text-white flex items-center gap-2">
-                        <i class="fa-solid fa-podcast text-neonPink"></i> EPISODE FEED
-                    </h3>
-                    <span id="episodeCountBadge" class="text-xs font-digital text-neonCyan bg-neonCyan/10 border border-neonCyan px-2.5 py-1 rounded-full">
-                        0 EPISODES AVAILABLE
-                    </span>
-                </div>
-
-                <!-- Episodes List Container -->
-                <div id="episodesContainer" class="space-y-4">
-                    <!-- Loading Skeleton -->
-                    <div class="y2k-glass p-6 rounded-2xl border border-neonPink/30 animate-pulse flex items-center justify-center min-h-[200px]">
-                        <p class="font-cyber text-neonPink text-sm"><i class="fa-solid fa-spinner fa-spin mr-2"></i> LOADING CYBER EPISODES...</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Sidebar Section (1 Col) -->
-            <div class="space-y-6">
-
-                <!-- Subscriber Portal Card -->
-                <div class="y2k-glass-cyan p-5 rounded-2xl border border-neonCyan/40 shadow-lg space-y-4">
-                    <div class="flex items-center gap-3">
-                        <div class="w-8 h-8 rounded-lg bg-neonCyan/20 text-neonCyan flex items-center justify-center border border-neonCyan">
-                            <i class="fa-solid fa-envelope-open-text"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-cyber text-sm font-bold text-white">GUEST SUBSCRIBER CLUB</h4>
-                            <p class="text-[11px] text-gray-400">Get alerted instantly on drop day!</p>
-                        </div>
-                    </div>
-
-                    <div id="subscriberStatusWidget" class="bg-black/60 p-3 rounded-xl border border-gray-800 text-xs space-y-2">
-                        <div class="flex justify-between items-center text-gray-300">
-                            <span>Status:</span>
-                            <span id="subWidgetStatus" class="text-neonPink font-cyber font-bold">NOT SUBSCRIBED</span>
-                        </div>
-                        <div class="flex justify-between items-center text-gray-300">
-                            <span>Account Email:</span>
-                            <span id="subWidgetEmail" class="text-gray-400 truncate max-w-[130px]">Guest User</span>
-                        </div>
-                        <button id="toggleSubBtn" onclick="toggleSubscriberStatus()" class="w-full mt-2 chrome-btn text-neonCyan text-xs py-2 rounded-lg font-cyber uppercase tracking-wider">
-                            Toggle VIP Subscription
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Interactive Fan Lounge / Comments Feed -->
-                <div class="y2k-glass p-5 rounded-2xl border border-neonPink/40 shadow-lg space-y-4">
-                    <div class="flex items-center justify-between">
-                        <h4 class="font-cyber text-sm font-bold text-neonPink flex items-center gap-2">
-                            <i class="fa-solid fa-comments"></i> CYBER FAN LOUNGE
-                        </h4>
-                        <span class="text-[10px] font-digital text-gray-400">LIVE FEED</span>
-                    </div>
-
-                    <!-- Post Comment Form -->
-                    <div class="space-y-2">
-                        <textarea id="fanCommentInput" rows="2" placeholder="Leave tea or thoughts for Tequila..." 
-                            class="w-full bg-black/80 text-white text-xs p-3 rounded-xl border border-gray-800 focus:outline-none focus:border-neonPink resize-none"></textarea>
-                        <button onclick="postFanComment()" class="w-full pink-chrome-btn text-white text-xs py-2 rounded-xl font-cyber uppercase tracking-wider flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-paper-plane"></i> Send to Lounge
-                        </button>
-                    </div>
-
-                    <!-- Comments Scroll Container -->
-                    <div id="fanCommentsContainer" class="space-y-3 max-h-72 overflow-y-auto pr-1">
-                        <!-- Loaded dynamically via JS -->
-                    </div>
-                </div>
-
-            </div>
+        <div>
+          <h1 class="font-orbitron font-extrabold text-2xl sm:text-3xl tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-y2kPink via-white to-y2kCyan text-glow-pink">
+            THE TEQUILA MINAJ SHOW
+          </h1>
+          <div class="flex items-center gap-2 text-xs font-rajdhani text-y2kCyan uppercase tracking-widest font-semibold">
+            <span>✨ Cyber Y2K Audio Vault</span>
+            <span class="text-y2kPink">•</span>
+            <span>Spill The Tequila 🍸</span>
+          </div>
         </div>
-    </main>
+      </div>
 
-    <!-- Sticky Bottom Audio Player Bar -->
-    <footer class="sticky bottom-0 z-30 y2k-glass border-t-2 border-neonCyan shadow-2xl px-4 py-3 bg-black/90">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
-            
-            <!-- Episode Info currently playing -->
-            <div class="flex items-center gap-3 w-full md:w-1/4">
-                <img id="playerThumb" src="https://placehold.co/100x100/ff007f/ffffff?text=TM+Show" 
-                    alt="Album Cover" class="w-12 h-12 rounded-lg border border-neonPink object-cover shadow-md">
-                <div class="overflow-hidden">
-                    <h5 id="playerTitle" class="font-glam text-sm font-bold text-white truncate">Select an episode to play</h5>
-                    <p id="playerSubtitle" class="text-xs text-neonCyan font-cyber truncate">The Tequila Minaj Show</p>
-                </div>
-            </div>
-
-            <!-- Custom Cyber Controls -->
-            <div class="flex flex-col items-center gap-1.5 w-full md:w-2/4">
-                <div class="flex items-center gap-4">
-                    <button onclick="rewind10()" class="text-gray-400 hover:text-neonCyan transition text-sm">
-                        <i class="fa-solid fa-rotate-left"></i> 10s
-                    </button>
-                    <button id="playPauseBtn" onclick="togglePlayPause()" class="w-10 h-10 rounded-full bg-gradient-to-tr from-neonPink to-neonCyan flex items-center justify-center text-black font-bold shadow-lg hover:scale-105 transition">
-                        <i id="playIcon" class="fa-solid fa-play ml-0.5"></i>
-                    </button>
-                    <button onclick="forward10()" class="text-gray-400 hover:text-neonCyan transition text-sm">
-                        10s <i class="fa-solid fa-rotate-right"></i>
-                    </button>
-                </div>
-
-                <!-- Timeline Progress Bar -->
-                <div class="w-full flex items-center gap-3 text-[11px] font-digital text-neonCyan">
-                    <span id="currentTimeDisplay">00:00</span>
-                    <input type="range" id="audioSeeker" value="0" min="0" max="100" class="w-full h-1.5 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-neonPink">
-                    <span id="durationDisplay">00:00</span>
-                </div>
-            </div>
-
-            <!-- Equalizer Visualizer & Volume Control -->
-            <div class="hidden md:flex items-center justify-end gap-4 w-1/4">
-                <!-- Audio Visualizer Bars -->
-                <div id="visualizer" class="flex items-end gap-1 h-8 px-2 border-r border-gray-800 paused">
-                    <div class="bar" style="animation-delay: 0.1s"></div>
-                    <div class="bar" style="animation-delay: 0.4s"></div>
-                    <div class="bar" style="animation-delay: 0.2s"></div>
-                    <div class="bar" style="animation-delay: 0.5s"></div>
-                    <div class="bar" style="animation-delay: 0.3s"></div>
-                </div>
-
-                <!-- Volume -->
-                <div class="flex items-center gap-2 text-xs text-gray-400">
-                    <i class="fa-solid fa-volume-high text-neonCyan"></i>
-                    <input type="range" id="volumeSlider" min="0" max="1" step="0.05" value="0.8" class="w-16 h-1 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-neonCyan">
-                </div>
-            </div>
+      <!-- Navigation & Action Buttons -->
+      <div class="flex items-center gap-3">
+        
+        <!-- Queen Admin Mode Indicator -->
+        <div id="adminBadge" class="hidden flex items-center gap-2 bg-gradient-to-r from-y2kPink/30 to-purple-900/50 border border-y2kPink px-3 py-1.5 rounded-full text-xs font-orbitron text-y2kPink animate-pulse">
+          <span class="text-base">👑</span>
+          <span class="font-bold tracking-wider">QUEEN ADMIN</span>
         </div>
 
-        <!-- Hidden Native HTML5 Audio Element -->
-        <audio id="audioEngine" class="hidden"></audio>
-    </footer>
+        <!-- VIP Guest Email Signup Button -->
+        <button onclick="openModal('vipModal')" class="px-3.5 py-1.5 text-xs font-orbitron tracking-wider rounded-lg border border-y2kCyan text-y2kCyan hover:bg-y2kCyan/20 transition-all flex items-center gap-1.5 shadow-md shadow-y2kCyan/20">
+          <i class="fa-solid fa-gem text-y2kPink"></i>
+          <span>VIP Fan Alerts</span>
+        </button>
 
-    <!-- AUTH MODAL (Login / Register Modal) -->
-    <div id="authModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 hidden">
-        <div class="y2k-glass p-6 md:p-8 rounded-3xl border-2 border-neonPink w-full max-w-md relative shadow-2xl">
-            <button onclick="toggleModal('authModal', false)" class="absolute top-4 right-4 text-gray-400 hover:text-white text-lg">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
+        <!-- Post Episode Button (Admin Only) -->
+        <button id="postEpisodeBtn" onclick="openModal('addEpisodeModal')" class="hidden chrome-button text-white font-orbitron font-bold text-xs px-4 py-1.5 rounded-lg transition-all flex items-center gap-2">
+          <i class="fa-solid fa-plus-circle text-base"></i>
+          <span>Post Episode</span>
+        </button>
 
-            <div class="text-center space-y-2 mb-6">
-                <h3 class="font-glam text-2xl font-bold text-white tracking-wider">PORTAL LOGIN</h3>
-                <p class="text-xs text-neonCyan font-cyber">Sign in as Guest or Admin</p>
-            </div>
+        <!-- Sign In Modal Trigger -->
+        <button id="authTriggerBtn" onclick="handleAuthClick()" class="px-4 py-1.5 text-xs font-orbitron font-bold rounded-lg border border-white/40 bg-white/10 hover:bg-white/20 text-white transition-all flex items-center gap-2">
+          <i class="fa-solid fa-user-astronaut text-y2kCyan"></i>
+          <span id="authTriggerText">Sign In</span>
+        </button>
+      </div>
 
-            <!-- Role Selector Tabs -->
-            <div class="flex rounded-xl bg-black/60 p-1 mb-5 border border-gray-800">
-                <button id="tabGuestBtn" onclick="switchAuthTab('guest')" class="w-1/2 py-2 text-xs font-cyber rounded-lg bg-neonPink text-white font-bold transition">
-                    GUEST / SUBSCRIBER
-                </button>
-                <button id="tabAdminBtn" onclick="switchAuthTab('admin')" class="w-1/2 py-2 text-xs font-cyber rounded-lg text-gray-400 hover:text-white transition">
-                    ADMIN (TEQUILA)
-                </button>
-            </div>
+    </div>
+  </header>
 
-            <!-- Login Form -->
-            <form id="authForm" onsubmit="handleAuthSubmit(event)" class="space-y-4">
-                <div>
-                    <label class="block text-xs font-cyber text-gray-300 mb-1">EMAIL ADDRESS</label>
-                    <input type="email" id="authEmail" required placeholder="babe@y2k.com" 
-                        class="w-full bg-black/80 text-white text-xs p-3 rounded-xl border border-gray-700 focus:outline-none focus:border-neonPink">
-                </div>
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full space-y-8">
 
-                <div>
-                    <label class="block text-xs font-cyber text-gray-300 mb-1">PASSWORD</label>
-                    <input type="password" id="authPassword" required placeholder="••••••••" 
-                        class="w-full bg-black/80 text-white text-xs p-3 rounded-xl border border-gray-700 focus:outline-none focus:border-neonPink">
-                </div>
+    <!-- Hero Banner -->
+    <div class="relative rounded-2xl overflow-hidden border-2 border-y2kPink glow-box-pink bg-chromeCard p-6 sm:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="absolute -top-12 -right-12 w-48 h-48 bg-y2kPink/20 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-12 -left-12 w-48 h-48 bg-y2kCyan/20 rounded-full blur-3xl pointer-events-none"></div>
 
-                <div id="authError" class="text-xs text-neonPink font-cyber hidden"></div>
-
-                <button type="submit" class="w-full pink-chrome-btn text-white text-xs py-3 rounded-xl font-cyber uppercase tracking-wider flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-key"></i> <span id="authSubmitText">Enter Portal</span>
-                </button>
-            </form>
-
-            <div class="mt-4 text-center">
-                <button onclick="toggleAuthMode()" id="authToggleModeBtn" class="text-xs text-neonCyan font-cyber underline">
-                    Need an account? Sign Up as Guest
-                </button>
-            </div>
+      <div class="z-10 max-w-2xl text-center md:text-left space-y-3">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-y2kPink/20 border border-y2kPink text-xs font-orbitron text-y2kPink">
+          <span class="w-2 h-2 rounded-full bg-y2kPink animate-ping"></span>
+          <span>SEASON 2000 • ON-AIR NOW</span>
         </div>
+        <h2 class="text-3xl sm:text-5xl font-orbitron font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-pink-200 to-y2kCyan text-glow-pink uppercase">
+          Unfiltered Sass, Cyber Gossip & Y2K Vibes
+        </h2>
+        <p class="text-slate-300 font-rajdhani text-base sm:text-lg">
+          Grab your Juicy Couture tracksuit, pour a glass of tequila, and tune into the hottest audio vault on the web.
+        </p>
+        
+        <!-- Live Quick Stats -->
+        <div class="pt-2 flex flex-wrap items-center justify-center md:justify-start gap-4 text-xs font-orbitron text-slate-300">
+          <div class="bg-black/60 px-3 py-1.5 rounded-md border border-y2kPink/40">
+            <span class="text-y2kPink font-bold" id="totalEpCount">0</span> Episodes
+          </div>
+          <div class="bg-black/60 px-3 py-1.5 rounded-md border border-y2kCyan/40">
+            <span class="text-y2kCyan font-bold" id="vipCount">0</span> VIP Subscribers
+          </div>
+          <div class="bg-black/60 px-3 py-1.5 rounded-md border border-purple-500/40">
+            Status: <span class="text-emerald-400 font-bold">100% Live 🎙️</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Artwork Card -->
+      <div class="z-10 flex-shrink-0 relative group">
+        <div class="w-44 h-44 sm:w-52 sm:h-52 rounded-2xl border-2 border-y2kCyan glow-box-cyan overflow-hidden bg-black relative">
+          <img id="featuredCoverImg" src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80" alt="The Tequila Minaj Show Cover" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+          <div class="absolute bottom-3 left-3 right-3 text-center">
+            <span class="text-[10px] font-orbitron text-y2kCyan uppercase tracking-widest bg-black/80 px-2 py-0.5 rounded border border-y2kCyan">Featured Cover</span>
+          </div>
+        </div>
+        <div class="absolute -top-2 -left-2 w-4 h-4 rhinestone"></div>
+        <div class="absolute -top-2 -right-2 w-4 h-4 rhinestone"></div>
+        <div class="absolute -bottom-2 -left-2 w-4 h-4 rhinestone"></div>
+        <div class="absolute -bottom-2 -right-2 w-4 h-4 rhinestone"></div>
+      </div>
     </div>
 
-    <!-- ADMIN EPISODE POSTING MODAL -->
-    <div id="adminModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 hidden">
-        <div class="y2k-glass p-6 md:p-8 rounded-3xl border-2 border-neonCyan w-full max-w-2xl relative shadow-2xl max-h-[90vh] overflow-y-auto">
-            <button onclick="toggleModal('adminModal', false)" class="absolute top-4 right-4 text-gray-400 hover:text-white text-lg">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
+    <section class="bg-chromeDark border-2 border-y2kCyan rounded-2xl p-4 sm:p-6 glow-box-cyan relative overflow-hidden">
+      <div class="flex flex-col md:flex-row items-center gap-6">
+        
+        <!-- Thumbnail -->
+        <div class="relative flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24 rounded-xl border border-y2kPink overflow-hidden bg-black">
+          <img id="playerCover" src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover">
+          <div id="playerDiscSpin" class="hidden absolute inset-0 bg-black/40 flex items-center justify-center">
+            <i class="fa-solid fa-compact-disc text-3xl text-y2kCyan animate-spin"></i>
+          </div>
+        </div>
 
-            <div class="flex items-center gap-3 mb-6 border-b border-neonCyan/30 pb-3">
-                <div class="w-10 h-10 rounded-full bg-neonPink/20 text-neonPink flex items-center justify-center border border-neonPink text-xl">
-                    <i class="fa-solid fa-crown"></i>
-                </div>
-                <div>
-                    <h3 class="font-glam text-2xl font-bold text-white tracking-wider">POST NEW EPISODE</h3>
-                    <p class="text-xs text-neonCyan font-cyber">Exclusive Tequila Minaj Admin Panel</p>
-                </div>
+        <!-- Audio Player Controls & Scrubbing -->
+        <div class="flex-1 w-full space-y-3">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <span id="playerEpNum" class="text-xs font-orbitron text-y2kPink font-bold">EPISODE #00</span>
+              <h3 id="playerTitle" class="text-lg sm:text-xl font-orbitron font-bold text-white tracking-wide">Select an Episode Below</h3>
+            </div>
+            <div id="playerCategoryBadge" class="text-xs font-orbitron px-2.5 py-0.5 rounded border border-y2kCyan text-y2kCyan bg-y2kCyan/10">
+              Y2K VAULT
+            </div>
+          </div>
+
+          <!-- Scrub Bar -->
+          <div class="space-y-1">
+            <div class="flex justify-between text-xs font-rajdhani text-slate-400 font-semibold">
+              <span id="currentTime">00:00</span>
+              <span id="totalDuration">00:00</span>
+            </div>
+            <input type="range" id="audioScrubber" value="0" min="0" max="100" class="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-y2kPink">
+          </div>
+
+          <!-- Play Controls -->
+          <div class="flex items-center justify-between gap-4 pt-1">
+            <div class="flex items-center gap-3">
+              <button onclick="skipAudio(-10)" class="text-slate-400 hover:text-y2kCyan text-lg transition-colors"><i class="fa-solid fa-backward-step"></i></button>
+              
+              <button id="playPauseBtn" onclick="togglePlayPause()" class="w-12 h-12 rounded-full border-2 border-y2kPink bg-y2kPink/20 text-y2kPink hover:bg-y2kPink hover:text-white transition-all flex items-center justify-center text-xl shadow-lg shadow-y2kPink/30">
+                <i class="fa-solid fa-play ml-1"></i>
+              </button>
+
+              <button onclick="skipAudio(10)" class="text-slate-400 hover:text-y2kCyan text-lg transition-colors"><i class="fa-solid fa-forward-step"></i></button>
             </div>
 
-            <!-- New Episode Form -->
-            <form id="postEpisodeForm" onsubmit="handlePostEpisode(event)" class="space-y-4">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-cyber text-gray-300 mb-1">EPISODE TITLE *</label>
-                        <input type="text" id="epTitle" required placeholder="Ep 12: Cyber Tequila & VIP Drama" 
-                            class="w-full bg-black/80 text-white text-xs p-3 rounded-xl border border-gray-700 focus:outline-none focus:border-neonCyan">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-cyber text-gray-300 mb-1">FEATURED GUEST NAME</label>
-                        <input type="text" id="epGuest" placeholder="e.g. Paris Hilton or Solo" 
-                            class="w-full bg-black/80 text-white text-xs p-3 rounded-xl border border-gray-700 focus:outline-none focus:border-neonCyan">
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-cyber text-gray-300 mb-1">AUDIO MP3 URL *</label>
-                        <input type="url" id="epAudioUrl" required placeholder="https://cdn.example.com/audio.mp3" 
-                            class="w-full bg-black/80 text-white text-xs p-3 rounded-xl border border-gray-700 focus:outline-none focus:border-neonCyan">
-                        <span class="text-[10px] text-gray-400">Direct playable MP3 link</span>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-cyber text-gray-300 mb-1">COVER THUMBNAIL URL</label>
-                        <input type="url" id="epThumbUrl" placeholder="https://images.unsplash.com/..." 
-                            class="w-full bg-black/80 text-white text-xs p-3 rounded-xl border border-gray-700 focus:outline-none focus:border-neonCyan">
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-xs font-cyber text-gray-300 mb-1">DURATION (e.g. 45:20)</label>
-                        <input type="text" id="epDuration" placeholder="42:15" 
-                            class="w-full bg-black/80 text-white text-xs p-3 rounded-xl border border-gray-700 focus:outline-none focus:border-neonCyan">
-                    </div>
-                    <div>
-                        <label class="block text-xs font-cyber text-gray-300 mb-1">TAGS (Comma separated)</label>
-                        <input type="text" id="epTags" placeholder="PopCulture, Tequila, Celebrity" 
-                            class="w-full bg-black/80 text-white text-xs p-3 rounded-xl border border-gray-700 focus:outline-none focus:border-neonCyan">
-                    </div>
-                </div>
-
-                <div>
-                    <label class="block text-xs font-cyber text-gray-300 mb-1">EPISODE DESCRIPTION *</label>
-                    <textarea id="epDescription" rows="3" required placeholder="What are we talking about this week?" 
-                        class="w-full bg-black/80 text-white text-xs p-3 rounded-xl border border-gray-700 focus:outline-none focus:border-neonCyan resize-none"></textarea>
-                </div>
-
-                <div id="postStatusMsg" class="text-xs font-cyber text-neonPink hidden"></div>
-
-                <button type="submit" class="w-full chrome-btn text-neonCyan text-xs py-3 rounded-xl font-cyber uppercase tracking-wider flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-cloud-arrow-up"></i> Publish Episode Live
-                </button>
-            </form>
+            <!-- Volume Slider -->
+            <div class="flex items-center gap-2">
+              <i id="volumeIcon" class="fa-solid fa-volume-high text-xs text-y2kCyan"></i>
+              <input type="range" id="volumeControl" value="80" min="0" max="100" class="w-20 sm:w-28 h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-y2kCyan">
+            </div>
+          </div>
         </div>
+
+      </div>
+
+      <!-- Native Audio Element -->
+      <audio id="mainAudioPlayer" preload="metadata"></audio>
+    </section>
+
+    <section class="space-y-6">
+      
+      <!-- Filter Bar & Search -->
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 bg-chromeCard p-4 rounded-xl border border-y2kPink/40">
+        
+        <!-- Category Filter Tabs -->
+        <div class="flex flex-wrap items-center gap-2" id="categoryFilters">
+          <button onclick="filterCategory('ALL')" class="category-btn active px-3 py-1 rounded-md text-xs font-orbitron border border-y2kPink bg-y2kPink text-white">ALL</button>
+          <button onclick="filterCategory('Sass')" class="category-btn px-3 py-1 rounded-md text-xs font-orbitron border border-slate-700 bg-black/50 text-slate-300 hover:border-y2kCyan hover:text-y2kCyan">SASS 💅</button>
+          <button onclick="filterCategory('Gossip')" class="category-btn px-3 py-1 rounded-md text-xs font-orbitron border border-slate-700 bg-black/50 text-slate-300 hover:border-y2kCyan hover:text-y2kCyan">GOSSIP ☕</button>
+          <button onclick="filterCategory('Music')" class="category-btn px-3 py-1 rounded-md text-xs font-orbitron border border-slate-700 bg-black/50 text-slate-300 hover:border-y2kCyan hover:text-y2kCyan">MUSIC 🎵</button>
+          <button onclick="filterCategory('Drama')" class="category-btn px-3 py-1 rounded-md text-xs font-orbitron border border-slate-700 bg-black/50 text-slate-300 hover:border-y2kCyan hover:text-y2kCyan">DRAMA 🔥</button>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="relative w-full sm:w-64">
+          <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-xs text-y2kCyan"></i>
+          <input type="text" id="searchInput" oninput="renderEpisodes()" placeholder="Search episode titles..." class="w-full bg-black/80 border border-slate-700 focus:border-y2kCyan rounded-lg pl-8 pr-3 py-1.5 text-xs font-sans text-white focus:outline-none focus:ring-1 focus:ring-y2kCyan">
+        </div>
+      </div>
+
+      <!-- Episode Grid -->
+      <div id="episodesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Rendered dynamically -->
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="mt-12 bg-chromeDark border-t-2 border-y2kPink py-8 px-4 text-center space-y-3 relative">
+    <div class="flex justify-center items-center gap-4 text-y2kCyan text-xl">
+      <a href="#" class="hover:text-y2kPink transition-colors"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" class="hover:text-y2kPink transition-colors"><i class="fa-brands fa-tiktok"></i></a>
+      <a href="#" class="hover:text-y2kPink transition-colors"><i class="fa-brands fa-spotify"></i></a>
+      <a href="#" class="hover:text-y2kPink transition-colors"><i class="fa-brands fa-apple"></i></a>
     </div>
+    <p class="font-orbitron text-xs text-slate-400">
+      © 2026 THE TEQUILA MINAJ SHOW. ALL RIGHTS RESERVED. 💖 CYBER Y2K VIBES ONLY.
+    </p>
+  </footer>
 
-    <!-- Firebase Module Scripts -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { 
-            getAuth, 
-            signInAnonymously, 
-            signInWithCustomToken, 
-            createUserWithEmailAndPassword,
-            signInWithEmailAndPassword,
-            signOut,
-            onAuthStateChanged 
-        } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { 
-            getFirestore, 
-            doc, 
-            getDoc, 
-            setDoc, 
-            addDoc, 
-            deleteDoc, 
-            collection, 
-            onSnapshot 
-        } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+  
+  <!-- UNIFIED AUTH & LOGIN MODAL (No Passcode Hints) -->
+  <div id="loginModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-chromeDark border-2 border-y2kPink rounded-2xl glow-box-pink w-full max-w-md p-6 relative overflow-hidden">
+      
+      <button onclick="closeModal('loginModal')" class="absolute top-3 right-3 text-slate-400 hover:text-y2kPink text-xl">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
 
-        // Global Firebase state initialization
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'tequila-minaj-show';
-        const firebaseConfig = typeof __firebase_config !== 'undefined' 
-            ? JSON.parse(__firebase_config) 
-            : {
-                apiKey: "demo-key",
-                authDomain: "demo.firebaseapp.com",
-                projectId: "demo-project",
-                storageBucket: "demo.appspot.com",
-                messagingSenderId: "123456",
-                appId: "1:123456:web:1234"
-            };
+      <div class="text-center space-y-1 mb-6">
+        <div class="text-3xl">🔑</div>
+        <h3 class="font-orbitron font-extrabold text-xl text-y2kPink text-glow-pink">PORTAL ACCESS</h3>
+        <p class="text-xs font-rajdhani text-slate-300">Sign in to your account or enter Queen Admin Credentials.</p>
+      </div>
 
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getFirestore(app);
+      <!-- Auth Tab Switches -->
+      <div class="flex border-b border-slate-700 mb-4 text-xs font-orbitron">
+        <button id="tabAdmin" onclick="switchLoginTab('admin')" class="flex-1 py-2 text-center text-y2kPink border-b-2 border-y2kPink font-bold">
+          👑 Queen Admin
+        </button>
+        <button id="tabFan" onclick="switchLoginTab('fan')" class="flex-1 py-2 text-center text-slate-400 border-b-2 border-transparent">
+          💎 Fan Member
+        </button>
+      </div>
 
-        // Global State Variables
-        let currentUser = null;
-        let isAdmin = false;
-        let isSignUpMode = false;
-        let authRoleTarget = 'guest'; // 'guest' or 'admin'
-        let currentEpisodePlaying = null;
-        let isSubscriber = false;
+      <!-- Queen Admin Passcode Form (Clean & Secure) -->
+      <form id="adminAuthForm" onsubmit="handleAdminLogin(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-orbitron text-slate-300 mb-1">Admin Username / Email</label>
+          <input type="text" id="adminUserInput" required placeholder="queen@tequilaminaj.com" class="w-full bg-black border border-slate-700 focus:border-y2kPink rounded-lg px-3 py-2 text-sm text-white focus:outline-none">
+        </div>
 
-        // Sample initial seed audio for immediate playback testing
-        const SAMPLE_AUDIO = "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=funky-synthwave-111811.mp3";
+        <div>
+          <label class="block text-xs font-orbitron text-slate-300 mb-1">Admin Passcode / Access Key</label>
+          <input type="password" id="adminPasscodeInput" required placeholder="••••••••••••" class="w-full bg-black border border-slate-700 focus:border-y2kPink rounded-lg px-3 py-2 text-sm text-white focus:outline-none">
+        </div>
 
-        // Pre-loaded initial sample episodes if Firestore is fresh
-        const DEFAULT_EP
+        <button type="submit" class="w-full chrome-button py-2.5 rounded-lg text-xs font-orbitron font-bold text-white tracking-wider">
+          SIGN IN AS QUEEN ADMIN
+        </button>
+      </form>
+
+      <!-- Fan Member Login Form -->
+      <form id="fanAuthForm" onsubmit="handleFanLogin(event)" class="hidden space-y-4">
+        <div>
+          <label class="block text-xs font-orbitron text-slate-300 mb-1">Fan Username</label>
+          <input type="text" id="fanUserInput" required placeholder="JuicyBabe2000" class="w-full bg-black border border-slate-700 focus:border-y2kCyan rounded-lg px-3 py-2 text-sm text-white focus:outline-none">
+        </div>
+
+        <div>
+          <label class="block text-xs font-orbitron text-slate-300 mb-1">Password</label>
+          <input type="password" id="fanPasswordInput" required placeholder="••••••••••••" class="w-full bg-black border border-slate-700 focus:border-y2kCyan rounded-lg px-3 py-2 text-sm text-white focus:outline-none">
+        </div>
+
+        <button type="submit" class="w-full border border-y2kCyan bg-y2kCyan/20 hover:bg-y2kCyan text-y2kCyan hover:text-black transition-all py-2.5 rounded-lg text-xs font-orbitron font-bold tracking-wider">
+          SIGN IN AS FAN
+        </button>
+      </form>
+
+      <!-- Alert Box -->
+      <div id="loginFeedback" class="hidden mt-3 p-2.5 rounded text-xs font-orbitron text-center"></div>
+
+    </div>
+  </div>
+
+  <!-- VIP FAN CLUB SIGNUP MODAL -->
+  <div id="vipModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-chromeDark border-2 border-y2kCyan rounded-2xl glow-box-cyan w-full max-w-md p-6 relative overflow-hidden">
+      
+      <button onclick="closeModal('vipModal')" class="absolute top-3 right-3 text-slate-400 hover:text-y2kCyan text-xl">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="text-center space-y-1 mb-6">
+        <div class="text-3xl">💎</div>
+        <h3 class="font-orbitron font-extrabold text-xl text-y2kCyan text-glow-cyan">VIP FAN ALERTS</h3>
+        <p class="text-xs font-rajdhani text-slate-300">Receive instant email updates whenever Queen Tequila drops a new episode!</p>
+      </div>
+
+      <form onsubmit="handleVipSubscribe(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-orbitron text-slate-300 mb-1">Your Name / Handle</label>
+          <input type="text" id="vipNameInput" required placeholder="PinkGlitterQueen" class="w-full bg-black border border-slate-700 focus:border-y2kCyan rounded-lg px-3 py-2 text-sm text-white focus:outline-none">
+        </div>
+
+        <div>
+          <label class="block text-xs font-orbitron text-slate-300 mb-1">Email Address</label>
+          <input type="email" id="vipEmailInput" required placeholder="babe@y2k.com" class="w-full bg-black border border-slate-700 focus:border-y2kCyan rounded-lg px-3 py-2 text-sm text-white focus:outline-none">
+        </div>
+
+        <button type="submit" class="w-full border border-y2kCyan bg-y2kCyan/20 hover:bg-y2kCyan text-y2kCyan hover:text-black font-orbitron font-bold text-xs py-2.5 rounded-lg transition-all tracking-wider">
+          JOIN VIP MAILING LIST ✨
+        </button>
+      </form>
+
+      <div id="vipFeedback" class="hidden mt-3 p-2.5 rounded text-xs font-orbitron text-center"></div>
+
+      <!-- Admin VIP Subscriber List Drawer -->
+      <div id="adminVipSection" class="hidden mt-6 pt-4 border-t border-slate-800">
+        <button onclick="toggleVipListAdmin()" class="w-full text-xs font-orbitron text-y2kPink hover:underline flex items-center justify-center gap-1">
+          <i class="fa-solid fa-users-viewfinder"></i>
+          <span>[Admin View] VIP Subscriber Roster (<span id="vipListCount">0</span>)</span>
+        </button>
+        <div id="vipListAdminContainer" class="hidden mt-3 bg-black/90 border border-slate-800 p-3 rounded-lg max-h-40 overflow-y-auto text-xs font-mono text-slate-300 space-y-1">
+          <!-- Populated dynamically -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- POST NEW EPISODE MODAL (Admin Only) -->
+  <div id="addEpisodeModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-chromeDark border-2 border-y2kPink rounded-2xl glow-box-pink w-full max-w-lg p-6 relative max-h-[90vh] overflow-y-auto">
+      
+      <button onclick="closeModal('addEpisodeModal')" class="absolute top-3 right-3 text-slate-400 hover:text-y2kPink text-xl">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div class="text-center space-y-1 mb-6">
+        <div class="text-3xl">🎙️</div>
+        <h3 class="font-orbitron font-extrabold text-xl text-y2kPink text-glow-pink">POST NEW EPISODE</h3>
+        <p class="text-xs font-rajdhani text-slate-300">Publish a new episode to the show's vault.</p>
+      </div>
+
+      <form onsubmit="handlePostEpisode(event)" class="space-y-4 text-xs font-orbitron">
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-300 mb-1">Episode #</label>
+            <input type="text" id="epNumInput" required placeholder="04" class="w-full bg-black border border-slate-700 focus:border-y2kPink rounded-lg px-3 py-2 text-sm text-white focus:outline-none font-sans">
+          </div>
+          <div>
+            <label class="block text-slate-300 mb-1">Category Tag</label>
+            <select id="epCategoryInput" class="w-full bg-black border border-slate-700 focus:border-y2kPink rounded-lg px-3 py-2 text-sm text-white focus:outline-none font-sans">
+              <option value="Sass">Sass 💅</option>
+              <option value="Gossip">Gossip ☕</option>
+              <option value="Music">Music 🎵</option>
+              <option value="Drama">Drama 🔥</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-slate-300 mb-1">Episode Title</label>
+          <input type="text" id="epTitleInput" required placeholder="Spilling Tequila on Y2K Pop Stars..." class="w-full bg-black border border-slate-700 focus:border-y2kPink rounded-lg px-3 py-2 text-sm text-white focus:outline-none font-sans">
+        </div>
+
+        <div>
+          <label class="block text-slate-300 mb-1">Audio MP3 Direct Link</label>
+          <input type="url" id="epAudioUrlInput" required placeholder="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" class="w-full bg-black border border-slate-700 focus:border-y2kPink rounded-lg px-3 py-2 text-sm text-white focus:outline-none font-sans">
+        </div>
+
+        <div>
+          <label class="block text-slate-300 mb-1">Cover Image URL</label>
+          <input type="url" id="epCoverUrlInput" placeholder="https://images.unsplash.com/photo-..." class="w-full bg-black border border-slate-700 focus:border-y2kPink rounded-lg px-3 py-2 text-sm text-white focus:outline-none font-sans">
+        </div>
+
+        <div>
+          <label class="block text-slate-300 mb-1">Duration (MM:SS)</label>
+          <input type="text" id="epDurationInput" placeholder="24:15" class="w-full bg-black border border-slate-700 focus:border-y2kPink rounded-lg px-3 py-2 text-sm text-white focus:outline-none font-sans">
+        </div>
+
+        <div>
+          <label class="block text-slate-300 mb-1">Show Notes & Tequila Gossip</label>
+          <textarea id="epNotesInput" rows="3" placeholder="In this episode Queen Tequila breaks down..." class="w-full bg-black border border-slate-700 focus:border-y2kPink rounded-lg px-3 py-2 text-sm text-white focus:outline-none font-sans"></textarea>
+        </div>
+
+        <button type="submit" class="w-full chrome-button py-3 rounded-lg text-sm font-bold text-white tracking-wider">
+          PUBLISH EPISODE 🍸
+        </button>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- SHOW NOTES & FAN COMMENTS MODAL -->
+  <div id="notesModal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-chromeDark border-2 border-y2kCyan rounded-2xl glow-box-cyan w-full max-w-lg p-6 relative max-h-[90vh] overflow-y-auto space-y-4">
+      <button onclick="closeModal('notesModal')" class="absolute top-3 right-3 text-slate-400 hover:text-y2kCyan text-xl">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+
+      <div>
+        <span id="notesEpNum" class="text-xs font-orbitron text-y2kPink font-bold">EPISODE #00</span>
+        <h3 id="notesEpTitle" class="font-orbitron font-extrabold text-xl text-white">Episode Notes</h3>
+      </div>
+
+      <div class="bg-black/60 border border-slate-800 p-4 rounded-xl text-xs font-sans text-slate-300 leading-relaxed" id="notesContent">
+        <!-- Loaded via JS -->
+      </div>
+
+      <!-- Fan Cheers / Comments Section -->
+      <div class="space-y-3 pt-2">
+        <h4 class="font-orbitron text-xs text-y2kCyan font-bold">🍸 FAN CHEERS & REPLIES</h4>
+        <div id="notesCommentsContainer" class="space-y-2 max-h-36 overflow-y-auto text-xs font-sans">
+          <!-- Comments -->
+        </div>
+
+        <form onsubmit="handleAddComment(event)" class="flex gap-2">
+          <input type="text" id="commentInput" required placeholder="Leave a cheer or gossip..." class="flex-1 bg-black border border-slate-700 focus:border-y2kCyan rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none">
+          <button type="submit" class="bg-y2kCyan text-black font-orbitron font-bold text-xs px-3 py-1.5 rounded-lg hover:bg-y2kNeonCyan transition-colors">
+            POST
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    /* Default Pre-loaded Episodes */
+    const DEFAULT_EPISODES = [
+      {
+        id: 'ep-001',
+        number: '01',
+        title: 'Juicy Couture, Low-Rise Jeans & Cyber Gossip',
+        category: 'Sass',
+        audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
+        coverUrl: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80',
+        duration: '18:42',
+        notes: 'Queen Tequila spills the tea on 2000s red carpet fashion, iconic velour tracksuits, and why low-rise jeans are making a fiery comeback.',
+        comments: ['Obsessed with this episode! 💖', 'Spill more tea Queen! 🍸']
+      },
+      {
+        id: 'ep-002',
+        number: '02',
+        title: 'Flip Phones, Myspace Top 8 & Drama Unfiltered',
+        category: 'Gossip',
+        audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
+        coverUrl: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&w=600&q=80',
+        duration: '22:15',
+        notes: 'Remember changing your Myspace song to send a passive-aggressive message? We dissect classic digital petty drama with special guests!',
+        comments: ['The Myspace Top 8 stress was real! 🔥']
+      },
+      {
+        id: 'ep-003',
+        number: '03',
+        title: 'Tequila Shots & 2000s Pop Princess Anthems',
+        category: 'Music',
+        audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
+        coverUrl: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=600&q=80',
+        duration: '26:50',
+        notes: 'From synth-pop synthesizers to glitter-drenched music videos, Queen Tequila ranks the top Y2K dance floor bangers.',
+        comments: ['Playing this at full volume all weekend! ✨']
+      }
+    ];
+
+    /* CONFIGURABLE SECURE PASSCODES IN JS (Not displayed anywhere in UI) */
+    const SECURE_ADMIN_PASSCODES = ['QUEEN', 'TEQUILA2025', 'MINAJ2026', 'TEQUILAMINAJ'];
+
+    let episodes = [];
+    let vipSubscribers = [];
+    let isAdmin = false;
+    let activeCategory = 'ALL';
+    let currentPlayingEpId = null;
+    let activeModalNotesEpId = null;
+
+    const audioPlayer = document.getElementById('mainAudioPlayer');
+
+    window.addEventListener('DOMContentLoaded', () => {
+      // Load saved episodes or default
+      const savedEps = localStorage.getItem('tequila_episodes');
+      if (savedEps) {
+        try { episodes = JSON.parse(savedEps); } catch(e) { episodes = DEFAULT_EPISODES; }
+      } else {
+        episodes = DEFAULT_EPISODES;
+        localStorage.setItem('tequila_episodes', JSON.stringify(episodes));
+      }
+
+      // Load VIP subscribers
+      const savedVips = localStorage.getItem('tequila_vips');
+      if (savedVips) {
+        try { vipSubscribers = JSON.parse(savedVips); } catch(e) { vipSubscribers = []; }
+      }
+
+      // Restore session state
+      if (sessionStorage.getItem('tequila_admin') === 'true') {
+        setAdminState(true);
+      }
+
+      updateCounters();
+      renderEpisodes();
+      setupAudioPlayerListeners();
+    });
+
+    function playY2KSound() {
+      try {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(587.33, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.12);
+        gain.gain.setValueAtTime(0.08, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.12);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.12);
+      } catch(e) {}
+    }
+
+    function updateCounters() {
+      document.getElementById('totalEpCount').textContent = episodes.length;
+      document.getElementById('vipCount').textContent = vipSubscribers.length;
+      document.getElementById('vipListCount').textContent = vipSubscribers.length;
+    }
+
+    function openModal(modalId) {
+      playY2KSound();
+      document.getElementById(modalId).classList.remove('hidden');
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).classList.add('hidden');
+    }
+
+    function handleAuthClick() {
+      if (isAdmin) {
+        setAdminState(false);
+        alert('👑 Queen Admin Logged Out.');
+      } else {
+        openModal('loginModal');
+      }
+    }
+
+    function switchLoginTab(tab) {
+      playY2KSound();
+      const adminForm = document.getElementById('adminAuthForm');
+      const fanForm = document.getElementById('fanAuthForm');
+      const tabAdmin = document.getElementById('tabAdmin');
+      const tabFan = document.getElementById('tabFan');
+
+      if (tab === 'admin') {
+        adminForm.classList.remove('hidden');
+        fanForm.classList.add('hidden');
+        tabAdmin.classList.add('text-y2kPink', 'border-y2kPink');
+        tabAdmin.classList.remove('text-slate-400', 'border-transparent');
+        tabFan.classList.add('text-slate-400', 'border-transparent');
+        tabFan.classList.remove('text-y2kPink', 'border-y2kPink');
+      } else {
+        fanForm.classList.remove('hidden');
+        adminForm.classList.add('hidden');
+        tabFan.classList.add('text-y2kCyan', 'border-y2kCyan');
+        tabFan.classList.remove('text-slate-400', 'border-transparent');
+        tabAdmin.classList.add('text-slate-400', 'border-transparent');
+        tabAdmin.classList.remove('text-y2kPink', 'border-y2kPink');
+      }
+    }
+
+    /* Secure Admin Passcode Authentication */
+    function handleAdminLogin(e) {
+      e.preventDefault();
+      const passAttempt = document.getElementById('adminPasscodeInput').value.trim();
+      const feedback = document.getElementById('loginFeedback');
+
+      // Validate passcode against secure internal list
+      const isValid = SECURE_ADMIN_PASSCODES.some(code => code.toLowerCase() === passAttempt.toLowerCase());
+
+      if (isValid) {
+        setAdminState(true);
+        feedback.className = "mt-3 p-2.5 rounded text-xs font-orbitron text-center bg-emerald-900/80 border border-emerald-500 text-emerald-200";
+        feedback.textContent = "✨ QUEEN ADMIN ACCESS GRANTED!";
+        feedback.classList.remove('hidden');
+
+        setTimeout(() => {
+          closeModal('loginModal');
+          feedback.classList.add('hidden');
+          document.getElementById('adminPasscodeInput').value = '';
+        }, 1000);
+      } else {
+        feedback.className = "mt-3 p-2.5 rounded text-xs font-orbitron text-center bg-rose-900/80 border border-rose-500 text-rose-200";
+        feedback.textContent = "❌ INVALID ADMIN KEY OR CREDENTIALS";
+        feedback.classList.remove('hidden');
+      }
+    }
+
+    function handleFanLogin(e) {
+      e.preventDefault();
+      const fanUser = document.getElementById('fanUserInput').value.trim();
+      const feedback = document.getElementById('loginFeedback');
+
+      feedback.className = "mt-3 p-2.5 rounded text-xs font-orbitron text-center bg-cyan-900/80 border border-cyan-500 text-cyan-200";
+      feedback.textContent = `💎 WELCOME BACK FAN MEMBER: ${fanUser}`;
+      feedback.classList.remove('hidden');
+
+      setTimeout(() => {
+        closeModal('loginModal');
+        feedback.classList.add('hidden');
+      }, 1000);
+    }
+
+    function setAdminState(active) {
+      isAdmin = active;
+      sessionStorage.setItem('tequila_admin', active ? 'true' : 'false');
+
+      const badge = document.getElementById('adminBadge');
+      const postBtn = document.getElementById('postEpisodeBtn');
+      const authTriggerText = document.getElementById('authTriggerText');
+      const adminVipSection = document.getElementById('adminVipSection');
+
+      if (active) {
+        badge.classList.remove('hidden');
+        postBtn.classList.remove('hidden');
+        adminVipSection.classList.remove('hidden');
+        authTriggerText.textContent = "Admin Logout";
+      } else {
+        badge.classList.add('hidden');
+        postBtn.classList.add('hidden');
+        adminVipSection.classList.add('hidden');
+        authTriggerText.textContent = "Sign In";
+      }
+
+      renderEpisodes();
+    }
+
+    function handleVipSubscribe(e) {
+      e.preventDefault();
+      const name = document.getElementById('vipNameInput').value.trim();
+      const email = document.getElementById('vipEmailInput').value.trim();
+      const feedback = document.getElementById('vipFeedback');
+
+      const existing = vipSubscribers.find(s => s.email.toLowerCase() === email.toLowerCase());
+      if (existing) {
+        feedback.className = "mt-3 p-2.5 rounded text-xs font-orbitron text-center bg-amber-900/80 border border-amber-500 text-amber-200";
+        feedback.textContent = "✨ YOU ARE ALREADY ON THE VIP ALERT LIST!";
+        feedback.classList.remove('hidden');
+        return;
+      }
+
+      const newSubscriber = { name, email, date: new Date().toLocaleDateString() };
+      vipSubscribers.push(newSubscriber);
+      localStorage.setItem('tequila_vips', JSON.stringify(vipSubscribers));
+
+      feedback.className = "mt-3 p-2.5 rounded text-xs font-orbitron text-center bg-emerald-900/80 border border-emerald-500 text-emerald-200";
+      feedback.textContent = "💎 SUBSCRIBED! YOU'LL RECEIVE NEW EPISODE DROPS.";
+      feedback.classList.remove('hidden');
+
+      updateCounters();
+      document.getElementById('vipNameInput').value = '';
+      document.getElementById('vipEmailInput').value = '';
+
+      setTimeout(() => {
+        closeModal('vipModal');
+        feedback.classList.add('hidden');
+      }, 1500);
+    }
+
+    function toggleVipListAdmin() {
+      const container = document.getElementById('vipListAdminContainer');
+      container.classList.toggle('hidden');
+      if (!container.classList.contains('hidden')) {
+        if (vipSubscribers.length === 0) {
+          container.innerHTML = `<p class="text-slate-500 font-sans">No VIP subscribers yet.</p>`;
+        } else {
+          container.innerHTML = vipSubscribers.map(s => `
+            <div class="flex justify-between border-b border-slate-800 pb-1">
+              <span>💖 ${s.name} (${s.email})</span>
+              <span class="text-slate-500">${s.date}</span>
+            </div>
+          `).join('');
+        }
+      }
+    }
+
+    function handlePostEpisode(e) {
+      e.preventDefault();
+      if (!isAdmin) {
+        alert("Admin privileges required to publish episodes!");
+        return;
+      }
+
+      const number = document.getElementById('epNumInput').value.trim();
+      const category = document.getElementById('epCategoryInput').value;
+      const title = document.getElementById('epTitleInput').value.trim();
+      const audioUrl = document.getElementById('epAudioUrlInput').value.trim();
+      const coverUrl = document.getElementById('epCoverUrlInput').value.trim() || 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=600&q=80';
+      const duration = document.getElementById('epDurationInput').value.trim() || '20:00';
+      const notes = document.getElementById('epNotesInput').value.trim() || 'No show notes provided.';
+
+      const newEp = {
+        id: 'ep-' + Date.now(),
+        number: number.padStart(2, '0'),
+        title,
+        category,
+        audioUrl,
+        coverUrl,
+        duration,
+        notes,
+        comments: []
+      };
+
+      episodes.unshift(newEp);
+      localStorage.setItem('tequila_episodes', JSON.stringify(episodes));
+
+      updateCounters();
+      renderEpisodes();
+      closeModal('addEpisodeModal');
+      playY2KSound();
+
+      // Reset Form
+      document.getElementById('epTitleInput').value = '';
+      document.getElementById('epAudioUrlInput').value = '';
+      document.getElementById('epNotesInput').value = '';
+    }
+
+    function deleteEpisode(epId) {
+      if (!isAdmin) return;
+      if (confirm("Are you sure you want to delete this episode?")) {
+        episodes = episodes.filter(ep => ep.id !== epId);
+        localStorage.setItem('tequila_episodes', JSON.stringify(episodes));
+        updateCounters();
+        renderEpisodes();
+      }
+    }
+
+    function openNotesModal(epId) {
+      const ep = episodes.find(e => e.id === epId);
+      if (!ep) return;
+
+      activeModalNotesEpId = epId;
+      document.getElementById('notesEpNum').textContent = `EPISODE #${ep.number}`;
+      document.getElementById('notesEpTitle').textContent = ep.title;
+      document.getElementById('notesContent').textContent = ep.notes;
+
+      renderNotesComments(ep);
+      openModal('notesModal');
+    }
+
+    function renderNotesComments(ep) {
+      const container = document.getElementById('notesCommentsContainer');
+      if (!ep.comments || ep.comments.length === 0) {
+        container.innerHTML = `<p class="text-slate-500 text-[11px] font-sans">No cheers yet. Be the first to reply!</p>`;
+      } else {
+        container.innerHTML = ep.comments.map(c => `
+          <div class="bg-black/50 border border-slate-800 px-3 py-1.5 rounded-lg text-slate-300">
+            ${c}
+          </div>
+        `).join('');
+      }
+    }
+
+    function handleAddComment(e) {
+      e.preventDefault();
+      if (!activeModalNotesEpId) return;
+
+      const input = document.getElementById('commentInput');
+      const text = input.value.trim();
+      if (!text) return;
+
+      const ep = episodes.find(e => e.id === activeModalNotesEpId);
+      if (ep) {
+        if (!ep.comments) ep.comments = [];
+        ep.comments.push(text);
+        localStorage.setItem('tequila_episodes', JSON.stringify(episodes));
+        renderNotesComments(ep);
+        input.value = '';
+      }
+    }
+
+    function filterCategory(cat) {
+      playY2KSound();
+      activeCategory = cat;
+
+      const buttons = document.querySelectorAll('.category-btn');
+      buttons.forEach(btn => {
+        if (btn.textContent.includes(cat) || (cat === 'ALL' && btn.textContent === 'ALL')) {
+          btn.className = 'category-btn active px-3 py-1 rounded-md text-xs font-orbitron border border-y2kPink bg-y2kPink text-white';
+        } else {
+          btn.className = 'category-btn px-3 py-1 rounded-md text-xs font-orbitron border border-slate-700 bg-black/50 text-slate-300 hover:border-y2kCyan hover:text-y2kCyan';
+        }
+      });
+
+      renderEpisodes();
+    }
+
+    function renderEpisodes() {
+      const grid = document.getElementById('episodesGrid');
+      const searchQuery = document.getElementById('searchInput').value.toLowerCase().trim();
+
+      const filtered = episodes.filter(ep => {
+        const matchesCat = (activeCategory === 'ALL' || ep.category === activeCategory);
+        const matchesSearch = ep.title.toLowerCase().includes(searchQuery) || ep.notes.toLowerCase().includes(searchQuery);
+        return matchesCat && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full py-12 text-center bg-chromeCard border border-y2kPink/30 rounded-2xl p-6">
+            <span class="text-4xl">🍸</span>
+            <h4 class="font-orbitron font-bold text-lg text-y2kCyan mt-2">NO EPISODES FOUND</h4>
+            <p class="text-xs font-rajdhani text-slate-400">Try adjusting your search terms or category filters!</p>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = filtered.map(ep => {
+        const isPlaying = (currentPlayingEpId === ep.id);
+        
+        return `
+          <div class="bg-chromeCard border ${isPlaying ? 'border-2 border-y2kCyan glow-box-cyan' : 'border-y2kPink/40 hover:border-y2kCyan'} rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between group relative">
+            
+            <!-- Top Image Card -->
+            <div class="relative h-48 overflow-hidden bg-black">
+              <img src="${ep.coverUrl}" alt="${ep.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-chromeDark via-transparent to-black/40"></div>
+
+              <!-- Episode Badges -->
+              <div class="absolute top-3 left-3 flex items-center gap-2">
+                <span class="bg-y2kPink text-white font-orbitron font-extrabold text-[10px] px-2.5 py-1 rounded-md shadow-md">
+                  EP ${ep.number}
+                </span>
+                <span class="bg-black/80 border border-y2kCyan text-y2kCyan font-orbitron text-[10px] px-2 py-0.5 rounded">
+                  ${ep.category}
+                </span>
+              </div>
+
+              <!-- Admin Delete Trigger -->
+              ${isAdmin ? `
+                <button onclick="deleteEpisode('${ep.id}')" title="Delete Episode" class="absolute top-3 right-3 bg-rose-600/80 hover:bg-rose-600 text-white w-7 h-7 rounded-full flex items-center justify-center text-xs transition-colors z-10">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              ` : ''}
+
+              <!-- Play Button Overlay -->
+              <button onclick="playEpisode('${ep.id}')" class="absolute inset-0 m-auto w-14 h-14 rounded-full border-2 border-white bg-y2kPink/80 text-white flex items-center justify-center text-2xl group-hover:scale-110 transition-all shadow-lg shadow-y2kPink/50">
+                <i class="fa-solid ${isPlaying ? 'fa-pause' : 'fa-play ml-1'}"></i>
+              </button>
+            </div>
+
+            <!-- Card Body Content -->
+            <div class="p-5 space-y-3 flex-1 flex flex-col justify-between">
+              <div class="space-y-2">
+                <div class="flex items-center justify-between text-[11px] font-orbitron text-slate-400">
+                  <span>⏱️ ${ep.duration}</span>
+                  <span class="text-y2kCyan font-bold">${isPlaying ? 'PLAYING NOW 🎙️' : 'READY TO STREAM'}</span>
+                </div>
+
+                <h3 class="font-orbitron font-bold text-base text-white group-hover:text-y2kPink transition-colors line-clamp-2">
+                  ${ep.title}
+                </h3>
+
+                <p class="font-rajdhani text-xs text-slate-300 line-clamp-2">
+                  ${ep.notes}
+                </p>
+              </div>
+
+              <!-- Card Action Controls -->
+              <div class="pt-3 border-t border-slate-800 flex items-center justify-between">
+                <button onclick="openNotesModal('${ep.id}')" class="text-xs font-orbitron text-y2kPink hover:underline flex items-center gap-1">
+                  <i class="fa-solid fa-comment-dots"></i>
+                  <span>Show Notes</span>
+                </button>
+
+                <button onclick="playEpisode('${ep.id}')" class="text-xs font-orbitron font-bold text-y2kCyan hover:text-y2kPink flex items-center gap-1.5 transition-colors">
+                  <span>${isPlaying ? 'PAUSE' : 'LISTEN'}</span>
+                  <i class="fa-solid fa-circle-chevron-right"></i>
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+        `;
+      }).join('');
+    }
+
+    function playEpisode(epId) {
+      const ep = episodes.find(e => e.id === epId);
+      if (!ep) return;
+
+      if (currentPlayingEpId === epId) {
+        togglePlayPause();
+        return;
+      }
+
+      currentPlayingEpId = epId;
+      audioPlayer.src = ep.audioUrl;
+      
+      document.getElementById('playerTitle').textContent = ep.title;
+      document.getElementById('playerEpNum').textContent = `EPISODE #${ep.number}`;
+      document.getElementById('playerCover').src = ep.coverUrl;
+      document.getElementById('playerCategoryBadge').textContent = ep.category.toUpperCase();
+
+      audioPlayer.play().then(() => {
+        updatePlayButtonState(true);
+      }).catch(err => {
+        console.log('Audio playback initialized:', err);
+        updatePlayButtonState(false);
+      });
+
+      renderEpisodes();
+    }
+
+    function togglePlayPause() {
+      if (!audioPlayer.src) {
+        if (episodes.length > 0) playEpisode(episodes[0].id);
+        return;
+      }
+
+      if (audioPlayer.paused) {
+        audioPlayer.play();
+        updatePlayButtonState(true);
+      } else {
+        audioPlayer.pause();
+        updatePlayButtonState(false);
+      }
+      renderEpisodes();
+    }
+
+    function updatePlayButtonState(isPlaying) {
+      const btn = document.getElementById('playPauseBtn');
+      const disc = document.getElementById('playerDiscSpin');
+
+      if (isPlaying) {
+        btn.innerHTML = `<i class="fa-solid fa-pause"></i>`;
+        disc.classList.remove('hidden');
+      } else {
+        btn.innerHTML = `<i class="fa-solid fa-play ml-1"></i>`;
+        disc.classList.add('hidden');
+      }
+    }
+
+    function skipAudio(seconds) {
+      if (audioPlayer.duration) {
+        audioPlayer.currentTime = Math.min(Math.max(audioPlayer.currentTime + seconds, 0), audioPlayer.duration);
+      }
+    }
+
+    function formatTime(seconds) {
+      if (isNaN(seconds)) return "00:00";
+      const mins = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60);
+      return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    }
+
+    function setupAudioPlayerListeners() {
+      const scrubber = document.getElementById('audioScrubber');
+      const volume = document.getElementById('volumeControl');
+
+      audioPlayer.addEventListener('timeupdate', () => {
+        if (audioPlayer.duration) {
+          const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+          scrubber.value = progress;
+          document.getElementById('currentTime').textContent = formatTime(audioPlayer.currentTime);
+          document.getElementById('totalDuration').textContent = formatTime(audioPlayer.duration);
+        }
+      });
+
+      audioPlayer.addEventListener('ended', () => {
+        updatePlayButtonState(false);
+        renderEpisodes();
+      });
+
+      scrubber.addEventListener('input', (e) => {
+        if (audioPlayer.duration) {
+          const targetTime = (e.target.value / 100) * audioPlayer.duration;
+          audioPlayer.currentTime = targetTime;
+        }
+      });
+
+      volume.addEventListener('input', (e) => {
+        audioPlayer.volume = e.target.value / 100;
+      });
+    }
+  </script>
+
+</body>
+</html>
