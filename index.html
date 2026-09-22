@@ -1,1 +1,590 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-black text-white">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Tequila Minaj Show - Cyber Y2K Podcast</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: VT323 (Retro Digital) & Orbitron (Cyber) & Syne -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Syne:wght@700;800&family=VT323&family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        neonPink: '#ff007f',
+                        hotPink: '#ff1493',
+                        neonCyan: '#00f3ff',
+                        cyberPurple: '#1a0033',
+                        darkChrome: '#0d0d15',
+                        glamGold: '#ffd700'
+                    },
+                    fontFamily: {
+                        cyber: ['Orbitron', 'sans-serif'],
+                        glam: ['Syne', 'sans-serif'],
+                        digital: ['VT323', 'monospace'],
+                        sans: ['Montserrat', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
 
+    <style>
+        /* Custom Cheetah Print Pattern Overlay */
+        .cheetah-bg {
+            background-color: #0d0010;
+            background-image: 
+                radial-gradient(#ff007f 15%, transparent 16%),
+                radial-gradient(#00f3ff 15%, transparent 16%),
+                radial-gradient(rgba(255, 20, 147, 0.4) 15%, transparent 20%);
+            background-position: 0 0, 25px 25px, 12px 12px;
+            background-size: 50px 50px;
+        }
+
+        .cheetah-banner {
+            background: linear-gradient(135deg, rgba(255, 0, 127, 0.2), rgba(0, 243, 255, 0.2)),
+                        radial-gradient(black 40%, transparent 41%);
+            background-size: 100% 100%, 18px 18px;
+        }
+
+        /* Neon Glowing Borders & Text Effects */
+        .neon-border-pink {
+            border: 2px solid #ff007f;
+            box-shadow: 0 0 10px #ff007f, inset 0 0 8px #ff007f;
+        }
+
+        .neon-border-cyan {
+            border: 2px solid #00f3ff;
+            box-shadow: 0 0 10px #00f3ff, inset 0 0 8px #00f3ff;
+        }
+
+        .neon-glow-dual {
+            box-shadow: -4px 0 15px rgba(255, 0, 127, 0.7), 4px 0 15px rgba(0, 243, 255, 0.7);
+        }
+
+        .text-glow-pink {
+            text-shadow: 0 0 8px #ff007f, 0 0 18px #ff1493;
+        }
+
+        .text-glow-cyan {
+            text-shadow: 0 0 8px #00f3ff, 0 0 18px #00f3ff;
+        }
+
+        /* Glassmorphism Y2K Panel */
+        .y2k-glass {
+            background: rgba(18, 10, 28, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 0, 127, 0.3);
+        }
+
+        .y2k-glass-cyan {
+            background: rgba(10, 20, 30, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 243, 255, 0.3);
+        }
+
+        /* Chrome Shiny Button Effect */
+        .chrome-btn {
+            background: linear-gradient(180deg, #ffffff 0%, #a6a6a6 45%, #404040 50%, #222222 80%, #000000 100%);
+            border: 1px solid #00f3ff;
+            text-shadow: 0 1px 2px #000;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .chrome-btn:hover {
+            box-shadow: 0 0 15px #00f3ff;
+            transform: translateY(-2px);
+        }
+
+        .pink-chrome-btn {
+            background: linear-gradient(180deg, #ffb6c1 0%, #ff007f 45%, #99004d 50%, #4d0026 80%, #1a000d 100%);
+            border: 1px solid #ff007f;
+            text-shadow: 0 1px 2px #000;
+        }
+
+        .pink-chrome-btn:hover {
+            box-shadow: 0 0 15px #ff007f;
+            transform: translateY(-2px);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #000;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #ff007f, #00f3ff);
+            border-radius: 4px;
+        }
+
+        /* Animated Audio Visualizer Bars */
+        .bar {
+            width: 4px;
+            background: linear-gradient(to top, #ff007f, #00f3ff);
+            animation: bounce 1s infinite alternate ease-in-out;
+        }
+        .paused .bar {
+            animation-play-state: paused !important;
+            height: 6px !important;
+        }
+        @keyframes bounce {
+            0% { height: 4px; }
+            100% { height: 32px; }
+        }
+
+        /* Scanline Overlay Effect */
+        .scanlines {
+            background: linear-gradient(
+                rgba(18, 16, 16, 0) 50%, 
+                rgba(0, 0, 0, 0.25) 50%
+            ), linear-gradient(
+                90deg,
+                rgba(255, 0, 0, 0.03),
+                rgba(0, 255, 0, 0.01),
+                rgba(0, 0, 255, 0.03)
+            );
+            background-size: 100% 3px, 6px 100%;
+            pointer-events: none;
+        }
+
+        /* Shimmer glitter effect */
+        .glitter-text {
+            background: linear-gradient(90deg, #ff007f, #ffffff, #00f3ff, #ff007f);
+            background-size: 200% auto;
+            color: #fff;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 3s linear infinite;
+        }
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+    </style>
+</head>
+<body class="cheetah-bg min-h-full font-sans flex flex-col justify-between relative overflow-x-hidden">
+
+    <!-- Scanline Vintage CRT Effect Overlay -->
+    <div class="fixed inset-0 scanlines z-40 pointer-events-none opacity-40"></div>
+
+    <!-- Floating Y2K Background Sparkles & Aesthetics -->
+    <div class="fixed top-10 left-5 text-neonPink text-2xl animate-pulse pointer-events-none z-0"><i class="fa-solid fa-sparkles"></i> ✦</div>
+    <div class="fixed bottom-20 right-8 text-neonCyan text-3xl animate-bounce pointer-events-none z-0">✧</div>
+    <div class="fixed top-1/3 right-5 text-neonPink opacity-30 text-6xl pointer-events-none z-0 font-glam">Y2K</div>
+
+    <!-- Top Cyber Header / Navigation -->
+    <header class="sticky top-0 z-30 y2k-glass border-b border-neonPink/50 shadow-lg px-4 py-3">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <!-- Brand Logo -->
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-neonPink to-neonCyan flex items-center justify-center p-0.5 neon-border-pink">
+                    <div class="w-full h-full bg-black rounded-full flex items-center justify-center text-neonPink font-bold text-lg">
+                        <i class="fa-solid fa-martini-glass-citrus"></i>
+                    </div>
+                </div>
+                <div>
+                    <h1 class="font-glam text-xl md:text-2xl font-black tracking-wider glitter-text uppercase drop-shadow">
+                        TEQUILA MINAJ <span class="text-xs tracking-normal text-neonCyan font-cyber block md:inline">SHOW</span>
+                    </h1>
+                </div>
+            </div>
+
+            <!-- Role Badge / User Quick Actions -->
+            <div class="flex items-center gap-3">
+                <!-- Status Badge -->
+                <div id="userRoleBadge" class="hidden md:flex items-center gap-2 px-3 py-1 rounded-full text-xs font-cyber border border-neonCyan/40 bg-black/60 text-neonCyan">
+                    <span class="w-2 h-2 rounded-full bg-neonCyan animate-ping"></span>
+                    <span id="roleText">GUEST MODE</span>
+                </div>
+
+                <!-- Admin Action Trigger (Shows only to Admin) -->
+                <button id="openAdminBtn" onclick="toggleModal('adminModal', true)" class="hidden pink-chrome-btn text-white text-xs px-3 py-2 rounded-lg font-cyber uppercase tracking-wider flex items-center gap-1.5 shadow-lg">
+                    <i class="fa-solid fa-crown text-glamGold"></i> <span class="hidden sm:inline">Post Episode</span>
+                </button>
+
+                <!-- Auth Action Button (Login/Logout) -->
+                <button id="authTriggerBtn" onclick="toggleModal('authModal', true)" class="chrome-btn text-neonCyan text-xs px-4 py-2 rounded-lg font-cyber uppercase tracking-wider flex items-center gap-2">
+                    <i class="fa-solid fa-right-to-bracket"></i>
+                    <span id="authBtnLabel">Sign In</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-6 w-full flex-grow relative z-10 space-y-8">
+
+        <!-- Y2K Hero Banner -->
+        <section class="relative rounded-3xl overflow-hidden neon-glow-dual border border-neonPink/60 p-6 md:p-10 bg-gradient-to-r from-black via-cyberPurple to-black">
+            <!-- Background Cheetah Pattern Accent -->
+            <div class="absolute inset-0 opacity-20 cheetah-banner pointer-events-none"></div>
+
+            <div class="relative z-10 grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+                <div class="md:col-span-2 space-y-4">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neonPink/20 border border-neonPink text-neonPink text-xs font-cyber tracking-widest uppercase">
+                        <i class="fa-solid fa-compact-disc animate-spin"></i> Cyber Y2K Audio Experience
+                    </div>
+                    <h2 class="text-3xl md:text-5xl font-glam font-extrabold uppercase text-white leading-tight">
+                        Spilling the <span class="text-neonPink text-glow-pink">Tea</span> & <span class="text-neonCyan text-glow-cyan">Tequila</span> Live 🍸✨
+                    </h2>
+                    <p class="text-gray-300 text-sm md:text-base leading-relaxed max-w-xl font-sans">
+                        Welcome to the official lounge for <strong class="text-neonPink">The Tequila Minaj Show</strong>. Cyber aesthetics, raw unfiltered discussions, pop culture breakdowns, and VIP guest features.
+                    </p>
+
+                    <!-- Guest Email Subscription Box -->
+                    <div id="heroSubscribeBox" class="pt-2">
+                        <div class="bg-black/80 p-3 rounded-2xl border border-neonCyan/50 max-w-md flex flex-col sm:flex-row gap-2 shadow-inner">
+                            <input type="email" id="guestEmailInput" placeholder="Enter email for episode alerts..." 
+                                class="bg-darkChrome text-white text-xs px-3 py-2.5 rounded-xl border border-gray-700 focus:outline-none focus:border-neonCyan flex-grow">
+                            <button onclick="handleSubscribeNewsletter()" class="pink-chrome-btn text-white text-xs font-cyber uppercase px-4 py-2.5 rounded-xl flex items-center justify-center gap-2 whitespace-nowrap">
+                                <i class="fa-solid fa-bell"></i> Notify Me
+                            </button>
+                        </div>
+                        <p id="subStatusMsg" class="text-xs text-neonCyan font-cyber mt-2 hidden"></p>
+                    </div>
+                </div>
+
+                <!-- Host Profile Card Y2K Style -->
+                <div class="flex justify-center">
+                    <div class="relative w-56 h-64 rounded-2xl neon-border-cyan bg-black/80 p-3 flex flex-col items-center justify-between text-center transform rotate-2 hover:rotate-0 transition duration-300">
+                        <div class="absolute -top-3 -right-3 text-neonPink text-xl"><i class="fa-solid fa-heart"></i></div>
+                        <div class="w-full h-36 rounded-xl overflow-hidden bg-cover bg-center border border-neonPink/40" style="background-image: url('https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80')">
+                        </div>
+                        <div>
+                            <span class="text-xs font-cyber text-neonCyan block tracking-wider">HOST & PRODUCER</span>
+                            <h3 class="font-glam font-bold text-lg text-white">TEQUILA MINAJ</h3>
+                        </div>
+                        <div class="text-[10px] font-digital text-neonPink tracking-widest uppercase bg-neonPink/10 px-2 py-0.5 rounded-full w-full">
+                            ★ Y2K QUEEN ★
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Layout: Episodes List (Left) + Fan Lounge / Subscriptions (Right) -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- Episodes Feed Section (2 Cols) -->
+            <div class="lg:col-span-2 space-y-6">
+                <div class="flex items-center justify-between border-b border-neonPink/30 pb-3">
+                    <h3 class="font-cyber text-xl font-bold text-white flex items-center gap-2">
+                        <i class="fa-solid fa-podcast text-neonPink"></i> EPISODE FEED
+                    </h3>
+                    <span id="episodeCountBadge" class="text-xs font-digital text-neonCyan bg-neonCyan/10 border border-neonCyan px-2.5 py-1 rounded-full">
+                        0 EPISODES AVAILABLE
+                    </span>
+                </div>
+
+                <!-- Episodes List Container -->
+                <div id="episodesContainer" class="space-y-4">
+                    <!-- Loading Skeleton -->
+                    <div class="y2k-glass p-6 rounded-2xl border border-neonPink/30 animate-pulse flex items-center justify-center min-h-[200px]">
+                        <p class="font-cyber text-neonPink text-sm"><i class="fa-solid fa-spinner fa-spin mr-2"></i> LOADING CYBER EPISODES...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar Section (1 Col) -->
+            <div class="space-y-6">
+
+                <!-- Subscriber Portal Card -->
+                <div class="y2k-glass-cyan p-5 rounded-2xl border border-neonCyan/40 shadow-lg space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-neonCyan/20 text-neonCyan flex items-center justify-center border border-neonCyan">
+                            <i class="fa-solid fa-envelope-open-text"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-cyber text-sm font-bold text-white">GUEST SUBSCRIBER CLUB</h4>
+                            <p class="text-[11px] text-gray-400">Get alerted instantly on drop day!</p>
+                        </div>
+                    </div>
+
+                    <div id="subscriberStatusWidget" class="bg-black/60 p-3 rounded-xl border border-gray-800 text-xs space-y-2">
+                        <div class="flex justify-between items-center text-gray-300">
+                            <span>Status:</span>
+                            <span id="subWidgetStatus" class="text-neonPink font-cyber font-bold">NOT SUBSCRIBED</span>
+                        </div>
+                        <div class="flex justify-between items-center text-gray-300">
+                            <span>Account Email:</span>
+                            <span id="subWidgetEmail" class="text-gray-400 truncate max-w-[130px]">Guest User</span>
+                        </div>
+                        <button id="toggleSubBtn" onclick="toggleSubscriberStatus()" class="w-full mt-2 chrome-btn text-neonCyan text-xs py-2 rounded-lg font-cyber uppercase tracking-wider">
+                            Toggle VIP Subscription
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Interactive Fan Lounge / Comments Feed -->
+                <div class="y2k-glass p-5 rounded-2xl border border-neonPink/40 shadow-lg space-y-4">
+                    <div class="flex items-center justify-between">
+                        <h4 class="font-cyber text-sm font-bold text-neonPink flex items-center gap-2">
+                            <i class="fa-solid fa-comments"></i> CYBER FAN LOUNGE
+                        </h4>
+                        <span class="text-[10px] font-digital text-gray-400">LIVE FEED</span>
+                    </div>
+
+                    <!-- Post Comment Form -->
+                    <div class="space-y-2">
+                        <textarea id="fanCommentInput" rows="2" placeholder="Leave tea or thoughts for Tequila..." 
+                            class="w-full bg-black/80 text-white text-xs p-3 rounded-xl border border-gray-800 focus:outline-none focus:border-neonPink resize-none"></textarea>
+                        <button onclick="postFanComment()" class="w-full pink-chrome-btn text-white text-xs py-2 rounded-xl font-cyber uppercase tracking-wider flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-paper-plane"></i> Send to Lounge
+                        </button>
+                    </div>
+
+                    <!-- Comments Scroll Container -->
+                    <div id="fanCommentsContainer" class="space-y-3 max-h-72 overflow-y-auto pr-1">
+                        <!-- Loaded dynamically via JS -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Sticky Bottom Audio Player Bar -->
+    <footer class="sticky bottom-0 z-30 y2k-glass border-t-2 border-neonCyan shadow-2xl px-4 py-3 bg-black/90">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
+            
+            <!-- Episode Info currently playing -->
+            <div class="flex items-center gap-3 w-full md:w-1/4">
+                <img id="playerThumb" src="https://placehold.co/100x100/ff007f/ffffff?text=TM+Show" 
+                    alt="Album Cover" class="w-12 h-12 rounded-lg border border-neonPink object-cover shadow-md">
+                <div class="overflow-hidden">
+                    <h5 id="playerTitle" class="font-glam text-sm font-bold text-white truncate">Select an episode to play</h5>
+                    <p id="playerSubtitle" class="text-xs text-neonCyan font-cyber truncate">The Tequila Minaj Show</p>
+                </div>
+            </div>
+
+            <!-- Custom Cyber Controls -->
+            <div class="flex flex-col items-center gap-1.5 w-full md:w-2/4">
+                <div class="flex items-center gap-4">
+                    <button onclick="rewind10()" class="text-gray-400 hover:text-neonCyan transition text-sm">
+                        <i class="fa-solid fa-rotate-left"></i> 10s
+                    </button>
+                    <button id="playPauseBtn" onclick="togglePlayPause()" class="w-10 h-10 rounded-full bg-gradient-to-tr from-neonPink to-neonCyan flex items-center justify-center text-black font-bold shadow-lg hover:scale-105 transition">
+                        <i id="playIcon" class="fa-solid fa-play ml-0.5"></i>
+                    </button>
+                    <button onclick="forward10()" class="text-gray-400 hover:text-neonCyan transition text-sm">
+                        10s <i class="fa-solid fa-rotate-right"></i>
+                    </button>
+                </div>
+
+                <!-- Timeline Progress Bar -->
+                <div class="w-full flex items-center gap-3 text-[11px] font-digital text-neonCyan">
+                    <span id="currentTimeDisplay">00:00</span>
+                    <input type="range" id="audioSeeker" value="0" min="0" max="100" class="w-full h-1.5 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-neonPink">
+                    <span id="durationDisplay">00:00</span>
+                </div>
+            </div>
+
+            <!-- Equalizer Visualizer & Volume Control -->
+            <div class="hidden md:flex items-center justify-end gap-4 w-1/4">
+                <!-- Audio Visualizer Bars -->
+                <div id="visualizer" class="flex items-end gap-1 h-8 px-2 border-r border-gray-800 paused">
+                    <div class="bar" style="animation-delay: 0.1s"></div>
+                    <div class="bar" style="animation-delay: 0.4s"></div>
+                    <div class="bar" style="animation-delay: 0.2s"></div>
+                    <div class="bar" style="animation-delay: 0.5s"></div>
+                    <div class="bar" style="animation-delay: 0.3s"></div>
+                </div>
+
+                <!-- Volume -->
+                <div class="flex items-center gap-2 text-xs text-gray-400">
+                    <i class="fa-solid fa-volume-high text-neonCyan"></i>
+                    <input type="range" id="volumeSlider" min="0" max="1" step="0.05" value="0.8" class="w-16 h-1 bg-gray-800 rounded-lg appearance-none cursor-pointer accent-neonCyan">
+                </div>
+            </div>
+        </div>
+
+        <!-- Hidden Native HTML5 Audio Element -->
+        <audio id="audioEngine" class="hidden"></audio>
+    </footer>
+
+    <!-- AUTH MODAL (Login / Register Modal) -->
+    <div id="authModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 hidden">
+        <div class="y2k-glass p-6 md:p-8 rounded-3xl border-2 border-neonPink w-full max-w-md relative shadow-2xl">
+            <button onclick="toggleModal('authModal', false)" class="absolute top-4 right-4 text-gray-400 hover:text-white text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="text-center space-y-2 mb-6">
+                <h3 class="font-glam text-2xl font-bold text-white tracking-wider">PORTAL LOGIN</h3>
+                <p class="text-xs text-neonCyan font-cyber">Sign in as Guest or Admin</p>
+            </div>
+
+            <!-- Role Selector Tabs -->
+            <div class="flex rounded-xl bg-black/60 p-1 mb-5 border border-gray-800">
+                <button id="tabGuestBtn" onclick="switchAuthTab('guest')" class="w-1/2 py-2 text-xs font-cyber rounded-lg bg-neonPink text-white font-bold transition">
+                    GUEST / SUBSCRIBER
+                </button>
+                <button id="tabAdminBtn" onclick="switchAuthTab('admin')" class="w-1/2 py-2 text-xs font-cyber rounded-lg text-gray-400 hover:text-white transition">
+                    ADMIN (TEQUILA)
+                </button>
+            </div>
+
+            <!-- Login Form -->
+            <form id="authForm" onsubmit="handleAuthSubmit(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-cyber text-gray-300 mb-1">EMAIL ADDRESS</label>
+                    <input type="email" id="authEmail" required placeholder="babe@y2k.com" 
+                        class="w-full bg-black/80 text-white text-xs p-3 rounded-xl border border-gray-700 focus:outline-none focus:border-neonPink">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-cyber text-gray-300 mb-1">PASSWORD</label>
+                    <input type="password" id="authPassword" required placeholder="••••••••" 
+                        class="w-full bg-black/80 text-white text-xs p-3 rounded-xl border border-gray-700 focus:outline-none focus:border-neonPink">
+                </div>
+
+                <div id="authError" class="text-xs text-neonPink font-cyber hidden"></div>
+
+                <button type="submit" class="w-full pink-chrome-btn text-white text-xs py-3 rounded-xl font-cyber uppercase tracking-wider flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-key"></i> <span id="authSubmitText">Enter Portal</span>
+                </button>
+            </form>
+
+            <div class="mt-4 text-center">
+                <button onclick="toggleAuthMode()" id="authToggleModeBtn" class="text-xs text-neonCyan font-cyber underline">
+                    Need an account? Sign Up as Guest
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADMIN EPISODE POSTING MODAL -->
+    <div id="adminModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4 hidden">
+        <div class="y2k-glass p-6 md:p-8 rounded-3xl border-2 border-neonCyan w-full max-w-2xl relative shadow-2xl max-h-[90vh] overflow-y-auto">
+            <button onclick="toggleModal('adminModal', false)" class="absolute top-4 right-4 text-gray-400 hover:text-white text-lg">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="flex items-center gap-3 mb-6 border-b border-neonCyan/30 pb-3">
+                <div class="w-10 h-10 rounded-full bg-neonPink/20 text-neonPink flex items-center justify-center border border-neonPink text-xl">
+                    <i class="fa-solid fa-crown"></i>
+                </div>
+                <div>
+                    <h3 class="font-glam text-2xl font-bold text-white tracking-wider">POST NEW EPISODE</h3>
+                    <p class="text-xs text-neonCyan font-cyber">Exclusive Tequila Minaj Admin Panel</p>
+                </div>
+            </div>
+
+            <!-- New Episode Form -->
+            <form id="postEpisodeForm" onsubmit="handlePostEpisode(event)" class="space-y-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-cyber text-gray-300 mb-1">EPISODE TITLE *</label>
+                        <input type="text" id="epTitle" required placeholder="Ep 12: Cyber Tequila & VIP Drama" 
+                            class="w-full bg-black/80 text-white text-xs p-3 rounded-xl border border-gray-700 focus:outline-none focus:border-neonCyan">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-cyber text-gray-300 mb-1">FEATURED GUEST NAME</label>
+                        <input type="text" id="epGuest" placeholder="e.g. Paris Hilton or Solo" 
+                            class="w-full bg-black/80 text-white text-xs p-3 rounded-xl border border-gray-700 focus:outline-none focus:border-neonCyan">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-cyber text-gray-300 mb-1">AUDIO MP3 URL *</label>
+                        <input type="url" id="epAudioUrl" required placeholder="https://cdn.example.com/audio.mp3" 
+                            class="w-full bg-black/80 text-white text-xs p-3 rounded-xl border border-gray-700 focus:outline-none focus:border-neonCyan">
+                        <span class="text-[10px] text-gray-400">Direct playable MP3 link</span>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-cyber text-gray-300 mb-1">COVER THUMBNAIL URL</label>
+                        <input type="url" id="epThumbUrl" placeholder="https://images.unsplash.com/..." 
+                            class="w-full bg-black/80 text-white text-xs p-3 rounded-xl border border-gray-700 focus:outline-none focus:border-neonCyan">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-cyber text-gray-300 mb-1">DURATION (e.g. 45:20)</label>
+                        <input type="text" id="epDuration" placeholder="42:15" 
+                            class="w-full bg-black/80 text-white text-xs p-3 rounded-xl border border-gray-700 focus:outline-none focus:border-neonCyan">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-cyber text-gray-300 mb-1">TAGS (Comma separated)</label>
+                        <input type="text" id="epTags" placeholder="PopCulture, Tequila, Celebrity" 
+                            class="w-full bg-black/80 text-white text-xs p-3 rounded-xl border border-gray-700 focus:outline-none focus:border-neonCyan">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-cyber text-gray-300 mb-1">EPISODE DESCRIPTION *</label>
+                    <textarea id="epDescription" rows="3" required placeholder="What are we talking about this week?" 
+                        class="w-full bg-black/80 text-white text-xs p-3 rounded-xl border border-gray-700 focus:outline-none focus:border-neonCyan resize-none"></textarea>
+                </div>
+
+                <div id="postStatusMsg" class="text-xs font-cyber text-neonPink hidden"></div>
+
+                <button type="submit" class="w-full chrome-btn text-neonCyan text-xs py-3 rounded-xl font-cyber uppercase tracking-wider flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-cloud-arrow-up"></i> Publish Episode Live
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Firebase Module Scripts -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { 
+            getAuth, 
+            signInAnonymously, 
+            signInWithCustomToken, 
+            createUserWithEmailAndPassword,
+            signInWithEmailAndPassword,
+            signOut,
+            onAuthStateChanged 
+        } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { 
+            getFirestore, 
+            doc, 
+            getDoc, 
+            setDoc, 
+            addDoc, 
+            deleteDoc, 
+            collection, 
+            onSnapshot 
+        } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Global Firebase state initialization
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'tequila-minaj-show';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' 
+            ? JSON.parse(__firebase_config) 
+            : {
+                apiKey: "demo-key",
+                authDomain: "demo.firebaseapp.com",
+                projectId: "demo-project",
+                storageBucket: "demo.appspot.com",
+                messagingSenderId: "123456",
+                appId: "1:123456:web:1234"
+            };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        // Global State Variables
+        let currentUser = null;
+        let isAdmin = false;
+        let isSignUpMode = false;
+        let authRoleTarget = 'guest'; // 'guest' or 'admin'
+        let currentEpisodePlaying = null;
+        let isSubscriber = false;
+
+        // Sample initial seed audio for immediate playback testing
+        const SAMPLE_AUDIO = "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=funky-synthwave-111811.mp3";
+
+        // Pre-loaded initial sample episodes if Firestore is fresh
+        const DEFAULT_EP
