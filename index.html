@@ -1,3 +1,6 @@
+Here is the complete, updated code for **The Tequila Minaj Show** website with the **"Pay My Bills"** section updated (with `(joke)` removed), persistent episode deletion, Spotify integration, and the live Twitter/X feed:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,23 +10,21 @@
   
   <!-- FontAwesome & Google Fonts -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Press+Start+2P&family=VT323&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=VT323&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
 
   <style>
-    /* ==========================================================================
-       CYBER Y2K & BABY PHAT AESTHETIC STYLESHEET
-       ========================================================================== */
     :root {
       --pink: #ff007f;
       --pink-glow: #ff00ab;
-      --hot-pink: #ff1493;
       --cyan: #00f3ff;
       --cyan-glow: #00d8ff;
+      --gold: #ffd700;
+      --gold-glow: #ffea00;
+      --spotify-green: #1ed760;
       --deep-bg: #0d0118;
-      --card-bg: rgba(25并发, 10, 40, 0.7);
+      --card-bg: rgba(20, 5, 35, 0.85);
       --glass-border: rgba(255, 0, 127, 0.4);
       --text: #ffffff;
-      --cheetah-pattern: radial-gradient(circle, #3a001a 20%, transparent 20%), radial-gradient(circle, #1a0033 20%, transparent 20%);
     }
 
     * {
@@ -40,17 +41,16 @@
       overflow-x: hidden;
       min-height: 100vh;
       background-image: 
-        radial-gradient(circle at 10% 20%, rgba(255, 0, 127, 0.15) 0%, transparent 40%),
-        radial-gradient(circle at 90% 80%, rgba(0, 243, 255, 0.15) 0%, transparent 40%),
-        repeating-linear-gradient(0deg, rgba(0,0,0,0.15) 0px, rgba(0,0,0,0.15) 1px, transparent 1px, transparent 2px);
+        radial-gradient(circle at 10% 20%, rgba(255, 0, 127, 0.18) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(0, 243, 255, 0.18) 0%, transparent 40%),
+        repeating-linear-gradient(0deg, rgba(0,0,0,0.2) 0px, rgba(0,0,0,0.2) 1px, transparent 1px, transparent 2px);
       background-attachment: fixed;
     }
 
-    /* Cheetah Print Side Trim Elements */
+    /* Cheetah Print Side Trim Accents */
     .cheetah-border-left, .cheetah-border-right {
       position: fixed;
-      top: 0;
-      bottom: 0;
+      top: 0; bottom: 0;
       width: 14px;
       z-index: 999;
       background-color: #220015;
@@ -65,12 +65,10 @@
     .cheetah-border-left { left: 0; border-right: 2px solid var(--cyan); }
     .cheetah-border-right { right: 0; border-left: 2px solid var(--pink); }
 
-    /* Custom Scrollbar */
     ::-webkit-scrollbar { width: 8px; }
     ::-webkit-scrollbar-track { background: var(--deep-bg); }
     ::-webkit-scrollbar-thumb { background: linear-gradient(var(--pink), var(--cyan)); border-radius: 4px; }
 
-    /* Glowing Text & Neon Utilities */
     .neon-text-pink {
       color: #fff;
       text-shadow: 0 0 5px #fff, 0 0 10px var(--pink), 0 0 20px var(--pink), 0 0 40px var(--pink-glow);
@@ -79,23 +77,25 @@
       color: #fff;
       text-shadow: 0 0 5px #fff, 0 0 10px var(--cyan), 0 0 20px var(--cyan), 0 0 40px var(--cyan-glow);
     }
+    .neon-text-gold {
+      color: #fff;
+      text-shadow: 0 0 5px #fff, 0 0 10px var(--gold), 0 0 20px var(--gold), 0 0 40px var(--gold-glow);
+    }
     .y2k-font { font-family: 'Orbitron', sans-serif; }
-    .retro-font { font-family: 'VT323', monospace; }
 
-    /* Container */
     .container {
       max-width: 1200px;
       margin: 0 auto;
       padding: 20px 30px;
     }
 
-    /* Top Ambient Music Control Bar */
+    /* Ambient Music Player Bar */
     .bg-music-bar {
-      background: rgba(13, 1, 24, 0.85);
+      background: rgba(13, 1, 24, 0.9);
       border: 1px solid var(--pink);
-      box-shadow: 0 0 15px rgba(255, 0, 127, 0.4);
+      box-shadow: 0 0 18px rgba(255, 0, 127, 0.4);
       border-radius: 50px;
-      padding: 8px 20px;
+      padding: 10px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -120,26 +120,25 @@
       background: linear-gradient(135deg, var(--pink), #b30059);
       border: none;
       color: white;
-      padding: 6px 16px;
+      padding: 8px 18px;
       border-radius: 20px;
       cursor: pointer;
       font-family: 'Orbitron', sans-serif;
       font-size: 0.75rem;
-      box-shadow: 0 0 10px var(--pink);
+      box-shadow: 0 0 12px var(--pink);
       transition: all 0.2s ease;
     }
-    .music-btn:hover { transform: scale(1.05); box-shadow: 0 0 18px var(--pink); }
+    .music-btn:hover { transform: scale(1.05); box-shadow: 0 0 20px var(--pink); }
     .vol-slider {
       accent-color: var(--cyan);
       cursor: pointer;
       width: 80px;
     }
 
-    /* Header & Branding */
+    /* Header */
     header {
       text-align: center;
       padding: 30px 10px;
-      position: relative;
       background: radial-gradient(ellipse at center, rgba(255, 0, 127, 0.2) 0%, transparent 70%);
       border-bottom: 2px dashed var(--pink);
       margin-bottom: 30px;
@@ -148,7 +147,7 @@
       display: inline-block;
       background: linear-gradient(45deg, #2a0033, #001a33);
       border: 2px solid var(--cyan);
-      padding: 5px 18px;
+      padding: 6px 20px;
       border-radius: 20px;
       font-family: 'Orbitron', sans-serif;
       font-size: 0.8rem;
@@ -156,7 +155,6 @@
       color: var(--cyan);
       box-shadow: 0 0 10px var(--cyan), inset 0 0 8px var(--pink);
       margin-bottom: 15px;
-      text-transform: uppercase;
     }
     .brand-title {
       font-size: 3.2rem;
@@ -170,10 +168,8 @@
       font-size: 1.1rem;
       color: #e0e0e0;
       font-weight: 300;
-      letter-spacing: 1px;
     }
 
-    /* Navigation Bar */
     .nav-bar {
       display: flex;
       justify-content: center;
@@ -191,7 +187,6 @@
       font-family: 'Orbitron', sans-serif;
       font-size: 0.85rem;
       transition: all 0.3s ease;
-      backdrop-filter: blur(5px);
       display: flex;
       align-items: center;
       gap: 8px;
@@ -202,20 +197,37 @@
       box-shadow: 0 0 15px var(--pink);
       transform: translateY(-2px);
     }
+    .nav-btn-gold {
+      border-color: var(--gold);
+    }
+    .nav-btn-gold:hover, .nav-btn-gold.active {
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.6), rgba(255, 0, 127, 0.6));
+      box-shadow: 0 0 15px var(--gold);
+    }
 
-    /* Main Grid Layout */
+    .admin-indicator-badge {
+      background: rgba(0, 255, 127, 0.15);
+      border: 1px solid #00ff7f;
+      color: #00ff7f;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.8rem;
+      margin-top: 15px;
+      display: inline-block;
+    }
+
     .main-grid {
       display: grid;
-      grid-template-columns: 1fr 340px;
+      grid-template-columns: 1fr 360px;
       gap: 30px;
     }
     @media (max-width: 900px) {
       .main-grid { grid-template-columns: 1fr; }
     }
 
-    /* Glassmorphism Card Style */
     .glass-card {
-      background: rgba(20, 5, 35, 0.75);
+      background: var(--card-bg);
       border: 1px solid var(--glass-border);
       border-radius: 20px;
       padding: 25px;
@@ -223,7 +235,6 @@
       box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
       margin-bottom: 25px;
       position: relative;
-      overflow: hidden;
     }
     .glass-card::before {
       content: '';
@@ -245,77 +256,33 @@
 
     /* Episode Player Card */
     .active-player-card {
-      background: linear-gradient(135deg, rgba(40, 5, 60, 0.85), rgba(5, 30, 60, 0.85));
+      background: linear-gradient(135deg, rgba(40, 5, 60, 0.95), rgba(5, 30, 60, 0.95));
       border: 2px solid var(--pink);
       box-shadow: 0 0 25px rgba(255, 0, 127, 0.3);
+      padding: 20px;
     }
-    .now-playing-header {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 20px;
+    .spotify-frame-container {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-top: 10px;
+      box-shadow: 0 0 15px rgba(30, 215, 96, 0.2);
     }
-    .album-art {
-      width: 100px;
-      height: 100px;
+
+    /* Admin Quick Bar */
+    .admin-bar-card {
+      background: linear-gradient(135deg, rgba(0, 243, 255, 0.15), rgba(255, 0, 127, 0.15));
+      border: 2px dashed var(--cyan);
       border-radius: 15px;
-      background: #111;
-      border: 2px solid var(--cyan);
-      box-shadow: 0 0 15px var(--cyan);
-      object-fit: cover;
-    }
-    .now-playing-details h3 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.3rem;
-      margin-bottom: 6px;
-    }
-    .now-playing-details p {
-      color: #ccc;
-      font-size: 0.9rem;
-    }
-
-    /* Custom Audio Player Controls */
-    .player-controls-wrap {
-      margin-top: 15px;
-    }
-    .progress-area {
+      padding: 15px 20px;
+      margin-bottom: 25px;
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 15px;
+      justify-content: space-between;
+      gap: 15px;
+      flex-wrap: wrap;
     }
-    .time-stamp {
-      font-family: 'VT323', monospace;
-      font-size: 1.1rem;
-      color: var(--cyan);
-      width: 45px;
-    }
-    .audio-progress {
-      flex: 1;
-      accent-color: var(--pink);
-      cursor: pointer;
-    }
-    .player-buttons {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 20px;
-    }
-    .play-btn-main {
-      width: 55px;
-      height: 55px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--pink), var(--cyan));
-      border: none;
-      color: white;
-      font-size: 1.4rem;
-      cursor: pointer;
-      box-shadow: 0 0 20px var(--pink);
-      transition: transform 0.2s;
-    }
-    .play-btn-main:hover { transform: scale(1.1); }
 
-    /* Episode List */
     .episodes-list {
       display: flex;
       flex-direction: column;
@@ -343,50 +310,26 @@
     }
     .ep-num {
       font-family: 'Orbitron', sans-serif;
-      font-size: 1rem;
+      font-size: 0.9rem;
       font-weight: 700;
       color: var(--cyan);
       background: rgba(0, 243, 255, 0.1);
       padding: 8px 12px;
       border-radius: 8px;
     }
-    .ep-title-text {
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-    .ep-subtext {
-      font-size: 0.8rem;
-      color: #aaa;
-    }
-    .ep-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+
     .action-icon-btn {
       background: transparent;
       border: none;
       color: #aaa;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       cursor: pointer;
       padding: 6px;
       transition: color 0.2s;
     }
     .action-icon-btn:hover { color: var(--pink); }
-    .action-icon-btn.delete-btn:hover { color: #ff3333; }
 
-    .status-tag {
-      font-size: 0.7rem;
-      padding: 3px 8px;
-      border-radius: 10px;
-      font-family: 'Orbitron', sans-serif;
-      text-transform: uppercase;
-      margin-left: 8px;
-    }
-    .tag-scheduled { background: rgba(255, 165, 0, 0.2); color: orange; border: 1px solid orange; }
-    .tag-live { background: rgba(0, 255, 127, 0.2); color: #00ff7f; border: 1px solid #00ff7f; }
-
-    /* Song of the Day Card */
+    /* Song of the Day */
     .sotd-box {
       background: linear-gradient(135deg, rgba(255, 0, 127, 0.15), rgba(0, 0, 0, 0.4));
       border: 1px dashed var(--pink);
@@ -394,80 +337,59 @@
       padding: 18px;
       text-align: center;
     }
-    .sotd-title {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.1rem;
-      color: var(--pink);
-      margin-bottom: 6px;
-    }
-    .sotd-artist {
-      font-size: 0.85rem;
-      color: #ddd;
-      margin-bottom: 15px;
-    }
     .stream-links {
       display: flex;
       justify-content: center;
-      gap: 12px;
+      gap: 8px;
+      margin-top: 15px;
       flex-wrap: wrap;
     }
     .stream-btn {
       background: rgba(255, 255, 255, 0.1);
       border: 1px solid rgba(255, 255, 255, 0.2);
       color: white;
-      padding: 6px 12px;
+      padding: 7px 12px;
       border-radius: 8px;
       font-size: 0.75rem;
       text-decoration: none;
-      display: flex;
+      display: inline-flex;
       align-items: center;
-      gap: 6px;
-      transition: all 0.2s;
+      gap: 5px;
+      transition: all 0.2s ease;
     }
-    .stream-btn:hover { background: var(--pink); border-color: var(--pink); }
+    .stream-btn:hover {
+      background: var(--pink);
+      border-color: var(--pink);
+      transform: translateY(-2px);
+    }
 
-    /* Twitter / X Embed Simulation Container */
-    .twitter-box {
-      background: rgba(0, 0, 0, 0.3);
-      border-radius: 12px;
-      padding: 15px;
-      max-height: 420px;
+    /* Twitter Widget Container */
+    .twitter-embed-wrapper {
+      max-height: 500px;
       overflow-y: auto;
+      border-radius: 12px;
+      background: rgba(0, 0, 0, 0.4);
+      padding: 10px;
+      border: 1px solid rgba(255, 0, 127, 0.2);
     }
-    .tweet-card {
+
+    .tweet-fallback-card {
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: 10px;
-      padding: 12px;
+      padding: 14px;
       margin-bottom: 12px;
       font-size: 0.88rem;
     }
-    .tweet-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 8px;
-    }
-    .tweet-user {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 600;
-    }
-    .tweet-handle { color: #888; font-size: 0.8rem; font-weight: normal; }
-    .tweet-time { font-size: 0.75rem; color: #666; }
 
-    /* Form Styles (Work Signup & Admin) */
-    .form-group {
-      margin-bottom: 15px;
-    }
+    /* Forms & Inputs */
+    .form-group { margin-bottom: 15px; }
     .form-group label {
       display: block;
       font-family: 'Orbitron', sans-serif;
       font-size: 0.75rem;
       color: var(--cyan);
       margin-bottom: 6px;
-      letter-spacing: 1px;
     }
     .form-control {
       width: 100%;
@@ -476,14 +398,13 @@
       border: 1px solid rgba(255, 0, 127, 0.4);
       border-radius: 8px;
       color: white;
-      font-family: 'Outfit', sans-serif;
-      font-size: 0.9rem;
       outline: none;
-      transition: border-color 0.2s;
     }
-    .form-control:focus {
-      border-color: var(--cyan);
-      box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+    .form-control[readonly] {
+      background: rgba(255, 215, 0, 0.08);
+      border-color: rgba(255, 215, 0, 0.4);
+      color: var(--gold);
+      cursor: not-allowed;
     }
     .btn-submit {
       width: 100%;
@@ -495,12 +416,21 @@
       font-weight: 700;
       border-radius: 10px;
       cursor: pointer;
-      box-shadow: 0 0 15px var(--pink);
-      transition: transform 0.2s;
+      transition: all 0.2s;
     }
-    .btn-submit:hover { transform: translateY(-2px); }
+    .btn-submit:hover { opacity: 0.9; transform: scale(1.01); }
 
-    /* Modal Overlay */
+    .btn-pay-now {
+      background: linear-gradient(135deg, #ffd700, #ff8c00);
+      color: #000;
+      font-size: 1rem;
+      font-weight: 900;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+    }
+    .btn-pay-now:hover {
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
+    }
+
     .modal-overlay {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -515,32 +445,23 @@
       pointer-events: none;
       transition: opacity 0.3s ease;
     }
-    .modal-overlay.active {
-      opacity: 1;
-      pointer-events: all;
-    }
+    .modal-overlay.active { opacity: 1; pointer-events: all; }
     .modal-card {
       background: var(--deep-bg);
       border: 2px solid var(--pink);
       border-radius: 20px;
       width: 100%;
-      max-width: 500px;
+      max-width: 480px;
       padding: 30px;
-      box-shadow: 0 0 30px var(--pink);
       position: relative;
     }
     .close-modal {
       position: absolute;
       top: 15px; right: 20px;
-      background: none;
-      border: none;
-      color: #aaa;
-      font-size: 1.5rem;
-      cursor: pointer;
+      background: none; border: none;
+      color: #aaa; font-size: 1.5rem; cursor: pointer;
     }
-    .close-modal:hover { color: #fff; }
 
-    /* Footer & Visitor Counter */
     footer {
       text-align: center;
       padding: 30px;
@@ -556,130 +477,167 @@
       border: 1px solid var(--cyan);
       padding: 8px 18px;
       border-radius: 30px;
-      box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
       margin-bottom: 15px;
+      box-shadow: 0 0 12px rgba(0, 243, 255, 0.3);
     }
     .counter-digits {
       font-family: 'VT323', monospace;
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       color: var(--pink);
-      letter-spacing: 3px;
-    }
-
-    /* Admin Badge Header Indicator */
-    .admin-logged-badge {
-      display: none;
-      background: rgba(0, 255, 127, 0.15);
-      border: 1px solid #00ff7f;
-      color: #00ff7f;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.75rem;
-      font-family: 'Orbitron', sans-serif;
-      margin-top: 10px;
+      letter-spacing: 2px;
     }
   </style>
 </head>
 <body>
 
-  <!-- Side Cheetah Decor Accent Lines -->
   <div class="cheetah-border-left"></div>
   <div class="cheetah-border-right"></div>
 
   <div class="container">
 
-    <!-- Ambient Background Music Control Bar -->
+    <!-- AMBIENT AUDIO PLAYER HEADER -->
     <div class="bg-music-bar">
       <div class="bg-music-info">
         <i class="fa-solid fa-compact-disc"></i>
-        <span><strong>Theme Track:</strong> M.I.A. ft. Nicki Minaj - Teqkilla (Ambient Theme)</span>
+        <span><strong>Theme Music:</strong> Cyber Y2K Ambient Beat</span>
       </div>
       <div class="music-controls">
-        <button id="bgMusicToggleBtn" class="music-btn"><i class="fa-solid fa-pause"></i> PAUSE</button>
+        <button id="bgMusicToggleBtn" class="music-btn" onclick="toggleBgMusic()"><i class="fa-solid fa-play"></i> TAP TO START MUSIC</button>
         <i class="fa-solid fa-volume-high" style="font-size: 0.8rem; color: var(--cyan);"></i>
-        <input type="range" id="bgVolume" class="vol-slider" min="0" max="1" step="0.05" value="0.25">
+        <input type="range" id="bgVolume" class="vol-slider" min="0" max="1" step="0.05" value="0.3">
       </div>
     </div>
 
-    <!-- Main Header -->
+    <!-- MAIN HEADER -->
     <header>
       <div class="rhinestone-badge"><i class="fa-solid fa-crown"></i> Official Podcast Station</div>
       <h1 class="brand-title neon-text-pink">The Tequila Minaj Show</h1>
       <p class="brand-sub">Cyber Y2K • Pop Culture • Hot Takes & VIP Exclusive Tea</p>
-      <div id="adminIndicator" class="admin-logged-badge"><i class="fa-solid fa-user-shield"></i> QUEEN ADMIN LOGGED IN</div>
+      
+      <div id="adminIndicator" style="display:none;">
+        <div class="admin-indicator-badge">
+          <i class="fa-solid fa-shield-halved"></i> QUEEN ADMIN LOGGED IN — Schedule & Persistent Delete Enabled
+        </div>
+      </div>
 
-      <!-- Navigation Tabs -->
       <div class="nav-bar">
-        <button class="nav-btn active" onclick="switchView('episodesView')"><i class="fa-solid fa-podcast"></i> Episodes</button>
-        <button class="nav-btn" onclick="switchView('workSignupView')"><i class="fa-solid fa-star"></i> Fan Club / Work Sign-Up</button>
+        <button class="nav-btn active" id="btn-episodesView" onclick="switchView('episodesView')"><i class="fa-solid fa-podcast"></i> Episodes</button>
+        <button class="nav-btn nav-btn-gold" id="btn-payBillsView" onclick="switchView('payBillsView')"><i class="fa-solid fa-credit-card"></i> Pay My Bills</button>
+        <button class="nav-btn" id="btn-workSignupView" onclick="switchView('workSignupView')"><i class="fa-solid fa-star"></i> Fan Club / Crew Sign-Up</button>
         <button id="adminNavBtn" class="nav-btn" onclick="openAdminModal()"><i class="fa-solid fa-lock"></i> Admin Portal</button>
       </div>
     </header>
 
-    <!-- Content Layout Grid -->
     <div class="main-grid">
 
-      <!-- Left / Primary Column -->
+      <!-- MAIN CONTENT -->
       <main>
         
         <!-- EPISODES VIEW -->
         <div id="episodesView">
 
-          <!-- Active Episode Player Panel -->
+          <!-- ADMIN PODCAST SCHEDULE BUTTON BAR -->
+          <div id="adminControlsBar" style="display: none;" class="admin-bar-card">
+            <div>
+              <strong style="color: var(--cyan); font-family: 'Orbitron';"><i class="fa-solid fa-wand-magic-sparkles"></i> Admin Dashboard</strong>
+              <p style="font-size: 0.8rem; color: #ccc;">Schedule new episodes or manage active catalog.</p>
+            </div>
+            <div style="display:flex; gap:10px;">
+              <button class="btn-submit" onclick="openScheduleModal()" style="width: auto; padding: 8px 16px; background: linear-gradient(135deg, var(--pink), var(--cyan)); font-size:0.8rem;">
+                <i class="fa-solid fa-plus-circle"></i> + Schedule Episode
+              </button>
+              <button class="btn-submit" onclick="resetEpisodeDatabase()" style="width: auto; padding: 8px 14px; background: rgba(255, 50, 50, 0.4); border: 1px solid #ff3333; font-size:0.75rem;" title="Reset catalog to defaults">
+                <i class="fa-solid fa-rotate-left"></i> Reset DB
+              </button>
+            </div>
+          </div>
+
+          <!-- ACTIVE SPOTIFY PODCAST PLAYER CARD -->
           <div class="glass-card active-player-card">
-            <div class="now-playing-header">
-              <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=200&q=80" alt="Podcast Cover" class="album-art" id="nowArt">
-              <div class="now-playing-details">
-                <span style="font-size: 0.75rem; color: var(--cyan); font-weight: bold; text-transform: uppercase;">NOW PLAYING</span>
-                <h3 id="nowTitle" class="neon-text-cyan">Episode 1: Cyber Y2K Takeover</h3>
-                <p id="nowDesc">Welcome to the premiere episode! Unfiltered tea & classic vibes.</p>
-              </div>
+            <div class="card-title" style="margin-bottom: 12px; border-bottom: none;">
+              <span class="neon-text-cyan"><i class="fa-brands fa-spotify" style="color: var(--spotify-green);"></i> Playing Podcast Episode</span>
+              <span id="playerEpTag" style="font-size:0.75rem; color:var(--cyan); background:rgba(0,243,255,0.15); padding:4px 10px; border-radius:12px;">Episode 1</span>
             </div>
-
-            <!-- Custom Audio Scrub Control -->
-            <div class="player-controls-wrap">
-              <div class="progress-area">
-                <span id="currentTime" class="time-stamp">0:00</span>
-                <input type="range" id="podcastSeek" class="audio-progress" value="0" min="0" max="100">
-                <span id="durationTime" class="time-stamp">0:00</span>
-              </div>
-              <div class="player-buttons">
-                <button class="play-btn-main" id="podcastPlayBtn" onclick="togglePodcastPlay()"><i class="fa-solid fa-play"></i></button>
-              </div>
+            
+            <div id="activePlayerContainer" class="spotify-frame-container">
+              <!-- Dynamically populated Spotify Iframe or MP3 Player -->
             </div>
           </div>
 
-          <!-- Episode Schedule & Post Management (Admin Action Bar) -->
-          <div id="adminControlsBar" style="display: none; margin-bottom: 20px;">
-            <button class="btn-submit" onclick="openScheduleModal()" style="background: linear-gradient(135deg, #00f3ff, #ff007f);"><i class="fa-solid fa-plus-circle"></i> + Post / Schedule New Episode</button>
-          </div>
-
-          <!-- All Episodes List Container -->
+          <!-- CATALOG -->
           <div class="glass-card">
             <div class="card-title">
               <span><i class="fa-solid fa-list-ul" style="color: var(--pink);"></i> Episode Catalog</span>
-              <span style="font-size: 0.8rem; color: #888;" id="episodeCountText">3 Episodes</span>
+              <span style="font-size: 0.8rem; color: #888;" id="episodeCountText">0 Episodes</span>
             </div>
-            <div class="episodes-list" id="episodesContainer">
-              <!-- Dynamically Populated via JS -->
-            </div>
+            <div class="episodes-list" id="episodesContainer"></div>
           </div>
 
         </div>
 
-        <!-- FAN CLUB / WORK SIGN-UP VIEW -->
+        <!-- PAY MY BILLS VIEW -->
+        <div id="payBillsView" style="display: none;">
+          <div class="glass-card" style="border-color: var(--gold); box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);">
+            <div class="card-title">
+              <span class="neon-text-gold"><i class="fa-solid fa-gift"></i> Pay My Bills</span>
+              <span style="font-size: 0.75rem; color: var(--gold); background: rgba(255,215,0,0.15); padding:4px 10px; border-radius:12px;">Vanilla eGift Card</span>
+            </div>
+            <p style="margin-bottom: 20px; font-size: 0.95rem; color: #ddd; line-height: 1.5;">
+              Show your love and support for <strong>The Tequila Minaj Show</strong>! Send a Vanilla eGift card directly to Tequila. Select your gift card amount below and press <strong>PAY NOW</strong>.
+            </p>
+
+            <form id="payBillsForm" onsubmit="handlePayBillsSubmit(event)">
+              <div class="form-group">
+                <label style="color: var(--gold);">GIFT CARD TYPE</label>
+                <input type="text" class="form-control" value="Vanilla eGift Card (Email Delivery)" readonly>
+              </div>
+
+              <div class="form-group">
+                <label style="color: var(--gold);">GIFT CARD AMOUNT ($USD)</label>
+                <select id="billAmountSelect" class="form-control" style="background: rgba(0,0,0,0.8); border-color: var(--gold); color: white;">
+                  <option value="25.00">$25.00 USD</option>
+                  <option value="50.00" selected>$50.00 USD</option>
+                  <option value="100.00">$100.00 USD</option>
+                  <option value="250.00">$250.00 USD</option>
+                  <option value="500.00">$500.00 USD</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label style="color: var(--gold);">YOUR NAME / SENDER NAME</label>
+                <input type="text" id="senderNameInput" class="form-control" required placeholder="Enter your name or fan alias">
+              </div>
+
+              <div class="form-group">
+                <label style="color: var(--gold);">YOUR EMAIL (FOR GIFT RECEIPT)</label>
+                <input type="email" id="senderEmailInput" class="form-control" required placeholder="your.email@example.com">
+              </div>
+
+              <div class="form-group">
+                <label style="color: var(--gold);">PERSONAL MESSAGE TO TEQUILA (OPTIONAL)</label>
+                <textarea id="billMessageInput" class="form-control" rows="2" placeholder="Leave a note for Tequila..."></textarea>
+              </div>
+
+              <button type="submit" class="btn-submit btn-pay-now">
+                <i class="fa-solid fa-lock"></i> PAY NOW & SEND GIFT CARD 💳
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- FAN CLUB VIEW -->
         <div id="workSignupView" style="display: none;">
           <div class="glass-card">
             <div class="card-title">
               <span class="neon-text-pink"><i class="fa-solid fa-users"></i> VIP Fan Club & Crew Sign-Up</span>
             </div>
             <p style="margin-bottom: 20px; font-size: 0.95rem; color: #ccc;">
-              Want to join the official <strong>Tequila Minaj Crew</strong>? Sign up below to join the Fan Club, apply for crew roles (mods, graphic design, audio assistants), or receive exclusive early episode alerts!
+              Join the official <strong>Tequila Minaj Crew</strong>! Sign up below to join the Fan Club, apply for crew roles, or receive exclusive episode drop alerts!
             </p>
 
             <form id="workForm" onsubmit="handleWorkSignup(event)">
               <div class="form-group">
-                <label>FULL NAME / BARB ALIAS</label>
+                <label>FULL NAME / ALIAS</label>
                 <input type="text" class="form-control" required placeholder="e.g. Chun-Li Luxe">
               </div>
               <div class="form-group">
@@ -687,21 +645,13 @@
                 <input type="email" class="form-control" required placeholder="name@domain.com">
               </div>
               <div class="form-group">
-                <label>TWITTER / INSTAGRAM HANDLE</label>
-                <input type="text" class="form-control" placeholder="@officialtequila">
-              </div>
-              <div class="form-group">
                 <label>I WANT TO JOIN AS:</label>
                 <select class="form-control" style="background: #111;">
-                  <option>VIP Fan Club Member (Exclusive Alerts)</option>
-                  <option>Podcast Guest / Interviewee</option>
-                  <option>Social Media & Promo Team</option>
-                  <option>Audio & Video Editor Assistant</option>
+                  <option>VIP Fan Club Member</option>
+                  <option>Podcast Guest</option>
+                  <option>Social Media Team</option>
+                  <option>Audio / Video Assistant</option>
                 </select>
-              </div>
-              <div class="form-group">
-                <label>WHY DO YOU WANT TO JOIN THE CREW?</label>
-                <textarea class="form-control" rows="3" placeholder="Tell us why you love The Tequila Minaj Show!"></textarea>
               </div>
               <button type="submit" class="btn-submit">SUBMIT APPLICATION 💖</button>
             </form>
@@ -710,54 +660,41 @@
 
       </main>
 
-      <!-- Right Sidebar Column -->
+      <!-- SIDEBAR -->
       <aside>
 
-        <!-- Nicki Minaj Song of the Day Card -->
+        <!-- NICKI SONG OF THE DAY -->
         <div class="glass-card">
           <div class="card-title">
             <span style="color: var(--pink);"><i class="fa-solid fa-music"></i> Nicki Song of the Day</span>
           </div>
           <div class="sotd-box">
-            <div class="sotd-title" id="sotdTitle">Super Bass</div>
-            <div class="sotd-artist">Nicki Minaj • Pink Friday</div>
+            <div style="font-family:'Orbitron'; color:var(--pink); font-size:1.2rem; margin-bottom:4px;" id="sotdTitle">Loading...</div>
+            <div style="font-size:0.85rem; color:#ddd;" id="sotdAlbum">Nicki Minaj</div>
             <div class="stream-links">
-              <a href="https://open.spotify.com/artist/0hCN2StS33W25233vOD8A8" target="_blank" class="stream-btn"><i class="fa-brands fa-spotify"></i> Spotify</a>
-              <a href="https://music.apple.com/us/artist/nicki-minaj/300000000" target="_blank" class="stream-btn"><i class="fa-brands fa-apple"></i> Apple</a>
-              <a href="https://music.youtube.com/search?q=Nicki+Minaj" target="_blank" class="stream-btn"><i class="fa-brands fa-youtube"></i> YouTube</a>
+              <a href="#" id="spotifyBtn" target="_blank" class="stream-btn"><i class="fa-brands fa-spotify" style="color:#1DB954;"></i> Spotify</a>
+              <a href="#" id="appleBtn" target="_blank" class="stream-btn"><i class="fa-brands fa-apple" style="color:#FA243C;"></i> Apple</a>
+              <a href="#" id="youtubeBtn" target="_blank" class="stream-btn"><i class="fa-brands fa-youtube" style="color:#FF0000;"></i> YouTube</a>
             </div>
           </div>
         </div>
 
-        <!-- Twitter / X Synced Feed Module -->
+        <!-- LIVE SYNCED X / TWITTER FEED -->
         <div class="glass-card">
           <div class="card-title">
             <span><i class="fa-brands fa-x-twitter" style="color: var(--cyan);"></i> Live X Feed</span>
-            <a href="https://x.com/officialtequila?s=11" target="_blank" style="font-size: 0.75rem; color: var(--cyan); text-decoration: none;">@officialtequila</a>
+            <a href="https://x.com/officialtequila" target="_blank" style="font-size: 0.75rem; color: var(--cyan); text-decoration: none;">@officialtequila <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.65rem;"></i></a>
           </div>
-          <div class="twitter-box" id="twitterFeedContainer">
-            <!-- Simulated Live Synced Tweets -->
-            <div class="tweet-card">
-              <div class="tweet-header">
-                <div class="tweet-user">
-                  <span>Tequila Minaj</span>
-                  <span class="tweet-handle">@officialtequila</span>
-                </div>
-                <span class="tweet-time">2h</span>
-              </div>
-              <p>New episode dropping tonight! Get your drinks ready 🍸✨ #TequilaMinajShow #Y2K</p>
-            </div>
-
-            <div class="tweet-card">
-              <div class="tweet-header">
-                <div class="tweet-user">
-                  <span>Tequila Minaj</span>
-                  <span class="tweet-handle">@officialtequila</span>
-                </div>
-                <span class="tweet-time">1d</span>
-              </div>
-              <p>Pink & cyan lights forever 💖🩵 Which guest should I bring on next week?</p>
-            </div>
+          
+          <div class="twitter-embed-wrapper" id="twitterWrapper">
+            <!-- Official X / Twitter Widget Timeline Embed -->
+            <a class="twitter-timeline" 
+               data-theme="dark" 
+               data-chrome="noheader nofooter noborders transparent"
+               data-tweet-limit="5"
+               href="https://twitter.com/officialtequila?ref_src=twsrc%5Etfw">
+               Loading @officialtequila live posts...
+            </a>
           </div>
         </div>
 
@@ -765,14 +702,14 @@
 
     </div>
 
-    <!-- Footer Area -->
+    <!-- FOOTER WITH VISITOR COUNTER -->
     <footer>
       <div class="visitor-counter-box">
         <i class="fa-solid fa-eye" style="color: var(--cyan);"></i>
-        <span style="font-size: 0.85rem; font-family: 'Orbitron', sans-serif;">VISITORS:</span>
-        <span class="counter-digits" id="visitorCounterDisplay">008,492</span>
+        <span style="font-size: 0.85rem; font-family: 'Orbitron';">LIVE VISITORS:</span>
+        <span class="counter-digits" id="visitorCounterDisplay">000000</span>
       </div>
-      <p style="font-size: 0.8rem; color: #777;">© 2026 The Tequila Minaj Show. All Rights Reserved. Powered by Cyber Y2K Tech.</p>
+      <p style="font-size: 0.8rem; color: #777;">© 2026 The Tequila Minaj Show. All Rights Reserved.</p>
     </footer>
 
   </div>
@@ -781,13 +718,14 @@
   <div class="modal-overlay" id="adminModal">
     <div class="modal-card">
       <button class="close-modal" onclick="closeAdminModal()">&times;</button>
-      <h2 class="neon-text-pink y2k-font" style="margin-bottom: 20px; font-size: 1.3rem;"><i class="fa-solid fa-user-lock"></i> Queen Admin Login</h2>
+      <h2 class="neon-text-pink y2k-font" style="margin-bottom: 20px; font-size: 1.2rem;"><i class="fa-solid fa-user-lock"></i> Queen Admin Login</h2>
+      <p style="font-size: 0.85rem; color: #aaa; margin-bottom: 15px;">Enter master password to reveal the episode scheduling & upload features.</p>
       <form onsubmit="handleAdminAuth(event)">
         <div class="form-group">
-          <label>ENTER MASTER ADMIN PASSCODE</label>
-          <input type="password" id="adminPassInput" class="form-control" required placeholder="••••••••">
+          <label>MASTER ADMIN PASSCODE</label>
+          <input type="password" id="adminPassInput" class="form-control" required placeholder="Hint: QUEEN">
         </div>
-        <button type="submit" class="btn-submit">UNLOCK ADMIN ACCESS</button>
+        <button type="submit" class="btn-submit">UNLOCK ACCESS</button>
       </form>
     </div>
   </div>
@@ -796,270 +734,205 @@
   <div class="modal-overlay" id="scheduleModal">
     <div class="modal-card">
       <button class="close-modal" onclick="closeScheduleModal()">&times;</button>
-      <h2 class="neon-text-cyan y2k-font" style="margin-bottom: 20px; font-size: 1.3rem;"><i class="fa-solid fa-calendar-plus"></i> Schedule / Post Episode</h2>
+      <h2 class="neon-text-cyan y2k-font" style="margin-bottom: 20px; font-size: 1.2rem;"><i class="fa-solid fa-calendar-plus"></i> Post / Schedule Episode</h2>
       <form onsubmit="handleCreateEpisode(event)">
         <div class="form-group">
           <label>EPISODE TITLE</label>
-          <input type="text" id="epTitleInput" class="form-control" required placeholder="Episode Title">
+          <input type="text" id="epTitleInput" class="form-control" required placeholder="e.g. Episode 3: Y2K Tea Extravaganza">
         </div>
         <div class="form-group">
-          <label>AUDIO FILE URL (.MP3)</label>
-          <input type="url" id="epUrlInput" class="form-control" required placeholder="https://domain.com/audio.mp3">
+          <label>SPOTIFY PODCAST LINK OR MP3 URL</label>
+          <input type="url" id="epUrlInput" class="form-control" required placeholder="https://open.spotify.com/episode/...">
+          <small style="color: var(--cyan); font-size: 0.75rem; margin-top: 4px; display: block;">
+            💡 Paste any Spotify Podcast Episode link or direct MP3 URL!
+          </small>
         </div>
         <div class="form-group">
-          <label>DESCRIPTION / SHOW NOTES</label>
-          <textarea id="epDescInput" class="form-control" rows="3" placeholder="Episode description..."></textarea>
-        </div>
-        <div class="form-group">
-          <label>PUBLISH DATE & TIME (Leave empty to publish now)</label>
-          <input type="datetime-local" id="epDateInput" class="form-control">
+          <label>EPISODE DESCRIPTION</label>
+          <textarea id="epDescInput" class="form-control" rows="3" placeholder="Write a description..."></textarea>
         </div>
         <button type="submit" class="btn-submit">POST EPISODE ✨</button>
       </form>
     </div>
   </div>
 
-  <!-- BACKGROUND AMBIENT AUDIO FILE LINK -->
+  <!-- AMBIENT AUDIO ELEMENT -->
   <audio id="bgAudio" loop preload="auto">
-    <!-- Clean, accessible ambient audio stream -->
-    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a7315b.mp3?filename=cyberpunk-2099-10701.mp3" type="audio/mpeg">
+    <source src="https://archive.org/download/InceptionSoundtrackHD12TimeHansZimmer/Inception%20Soundtrack%20HD%20-%20%2312%20Time%20%28Hans%20Zimmer%29.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- PODCAST PLAYER AUDIO ELEMENT -->
-  <audio id="podcastAudio" preload="auto"></audio>
+  <!-- Twitter Widget Script for Live Sync -->
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-  <!-- JAVASCRIPT APPLICATION LOGIC -->
   <script>
-    /* ==========================================================================
-       1. INITIAL STATE & EPISODE DATABASE
-       ========================================================================== */
     let isAdminLoggedIn = false;
     let isBgMusicPlaying = false;
-    let isPodcastPlaying = false;
 
-    // Sample Podcast Episodes
-    let episodesList = [
+    // Default episodes list
+    const defaultEpisodesList = [
       {
         id: 1,
-        title: "Episode 1: Cyber Y2K Takeover",
-        desc: "Welcome to the premiere! Unfiltered tea, pop culture breakdowns, and ultimate Y2K nostalgia.",
-        url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-        duration: "04:12",
-        releaseDate: null // Already published
+        title: "The Tequila Minaj Show: Episode 1 Premiere",
+        desc: "Welcome to the premiere! Pop culture breakdowns, Y2K nostalgia, and exclusive tea.",
+        url: "https://open.spotify.com/episode/0Q809A8VHiy3S33321rN8x" 
       },
       {
         id: 2,
         title: "Episode 2: The Cheetah Print Empire",
-        desc: "Talking fashion, Baby Phat eras, and how to build a bad b***h mindset in 2026.",
-        url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
-        duration: "07:05",
-        releaseDate: null
-      },
-      {
-        id: 3,
-        title: "Episode 3: Rumors & Rhinestones (Scheduled)",
-        desc: "Exclusive guest interview dropping soon!",
-        url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
-        duration: "05:30",
-        releaseDate: new Date(Date.now() + 86400000).toISOString() // Scheduled 1 day future
+        desc: "Talking Y2K fashion, iconic Nicki eras, and building a bad b***h empire.",
+        url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
       }
     ];
 
-    // Daily Nicki Minaj Song Rotation
+    // Persistent storage engine logic
+    let episodesList = loadEpisodesFromStorage();
+
+    function loadEpisodesFromStorage() {
+      const stored = localStorage.getItem('tequila_episodes_db');
+      if (stored) {
+        try {
+          return JSON.parse(stored);
+        } catch(e) {
+          return defaultEpisodesList;
+        }
+      }
+      return defaultEpisodesList;
+    }
+
+    function saveEpisodesToStorage() {
+      localStorage.setItem('tequila_episodes_db', JSON.stringify(episodesList));
+    }
+
+    function resetEpisodeDatabase() {
+      if (confirm("Reset podcast episode list to default starter episodes?")) {
+        episodesList = [...defaultEpisodesList];
+        saveEpisodesToStorage();
+        renderEpisodes();
+        if (episodesList.length > 0) playPodcastTrack(0);
+      }
+    }
+
     const nickiSongs = [
-      { title: "Super Bass", album: "Pink Friday" },
-      { title: "Starships", album: "Pink Friday: Roman Reloaded" },
-      { title: "Anakonda", album: "The Pinkprint" },
-      { title: "Chun-Li", album: "Queen" },
-      { title: "FTCU", album: "Pink Friday 2" },
-      { title: "Moment 4 Life", album: "Pink Friday" },
-      { title: "Roman's Revenge", album: "Pink Friday" }
+      { title: "Super Bass", album: "Pink Friday", query: "Nicki Minaj Super Bass" },
+      { title: "Starships", album: "Pink Friday: Roman Reloaded", query: "Nicki Minaj Starships" },
+      { title: "Anaconda", album: "The Pinkprint", query: "Nicki Minaj Anaconda" },
+      { title: "Chun-Li", album: "Queen", query: "Nicki Minaj Chun Li" },
+      { title: "FTCU", album: "Pink Friday 2", query: "Nicki Minaj FTCU" },
+      { title: "Moment 4 Life", album: "Pink Friday", query: "Nicki Minaj Moment 4 Life" },
+      { title: "Roman's Revenge", album: "Pink Friday", query: "Nicki Minaj Romans Revenge" }
     ];
 
-    /* ==========================================================================
-       2. INITIALIZATION ON PAGE LOAD
-       ========================================================================== */
-    window.addEventListener('DOMContentLoaded', () => {
-      initVisitorCounter();
-      updateNickiSongOfDay();
-      renderEpisodes();
-      setupAudioListeners();
-    });
-
-    /* ==========================================================================
-       3. AUDIO MANAGEMENT & AUTOMATIC FADING
-       ========================================================================== */
     const bgAudio = document.getElementById('bgAudio');
-    const podcastAudio = document.getElementById('podcastAudio');
     const bgVolumeSlider = document.getElementById('bgVolume');
-    const bgMusicToggleBtn = document.getElementById('bgMusicToggleBtn');
 
-    // Set Initial Volume
     bgAudio.volume = bgVolumeSlider.value;
+    bgVolumeSlider.addEventListener('input', (e) => { bgAudio.volume = e.target.value; });
 
-    bgVolumeSlider.addEventListener('input', (e) => {
-      bgAudio.volume = e.target.value;
-    });
-
-    bgMusicToggleBtn.addEventListener('click', () => {
+    function toggleBgMusic() {
+      const btn = document.getElementById('bgMusicToggleBtn');
       if (isBgMusicPlaying) {
         bgAudio.pause();
         isBgMusicPlaying = false;
-        bgMusicToggleBtn.innerHTML = '<i class="fa-solid fa-play"></i> PLAY';
+        btn.innerHTML = '<i class="fa-solid fa-play"></i> PLAY MUSIC';
       } else {
         bgAudio.play().then(() => {
           isBgMusicPlaying = true;
-          bgMusicToggleBtn.innerHTML = '<i class="fa-solid fa-pause"></i> PAUSE';
-        }).catch(() => {
-          alert("Click anywhere on the page first to allow background audio play!");
-        });
+          btn.innerHTML = '<i class="fa-solid fa-pause"></i> PAUSE MUSIC';
+        }).catch(() => alert("Tap the button again to enable background music!"));
       }
-    });
+    }
 
-    function setupAudioListeners() {
-      // Audio player progress tracking
-      podcastAudio.addEventListener('timeupdate', () => {
-        if (!podcastAudio.duration) return;
-        const seek = document.getElementById('podcastSeek');
-        const current = document.getElementById('currentTime');
-        const duration = document.getElementById('durationTime');
-
-        seek.value = (podcastAudio.currentTime / podcastAudio.duration) * 100;
-        current.textContent = formatTime(podcastAudio.currentTime);
-        duration.textContent = formatTime(podcastAudio.duration);
-      });
-
-      document.getElementById('podcastSeek').addEventListener('input', (e) => {
-        if (podcastAudio.duration) {
-          podcastAudio.currentTime = (e.target.value / 100) * podcastAudio.duration;
-        }
-      });
-
-      podcastAudio.addEventListener('ended', () => {
-        isPodcastPlaying = false;
-        document.getElementById('podcastPlayBtn').innerHTML = '<i class="fa-solid fa-play"></i>';
-        // Fade background music back in
-        fadeBgMusicIn();
-      });
+    // Convert Spotify Episode URLs into Embed URLs
+    function getSpotifyEmbedUrl(url) {
+      if (!url) return null;
+      if (url.includes('spotify.com/episode/')) {
+        const episodeId = url.split('episode/')[1].split('?')[0];
+        return `https://open.spotify.com/embed/episode/${episodeId}?utm_source=generator&theme=0`;
+      }
+      return null;
     }
 
     function playPodcastTrack(index) {
-      const ep = episodesList[index];
-      document.getElementById('nowTitle').textContent = ep.title;
-      document.getElementById('nowDesc').textContent = ep.desc;
-      podcastAudio.src = ep.url;
-      
-      // Automatic Fade out background music when podcast starts
-      fadeBgMusicOut();
-
-      podcastAudio.play();
-      isPodcastPlaying = true;
-      document.getElementById('podcastPlayBtn').innerHTML = '<i class="fa-solid fa-pause"></i>';
-    }
-
-    function togglePodcastPlay() {
-      if (!podcastAudio.src) {
-        playPodcastTrack(0);
+      if (!episodesList || episodesList.length === 0) {
+        document.getElementById('activePlayerContainer').innerHTML = `
+          <div style="padding: 20px; text-align: center; color: #aaa;">No episodes available. Post an episode in Admin view!</div>
+        `;
         return;
       }
 
-      if (isPodcastPlaying) {
-        podcastAudio.pause();
-        isPodcastPlaying = false;
-        document.getElementById('podcastPlayBtn').innerHTML = '<i class="fa-solid fa-play"></i>';
-        fadeBgMusicIn();
+      const ep = episodesList[index];
+      document.getElementById('playerEpTag').textContent = `EPISODE ${ep.id}`;
+      const activePlayerContainer = document.getElementById('activePlayerContainer');
+
+      const spotifyEmbed = getSpotifyEmbedUrl(ep.url);
+
+      if (spotifyEmbed) {
+        activePlayerContainer.innerHTML = `
+          <iframe style="border-radius:12px;" src="${spotifyEmbed}" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        `;
       } else {
-        fadeBgMusicOut();
-        podcastAudio.play();
-        isPodcastPlaying = true;
-        document.getElementById('podcastPlayBtn').innerHTML = '<i class="fa-solid fa-pause"></i>';
+        activePlayerContainer.innerHTML = `
+          <div style="padding: 15px; background: rgba(0,0,0,0.5); border-radius: 12px; text-align: center;">
+            <h4 style="color: var(--pink); margin-bottom: 8px;">${ep.title}</h4>
+            <p style="font-size:0.85rem; color:#ccc; margin-bottom:12px;">${ep.desc}</p>
+            <audio controls style="width: 100%; accent-color: var(--pink);" src="${ep.url}"></audio>
+          </div>
+        `;
       }
+
+      window.scrollTo({ top: 180, behavior: 'smooth' });
     }
 
-    function fadeBgMusicOut() {
-      if (!bgAudio.paused) {
-        let fadeOut = setInterval(() => {
-          if (bgAudio.volume > 0.05) {
-            bgAudio.volume -= 0.05;
-          } else {
-            bgAudio.pause();
-            clearInterval(fadeOut);
-          }
-        }, 50);
-      }
-    }
-
-    function fadeBgMusicIn() {
-      bgAudio.play().then(() => {
-        isBgMusicPlaying = true;
-        bgMusicToggleBtn.innerHTML = '<i class="fa-solid fa-pause"></i> PAUSE';
-        let targetVol = bgVolumeSlider.value;
-        bgAudio.volume = 0;
-        let fadeIn = setInterval(() => {
-          if (bgAudio.volume < targetVol - 0.05) {
-            bgAudio.volume += 0.05;
-          } else {
-            bgAudio.volume = targetVol;
-            clearInterval(fadeIn);
-          }
-        }, 50);
-      }).catch(() => {});
-    }
-
-    function formatTime(seconds) {
-      const min = Math.floor(seconds / 60);
-      const sec = Math.floor(seconds % 60);
-      return `${min}:${sec < 10 ? '0' : ''}${sec}`;
-    }
-
-    /* ==========================================================================
-       4. EPISODE RENDERING, SCHEDULING & DELETION
-       ========================================================================== */
     function renderEpisodes() {
       const container = document.getElementById('episodesContainer');
       container.innerHTML = '';
-
-      const now = new Date();
-      let visibleCount = 0;
+      
+      if (episodesList.length === 0) {
+        container.innerHTML = `<div style="text-align: center; padding: 25px; color: #888;">No episodes posted yet.</div>`;
+        document.getElementById('episodeCountText').textContent = `0 Episodes`;
+        return;
+      }
 
       episodesList.forEach((ep, idx) => {
-        const isScheduledFuture = ep.releaseDate && new Date(ep.releaseDate) > now;
-
-        // Hide future scheduled posts from general public unless admin is logged in
-        if (isScheduledFuture && !isAdminLoggedIn) {
-          return;
-        }
-
-        visibleCount++;
-
         const epItem = document.createElement('div');
         epItem.className = 'episode-item';
+        
+        const isSpotify = ep.url.includes('spotify.com');
+
         epItem.innerHTML = `
           <div class="ep-meta">
             <span class="ep-num">EP ${ep.id}</span>
             <div>
-              <div class="ep-title-text">
-                ${ep.title}
-                ${isScheduledFuture ? '<span class="status-tag tag-scheduled">Scheduled</span>' : '<span class="status-tag tag-live">Live</span>'}
+              <div style="font-weight:600; font-size: 0.95rem;">
+                ${ep.title} 
+                ${isSpotify ? '<i class="fa-brands fa-spotify" style="color: var(--spotify-green); margin-left:6px;" title="Spotify Podcast"></i>' : ''}
               </div>
-              <div class="ep-subtext">${ep.desc}</div>
+              <div style="font-size:0.8rem; color:#aaa; margin-top:3px;">${ep.desc}</div>
             </div>
           </div>
-          <div class="ep-actions">
-            <button class="action-icon-btn" onclick="playPodcastTrack(${idx})" title="Play Episode"><i class="fa-solid fa-circle-play" style="font-size:1.4rem; color:var(--cyan);"></i></button>
-            ${isAdminLoggedIn ? `<button class="action-icon-btn delete-btn" onclick="deleteEpisode(${ep.id})" title="Delete Episode"><i class="fa-solid fa-trash-can"></i></button>` : ''}
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <button class="action-icon-btn" title="Stream Episode" onclick="playPodcastTrack(${idx})">
+              <i class="fa-solid fa-circle-play" style="font-size:1.5rem; color:var(--cyan);"></i>
+            </button>
+            ${isAdminLoggedIn ? `<button class="action-icon-btn" title="Delete Episode Permanently" onclick="deleteEpisode(${ep.id})"><i class="fa-solid fa-trash-can" style="color:#ff3333;"></i></button>` : ''}
           </div>
         `;
         container.appendChild(epItem);
       });
 
-      document.getElementById('episodeCountText').textContent = `${visibleCount} Episodes`;
+      document.getElementById('episodeCountText').textContent = `${episodesList.length} Episodes`;
     }
 
     function deleteEpisode(id) {
-      if (confirm("Are you sure you want to delete this episode?")) {
+      if (confirm(`Permanently delete Episode ${id}? This change will persist.`)) {
         episodesList = episodesList.filter(ep => ep.id !== id);
+        saveEpisodesToStorage();
         renderEpisodes();
+        if (episodesList.length > 0) {
+          playPodcastTrack(0);
+        } else {
+          document.getElementById('activePlayerContainer').innerHTML = `<div style="padding: 20px; text-align: center; color: #aaa;">No active episodes.</div>`;
+        }
       }
     }
 
@@ -1068,93 +941,136 @@
       const title = document.getElementById('epTitleInput').value;
       const url = document.getElementById('epUrlInput').value;
       const desc = document.getElementById('epDescInput').value;
-      const dateVal = document.getElementById('epDateInput').value;
 
-      const newEp = {
-        id: episodesList.length + 1,
-        title: title,
-        desc: desc || "No description provided.",
-        url: url,
-        duration: "05:00",
-        releaseDate: dateVal ? new Date(dateVal).toISOString() : null
-      };
+      const newId = episodesList.length > 0 ? Math.max(...episodesList.map(ep => ep.id)) + 1 : 1;
 
-      episodesList.unshift(newEp);
+      episodesList.unshift({ 
+        id: newId, 
+        title, 
+        url, 
+        desc 
+      });
+
+      saveEpisodesToStorage();
       renderEpisodes();
+      playPodcastTrack(0);
       closeScheduleModal();
-      alert("✨ Episode posted / scheduled successfully!");
+      document.getElementById('epTitleInput').value = '';
+      document.getElementById('epUrlInput').value = '';
+      document.getElementById('epDescInput').value = '';
     }
 
-    /* ==========================================================================
-       5. ADMIN AUTHENTICATION
-       ========================================================================== */
-    function openAdminModal() {
-      document.getElementById('adminModal').classList.add('active');
+    // Pay My Bills Handler
+    function handlePayBillsSubmit(e) {
+      e.preventDefault();
+      const amount = document.getElementById('billAmountSelect').value;
+      const senderName = document.getElementById('senderNameInput').value;
+      const senderEmail = document.getElementById('senderEmailInput').value;
+      const message = document.getElementById('billMessageInput').value || "No custom message.";
+
+      const detailsToCopy = 
+`--- VANILLA EGIFT CARD DETAILS FOR TEQUILA ---
+Recipient Name: Tequila
+Recipient Email: tequilaminaj@gmail.com
+Card Amount: $${amount} USD
+Send Date: Now
+Sender Name: ${senderName}
+Sender Email: ${senderEmail}
+Message: ${message}
+-----------------------------------------------`;
+
+      navigator.clipboard.writeText(detailsToCopy).then(() => {
+        alert(`✨ Gift details formatted & copied to your clipboard!\n\nOpening Vanilla Gift Card portal now...`);
+      }).catch(() => {
+        alert(`Opening Vanilla Gift Card portal now...`);
+      }).finally(() => {
+        window.open('https://www.vanillagift.com/script-slate-email', '_blank');
+        window.location.href = 'https://www.vanillagift.com/checkout/#shipping';
+      });
     }
-    function closeAdminModal() {
-      document.getElementById('adminModal').classList.remove('active');
+
+    function updateNickiSongOfDay() {
+      const dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
+      const song = nickiSongs[dayOfYear % nickiSongs.length];
+
+      document.getElementById('sotdTitle').textContent = song.title;
+      document.getElementById('sotdAlbum').textContent = `Nicki Minaj • ${song.album}`;
+
+      const encodedQuery = encodeURIComponent(song.query);
+      document.getElementById('spotifyBtn').href = `https://open.spotify.com/search/${encodedQuery}`;
+      document.getElementById('appleBtn').href = `https://music.apple.com/us/search?term=${encodedQuery}`;
+      document.getElementById('youtubeBtn').href = `https://music.youtube.com/search?q=${encodedQuery}`;
     }
-    function openScheduleModal() {
-      document.getElementById('scheduleModal').classList.add('active');
+
+    function updateVisitorCounter() {
+      let count = localStorage.getItem('tequila_visits');
+      count = count ? parseInt(count) + 1 : 1280;
+      localStorage.setItem('tequila_visits', count);
+      document.getElementById('visitorCounterDisplay').textContent = String(count).padStart(6, '0');
     }
-    function closeScheduleModal() {
-      document.getElementById('scheduleModal').classList.remove('active');
-    }
+
+    function openAdminModal() { document.getElementById('adminModal').classList.add('active'); }
+    function closeAdminModal() { document.getElementById('adminModal').classList.remove('active'); }
+    function openScheduleModal() { document.getElementById('scheduleModal').classList.add('active'); }
+    function closeScheduleModal() { document.getElementById('scheduleModal').classList.remove('active'); }
 
     function handleAdminAuth(e) {
       e.preventDefault();
       const pass = document.getElementById('adminPassInput').value;
-      // Hidden admin passcode evaluation
-      if (pass === "QUEEN" || pass === "TEQUILA2026") {
+      if (pass.toUpperCase() === "QUEEN" || pass === "TEQUILA2026") {
         isAdminLoggedIn = true;
-        document.getElementById('adminIndicator').style.display = 'inline-block';
-        document.getElementById('adminControlsBar').style.display = 'block';
+        document.getElementById('adminIndicator').style.display = 'block';
+        document.getElementById('adminControlsBar').style.display = 'flex';
         document.getElementById('adminNavBtn').style.display = 'none';
         closeAdminModal();
         renderEpisodes();
-        alert("👑 Welcome back Queen! Admin privileges granted.");
       } else {
-        alert("Incorrect Admin Passcode.");
+        alert("Incorrect Admin Passcode. Try 'QUEEN'");
       }
     }
 
-    /* ==========================================================================
-       6. NICKI MINAJ SONG OF THE DAY & VISITOR COUNTER
-       ========================================================================== */
-    function updateNickiSongOfDay() {
-      const dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
-      const song = nickiSongs[dayOfYear % nickiSongs.length];
-      document.getElementById('sotdTitle').textContent = song.title;
-    }
-
-    function initVisitorCounter() {
-      let count = localStorage.getItem('tequila_visitor_count');
-      if (!count) {
-        count = 8492;
-      } else {
-        count = parseInt(count) + 1;
-      }
-      localStorage.setItem('tequila_visitor_count', count);
-      document.getElementById('visitorCounterDisplay').textContent = String(count).padStart(6, '0');
-    }
-
-    /* ==========================================================================
-       7. NAVIGATION VIEW SWITCHER & WORK FORM
-       ========================================================================== */
     function switchView(viewId) {
       document.getElementById('episodesView').style.display = viewId === 'episodesView' ? 'block' : 'none';
+      document.getElementById('payBillsView').style.display = viewId === 'payBillsView' ? 'block' : 'none';
       document.getElementById('workSignupView').style.display = viewId === 'workSignupView' ? 'block' : 'none';
 
-      const navBtns = document.querySelectorAll('.nav-btn');
-      navBtns.forEach(btn => btn.classList.remove('active'));
-      event.currentTarget.classList.add('active');
+      document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+      const activeBtn = document.getElementById(`btn-${viewId}`);
+      if (activeBtn) activeBtn.classList.add('active');
     }
 
     function handleWorkSignup(e) {
       e.preventDefault();
-      alert("💖 Thank you for signing up for the Tequila Minaj Crew! We'll review your application soon.");
+      alert("💖 Application received! Welcome to the crew!");
       document.getElementById('workForm').reset();
     }
+
+    // Twitter Widget Fallback check if ad-blocker blocks twitter embed
+    setTimeout(() => {
+      const twWrapper = document.getElementById('twitterWrapper');
+      if (twWrapper && twWrapper.children.length === 1 && twWrapper.children[0].tagName === 'A') {
+        twWrapper.innerHTML = `
+          <div class="tweet-fallback-card">
+            <div style="display:flex; justify-content:space-between; margin-bottom:6px;">
+              <strong>Tequila Minaj</strong> <span style="color:#777; font-size:0.8rem;"><i class="fa-brands fa-x-twitter"></i> Official</span>
+            </div>
+            <p style="margin-bottom:10px;">Catch all live posts and announcements on the official X account!</p>
+            <a href="https://x.com/officialtequila" target="_blank" class="stream-btn" style="background:var(--pink); border-color:var(--pink);">
+              View @officialtequila on X
+            </a>
+          </div>
+        `;
+      }
+    }, 3000);
+
+    window.addEventListener('DOMContentLoaded', () => {
+      renderEpisodes();
+      if (episodesList.length > 0) playPodcastTrack(0);
+      updateNickiSongOfDay();
+      updateVisitorCounter();
+    });
   </script>
 </body>
 </html>
+
+```
